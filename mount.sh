@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bin/examplefs -f -s -d $1
+bin/dsfs $1 $2 -f -s -d -o noapplexattr 
 
 
