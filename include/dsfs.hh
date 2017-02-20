@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/xattr.h>
+#include "log.hh"
 
 class DSFS {
 private: 

@@ -14,10 +14,18 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/xattr.h>
+#include "log.hh"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct dsfs_state {
+    FILE *logfile;
+    char *rootdir;
+    char *mountdir;
+};
+#define DSFS_DATA ((struct dsfs_state *) fuse_get_context()->private_data)
 
 void set_rootdir(const char *path);
 

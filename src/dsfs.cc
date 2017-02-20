@@ -289,6 +289,10 @@ int DSFS::Fsyncdir(const char *path, int datasync, struct fuse_file_info *fileIn
 }
 
 int DSFS::Init(struct fuse_conn_info *conn) {
+	log_msg("\ndsfs_init()\n");
+
+	log_conn(conn);
+	log_fuse_context(fuse_get_context());
         return 0;
 }
 

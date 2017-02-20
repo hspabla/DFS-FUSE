@@ -1,6 +1,11 @@
-#ifndef _LOG_H_
-#define _LOG_H_
+#ifndef _LOG_HH_
+#define _LOG_HH_
 #include <stdio.h>
+#include "wrap.hh"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //  macro to log fields in structs.
 #define log_struct(st, field, format, typecast) \
@@ -18,4 +23,8 @@ void log_statvfs(struct statvfs *sv);
 int  log_syscall(char *func, int retstat, int min_ret);
 void log_utime(struct utimbuf *buf);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif //LOG_HH
