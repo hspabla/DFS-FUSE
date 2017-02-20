@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package dfsFuse;
+
+service FileSystem {
+
+    // RPC functions for file handling operations. Not everything is implemented
+    rpc GetAttr( GetAttrRequest ) returns ( GetAttrResponse ) {}
+//    rpc Mkdir( MkdirRequest ) returns ( MkdirResponse ) {}
+//    rpc Opendir( OpenDirRequest ) returns( OpenDirResponse ) {}
+
+}
+
+message Status {
+    int32 retCode = 1;
+    }
+
+
+// process id and owner information
+message Owner {
+    uint32 uid = 1;		/* user ID of owner */
+    uint32 gid = 2;		/* group ID of owner */
+}
+
+message ClientInfo {
+    Owner Owner = 1;
+    uint32 Pid = 2;		/* process ID */
+}
+
+
+// Attr
+message Attr {
+    uint32     dev		= 1;    /* ID of device containing file */
+    uint32     ino		= 2;    /* inode number */
+    uint32     mode		= 3;    /* protection */
+    uint32     st_nlink = 4;   	/* number of hard links */
+    Owner	   owner 	= 5;
+	uint32 	   rdev		= 6;    /* device ID (if special file) */
+    uint64     size		= 7;    /* total size, in bytes */
+    uint64	   blksize	= 8; 	/* blocksize for file system I/O */
+    uint64     blocks	= 9;  	/* number of 512B blocks allocated */
+
+    uint64     atime	= 10;   /* time of last access */
+    uint32	   atimens	= 11;
+	uint64     mtime	= 12;   /* time of last modification */
+    uint32	   mtimens	= 13;
+	uint64     ctime	= 14;   /* time of last status change */
+	uint32	   ctimens	= 15;
+
+}
+
+message GetAttrRequest {
+    String name = 1;
+    ClientInfo info = 2;
+}
+
+message GetAttrResponse {
+	Attr Attr = 1;
+	Status Status = 2;
+}
+
