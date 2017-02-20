@@ -7,6 +7,7 @@ struct fuse_operations fuse_oper;
 
 int main(int argc, char *argv[]) {
 	int i=1; int fuse_stat;
+	struct dsfs_state *data;
 
         fuse_oper.getattr = wrap_getattr;
         fuse_oper.readlink = wrap_readlink;
@@ -42,13 +43,19 @@ int main(int argc, char *argv[]) {
 
 	printf("mounting file system...\n");
 
-        set_rootdir(realpath(argv[i], NULL));
+	set_rootdir(realpath(argv[i], NULL));
+
+	data = malloc(sizeof(struct dsfs_state));
+        data->rootdir = realpath(argv[i], NULL);
+	data->mountdir = realpath(argv[i+1], NULL);
+	data->logfile = log_open();
+
         for(; i < argc; i++) {
                 argv[i] = argv[i+1];
         }
         argc--;
 
-	fuse_stat = fuse_main(argc, argv, &fuse_oper, NULL);
+	fuse_stat = fuse_main(argc, argv, &fuse_oper, data);
 
 	printf("fuse_main returned %d\n", fuse_stat);
 

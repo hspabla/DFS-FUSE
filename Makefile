@@ -10,17 +10,20 @@ clean:
 bin: 
 	mkdir -p bin
 
-bin/dsfs: bin obj/dsfs.o obj/wrap.o obj/main.o
+bin/dsfs: bin obj/dsfs.o obj/wrap.o obj/main.o obj/log.o
 	g++ -g $(LINKFLAGS) -o bin/dsfs obj/*
 
 obj:
 	mkdir -p obj
 
-obj/dsfs.o: obj src/dsfs.cc include/dsfs.hh
+obj/log.o: obj src/log.cc include/log.hh include/wrap.hh
+	g++ -g $(CFLAGS) -c src/log.cc -o obj/log.o
+
+obj/dsfs.o: obj src/dsfs.cc include/dsfs.hh include/log.hh
 	g++ -g $(CFLAGS) -c src/dsfs.cc -o obj/dsfs.o
 
-obj/main.o: obj src/main.c include/wrap.hh
-	gcc -g $(CFLAGS) -c src/main.c -o obj/main.o
+obj/client.o: obj src/client.c include/wrap.hh
+	gcc -g $(CFLAGS) -c src/client.c -o obj/client.o
 
 obj/wrap.o: obj src/wrap.cc include/wrap.hh include/dsfs.hh
 	g++ -g $(CFLAGS) -c src/wrap.cc -o obj/wrap.o

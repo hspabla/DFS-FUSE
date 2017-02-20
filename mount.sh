@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bin/dsfs $1 $2 -f -s -d -o noapplexattr 
+bin/dsfs $1 $2 -f -d -s -o noapplexattr 
 
 
