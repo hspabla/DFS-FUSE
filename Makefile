@@ -10,8 +10,8 @@ clean:
 bin: 
 	mkdir -p bin
 
-bin/dsfs: bin obj/dsfs.o obj/wrap.o obj/main.o obj/log.o
-	g++ -g $(LINKFLAGS) -o bin/dsfs obj/*
+bin/dsfs: bin obj/dsfs.o obj/wrap.o obj/client.o obj/log.o
+	g++ -o bin/dsfs obj/* -g $(LINKFLAGS)
 
 obj:
 	mkdir -p obj
