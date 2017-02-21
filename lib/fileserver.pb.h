@@ -1051,9 +1051,15 @@ class DirEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional uint32 mode = 2;
+  // optional uint32 ino = 2;
+  void clear_ino();
+  static const int kInoFieldNumber = 2;
+  ::google::protobuf::uint32 ino() const;
+  void set_ino(::google::protobuf::uint32 value);
+
+  // optional uint32 mode = 3;
   void clear_mode();
-  static const int kModeFieldNumber = 2;
+  static const int kModeFieldNumber = 3;
   ::google::protobuf::uint32 mode() const;
   void set_mode(::google::protobuf::uint32 value);
 
@@ -1063,6 +1069,7 @@ class DirEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint32 ino_;
   ::google::protobuf::uint32 mode_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
@@ -2576,7 +2583,21 @@ inline void DirEntry::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.DirEntry.name)
 }
 
-// optional uint32 mode = 2;
+// optional uint32 ino = 2;
+inline void DirEntry::clear_ino() {
+  ino_ = 0u;
+}
+inline ::google::protobuf::uint32 DirEntry::ino() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.ino)
+  return ino_;
+}
+inline void DirEntry::set_ino(::google::protobuf::uint32 value) {
+  
+  ino_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.ino)
+}
+
+// optional uint32 mode = 3;
 inline void DirEntry::clear_mode() {
   mode_ = 0u;
 }

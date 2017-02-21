@@ -240,8 +240,9 @@ void protobuf_AssignDesc_fileserver_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenDirRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenDirRequest, _is_default_instance_));
   DirEntry_descriptor_ = file->message_type(9);
-  static const int DirEntry_offsets_[2] = {
+  static const int DirEntry_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirEntry, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirEntry, ino_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirEntry, mode_),
   };
   DirEntry_reflection_ =
@@ -488,33 +489,33 @@ void protobuf_AddDesc_fileserver_2eproto() {
     "\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"2\n\rMkd"
     "irResponse\022!\n\006status\030\001 \001(\0132\021.dfsFuse.FSs"
     "tatus\"A\n\016OpenDirRequest\022\014\n\004name\030\001 \001(\t\022!\n"
-    "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"&\n\010DirE"
-    "ntry\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\"U\n\017Open"
-    "DirResponse\022\037\n\004dirs\030\001 \003(\0132\021.dfsFuse.DirE"
-    "ntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\""
-    "M\n\013OpenRequest\022\014\n\004name\030\001 \001(\t\022\r\n\005flags\030\002 "
-    "\001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"E"
-    "\n\014OpenResponse\022\022\n\nfileHandle\030\001 \001(\r\022!\n\006st"
-    "atus\030\002 \001(\0132\021.dfsFuse.FSstatus\"c\n\013ReadReq"
-    "uest\022\023\n\013fileHandler\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022"
-    "\016\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001(\0132\023.dfsFuse."
-    "ClientInfo\"Q\n\014ReadResponse\022\020\n\010dataRead\030\001"
-    " \001(\r\022\014\n\004data\030\002 \001(\014\022!\n\006status\030\003 \001(\0132\021.dfs"
-    "Fuse.FSstatus\"r\n\014WriteRequest\022\023\n\013fileHan"
-    "dler\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\016"
-    "\n\006offset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.dfsFuse.C"
-    "lientInfo\"G\n\rWriteResponse\022\023\n\013dataWritte"
-    "n\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstat"
-    "us2\356\002\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.G"
-    "etAttrRequest\032\030.dfsFuse.GetAttrResponse\""
-    "\000\0228\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsF"
-    "use.MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse"
-    ".OpenDirRequest\032\030.dfsFuse.OpenDirRespons"
-    "e\"\000\0225\n\004Open\022\024.dfsFuse.OpenRequest\032\025.dfsF"
-    "use.OpenResponse\"\000\0225\n\004Read\022\024.dfsFuse.Rea"
-    "dRequest\032\025.dfsFuse.ReadResponse\"\000\0228\n\005Wri"
-    "te\022\025.dfsFuse.WriteRequest\032\026.dfsFuse.Writ"
-    "eResponse\"\000b\006proto3", 1779);
+    "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"3\n\010DirE"
+    "ntry\022\014\n\004name\030\001 \001(\t\022\013\n\003ino\030\002 \001(\r\022\014\n\004mode\030"
+    "\003 \001(\r\"U\n\017OpenDirResponse\022\037\n\004dirs\030\001 \003(\0132\021"
+    ".dfsFuse.DirEntry\022!\n\006status\030\002 \001(\0132\021.dfsF"
+    "use.FSstatus\"M\n\013OpenRequest\022\014\n\004name\030\001 \001("
+    "\t\022\r\n\005flags\030\002 \001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse"
+    ".ClientInfo\"E\n\014OpenResponse\022\022\n\nfileHandl"
+    "e\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstat"
+    "us\"c\n\013ReadRequest\022\023\n\013fileHandler\030\001 \001(\r\022\014"
+    "\n\004size\030\002 \001(\r\022\016\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001"
+    "(\0132\023.dfsFuse.ClientInfo\"Q\n\014ReadResponse\022"
+    "\020\n\010dataRead\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022!\n\006statu"
+    "s\030\003 \001(\0132\021.dfsFuse.FSstatus\"r\n\014WriteReque"
+    "st\022\023\n\013fileHandler\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n"
+    "\004size\030\003 \001(\r\022\016\n\006offset\030\004 \001(\r\022!\n\004info\030\005 \001("
+    "\0132\023.dfsFuse.ClientInfo\"G\n\rWriteResponse\022"
+    "\023\n\013dataWritten\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.d"
+    "fsFuse.FSstatus2\356\002\n\nFileSystem\022>\n\007GetAtt"
+    "r\022\027.dfsFuse.GetAttrRequest\032\030.dfsFuse.Get"
+    "AttrResponse\"\000\0228\n\005Mkdir\022\025.dfsFuse.MkdirR"
+    "equest\032\026.dfsFuse.MkdirResponse\"\000\022>\n\007Open"
+    "dir\022\027.dfsFuse.OpenDirRequest\032\030.dfsFuse.O"
+    "penDirResponse\"\000\0225\n\004Open\022\024.dfsFuse.OpenR"
+    "equest\032\025.dfsFuse.OpenResponse\"\000\0225\n\004Read\022"
+    "\024.dfsFuse.ReadRequest\032\025.dfsFuse.ReadResp"
+    "onse\"\000\0228\n\005Write\022\025.dfsFuse.WriteRequest\032\026"
+    ".dfsFuse.WriteResponse\"\000b\006proto3", 1792);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
   FSstatus::default_instance_ = new FSstatus();
@@ -4210,6 +4211,7 @@ void OpenDirRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int DirEntry::kNameFieldNumber;
+const int DirEntry::kInoFieldNumber;
 const int DirEntry::kModeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -4236,6 +4238,7 @@ void DirEntry::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ino_ = 0u;
   mode_ = 0u;
 }
 
@@ -4277,8 +4280,28 @@ DirEntry* DirEntry::New(::google::protobuf::Arena* arena) const {
 
 void DirEntry::Clear() {
 // @@protoc_insertion_point(message_clear_start:dfsFuse.DirEntry)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(DirEntry, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<DirEntry*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(ino_, mode_);
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  mode_ = 0u;
+
+#undef ZR_HELPER_
+#undef ZR_
+
 }
 
 bool DirEntry::MergePartialFromCodedStream(
@@ -4303,13 +4326,28 @@ bool DirEntry::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_mode;
+        if (input->ExpectTag(16)) goto parse_ino;
         break;
       }
 
-      // optional uint32 mode = 2;
+      // optional uint32 ino = 2;
       case 2: {
         if (tag == 16) {
+         parse_ino:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &ino_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_mode;
+        break;
+      }
+
+      // optional uint32 mode = 3;
+      case 3: {
+        if (tag == 24) {
          parse_mode:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -4356,9 +4394,14 @@ void DirEntry::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // optional uint32 mode = 2;
+  // optional uint32 ino = 2;
+  if (this->ino() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->ino(), output);
+  }
+
+  // optional uint32 mode = 3;
   if (this->mode() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->mode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->mode(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:dfsFuse.DirEntry)
@@ -4378,9 +4421,14 @@ void DirEntry::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // optional uint32 mode = 2;
+  // optional uint32 ino = 2;
+  if (this->ino() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->ino(), target);
+  }
+
+  // optional uint32 mode = 3;
   if (this->mode() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->mode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->mode(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.DirEntry)
@@ -4398,7 +4446,14 @@ int DirEntry::ByteSize() const {
         this->name());
   }
 
-  // optional uint32 mode = 2;
+  // optional uint32 ino = 2;
+  if (this->ino() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->ino());
+  }
+
+  // optional uint32 mode = 3;
   if (this->mode() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -4437,6 +4492,9 @@ void DirEntry::MergeFrom(const DirEntry& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  if (from.ino() != 0) {
+    set_ino(from.ino());
+  }
   if (from.mode() != 0) {
     set_mode(from.mode());
   }
@@ -4467,6 +4525,7 @@ void DirEntry::Swap(DirEntry* other) {
 }
 void DirEntry::InternalSwap(DirEntry* other) {
   name_.Swap(&other->name_);
+  std::swap(ino_, other->ino_);
   std::swap(mode_, other->mode_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -4527,7 +4586,21 @@ void DirEntry::clear_name() {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.DirEntry.name)
 }
 
-// optional uint32 mode = 2;
+// optional uint32 ino = 2;
+void DirEntry::clear_ino() {
+  ino_ = 0u;
+}
+ ::google::protobuf::uint32 DirEntry::ino() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.ino)
+  return ino_;
+}
+ void DirEntry::set_ino(::google::protobuf::uint32 value) {
+  
+  ino_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.ino)
+}
+
+// optional uint32 mode = 3;
 void DirEntry::clear_mode() {
   mode_ = 0u;
 }

@@ -86,7 +86,8 @@ message OpenDirRequest {
 
 message DirEntry {
     string name = 1;
-    uint32 mode = 2;
+    uint32 ino = 2;
+    uint32 mode = 3;
 }
 
 message OpenDirResponse {

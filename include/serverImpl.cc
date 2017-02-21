@@ -56,6 +56,7 @@ Status FileSystemImpl::Opendir( ServerContext* context,
  	std::string path = request->name();
 	DIR *dp;
         struct dirent *de;
+	int index = 0;
 
         dp = opendir(path.c_str());
 
@@ -63,10 +64,15 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 	if (dp == NULL) 
 		status.set_retcode(-1);
 
- 	//while ((de = readdir(dp)) != NULL) {
-			
-		
- //	int retstat = mkdir(path.c_str(), request->mode());		
+ 	while ((de = readdir(dp)) != NULL) {
+		DirEntry entry;
+		entry.set_name(de->d_name);
+		entry.set_ino(de->d_ino);
+		entry.set_mode(de->d_type << 12);
+	 	reply->mutable_dirs(index++)->CopyFrom(entry);
+	}
+	status.set_retcode(0);
+        reply->mutable_status()->CopyFrom(status);	
 	return Status::OK;
 }
 
