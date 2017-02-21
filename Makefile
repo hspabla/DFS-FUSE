@@ -17,7 +17,7 @@ client: bin/client
 server: bin/server
 
 clean:
-	rm -rf bin obj
+	rm -rf bin obj dsfs.log
 
 bin:
 	mkdir -p bin
