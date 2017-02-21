@@ -22,11 +22,11 @@ DSFS::~DSFS() {
 void DSFS::AbsPath(char dest[PATH_MAX], const char *path) {
         strcpy(dest, _root);
         strncat(dest, path, PATH_MAX);
-        //printf("translated path: %s to %s\n", path, dest);
+        printf("translated path: %s to %s\n", path, dest);
 }
 
-void DSFS::setRootDir(const char *path) {
-        printf("setting FS root to: %s\n", path);
+void DSFS::setRootDir(const char *mountPath, const char *path) {
+        printf("setting FS root for %s to: %s\n", mountPath, path);
         _root = path;
 }
 

@@ -14,14 +14,19 @@
 #include <sys/types.h>
 #include <sys/xattr.h>
 #include <unistd.h>
-
+#include <vector>
+#include <unordered_map>
 #include "log.hh"
+
+//using namespace std;
 
 class DSFS {
 private: 
 	const char *_root;
 
 	static DSFS *_instance;
+
+	std::unordered_map<std::string, std::string> mount_map;
 
         void AbsPath(char dest[PATH_MAX], const char *path);
 
@@ -31,7 +36,7 @@ public:
 	DSFS();
 	~DSFS();
 
-        void setRootDir(const char *path);
+        void setRootDir(const char *mountPath, const char *path);
 
         int Getattr(const char *path, struct stat *statbuf);
         int Readlink(const char *path, char *link, size_t size);
