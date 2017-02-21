@@ -5,10 +5,10 @@ LDFLAGS += -L/usr/local/lib `pkg-config --libs grpc++ grpc`       \
            -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
            -lprotobuf -lpthread -ldl
 CFLAGS = -Wall -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
-//LINKFLAGS = -Wall `pkg-config fuse --libs`
-LINKFLAGS += -L/usr/local/lib `pkg-config --libs grpc++ grpc`       \
-           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
-           -lprotobuf -lpthread -ldl -Wall `pkg-config fuse`
+LINKFLAGS = -Wall `pkg-config fuse --libs`
+//LINKFLAGS += -L/usr/local/lib `pkg-config --libs grpc++ grpc`       \
+//           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
+//           -lprotobuf -lpthread -ldl -Wall `pkg-config fuse`
 
 all: client server 
 
@@ -22,8 +22,8 @@ clean:
 bin:
 	mkdir -p bin
 
-bin/client: bin obj/fileserver.grpc.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o
-	$(CXX) -o bin/dsfs obj/fileserver.grpc.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o -g $(LDFLAGS)
+bin/client: bin obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o
+	$(CXX) -o bin/client obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o -g $(LINKFLAGS) $(LDFLAGS)
 
 obj:
 	mkdir -p obj
@@ -53,7 +53,7 @@ obj/serverImpl.o: obj include/serverImpl.cc include/serverImpl.h lib/fileserver.
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c include/serverImpl.cc -o obj/serverImpl.o
 
 obj/fileserver.grpc.pb.o: obj lib/fileserver.grpc.pb.cc lib/fileserver.grpc.pb.h lib/fileserver.pb.h
-	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) -c lib/fileserver.grpc.pb.cc -o obj/fileserver.grpc.pb.o 
+	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c lib/fileserver.grpc.pb.cc -o obj/fileserver.grpc.pb.o 
 
 obj/fileserver.pb.o: obj lib/fileserver.pb.cc lib/fileserver.pb.h
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) -c lib/fileserver.pb.cc -o obj/fileserver.pb.o
