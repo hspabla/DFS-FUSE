@@ -7,7 +7,7 @@ all: bin/dsfs
 clean:
 	rm -rf bin obj
 
-bin: 
+bin:
 	mkdir -p bin
 
 bin/dsfs: bin obj/dsfs.o obj/wrap.o obj/client.o obj/log.o
