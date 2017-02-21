@@ -1,24 +1,5 @@
 #include "serverImpl.h"
 
-using grpc::Server;
-using grpc::ServerBuilder;
-using grpc::ServerContext;
-using grpc::Status;
-
-using dfsFuse::FileSystem;
-using dfsFuse::FSstatus;
-using dfsFuse::Owner;
-using dfsFuse::ClientInfo;
-using dfsFuse::Attr;
-using dfsFuse::GetAttrRequest;
-using dfsFuse::GetAttrResponse;
-using dfsFuse::MkdirRequest;
-using dfsFuse::MkdirResponse;
-using dfsFuse::OpenDirRequest;
-using dfsFuse::DirEntry;
-using dfsFuse::OpenDirResponse;
-
-
 Status FileSystemImpl::GetAttr( ServerContext* context,
                                  const GetAttrRequest* request,
                                  GetAttrResponse* reply ) {
@@ -89,5 +70,25 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 	return Status::OK;
 }
 
+Status FileSystemImpl::Open( ServerContext* context,
+                             const OpenRequest* request,
+				             OpenResponse* reply ) {
+    int fileHandle = open( request->name().c_str(), request->flags() );
+    reply->set_filehandle( fileHandle );
+	return Status::OK;
+}
 
+Status FileSystemImpl::Read( ServerContext* context,
+                             const ReadRequest* request,
+				             ReadResponse* reply ) {
+
+	return Status::OK;
+}
+
+Status FileSystemImpl::Write( ServerContext* context,
+                              const WriteRequest* request,
+				              WriteResponse* reply ) {
+
+	return Status::OK;
+}
 

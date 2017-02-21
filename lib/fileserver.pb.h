@@ -46,7 +46,13 @@ class MkdirRequest;
 class MkdirResponse;
 class OpenDirRequest;
 class OpenDirResponse;
+class OpenRequest;
+class OpenResponse;
 class Owner;
+class ReadRequest;
+class ReadResponse;
+class WriteRequest;
+class WriteResponse;
 
 // ===================================================================
 
@@ -1164,6 +1170,622 @@ class OpenDirResponse : public ::google::protobuf::Message /* @@protoc_insertion
   void InitAsDefaultInstance();
   static OpenDirResponse* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class OpenRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.OpenRequest) */ {
+ public:
+  OpenRequest();
+  virtual ~OpenRequest();
+
+  OpenRequest(const OpenRequest& from);
+
+  inline OpenRequest& operator=(const OpenRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const OpenRequest& default_instance();
+
+  void Swap(OpenRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline OpenRequest* New() const { return New(NULL); }
+
+  OpenRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const OpenRequest& from);
+  void MergeFrom(const OpenRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(OpenRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional uint32 flags = 2;
+  void clear_flags();
+  static const int kFlagsFieldNumber = 2;
+  ::google::protobuf::uint32 flags() const;
+  void set_flags(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 3;
+  const ::dfsFuse::ClientInfo& info() const;
+  ::dfsFuse::ClientInfo* mutable_info();
+  ::dfsFuse::ClientInfo* release_info();
+  void set_allocated_info(::dfsFuse::ClientInfo* info);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.OpenRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::dfsFuse::ClientInfo* info_;
+  ::google::protobuf::uint32 flags_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static OpenRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class OpenResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.OpenResponse) */ {
+ public:
+  OpenResponse();
+  virtual ~OpenResponse();
+
+  OpenResponse(const OpenResponse& from);
+
+  inline OpenResponse& operator=(const OpenResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const OpenResponse& default_instance();
+
+  void Swap(OpenResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline OpenResponse* New() const { return New(NULL); }
+
+  OpenResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const OpenResponse& from);
+  void MergeFrom(const OpenResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(OpenResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 fileHandle = 1;
+  void clear_filehandle();
+  static const int kFileHandleFieldNumber = 1;
+  ::google::protobuf::uint32 filehandle() const;
+  void set_filehandle(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.FSstatus status = 2;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 2;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.OpenResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::dfsFuse::FSstatus* status_;
+  ::google::protobuf::uint32 filehandle_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static OpenResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ReadRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.ReadRequest) */ {
+ public:
+  ReadRequest();
+  virtual ~ReadRequest();
+
+  ReadRequest(const ReadRequest& from);
+
+  inline ReadRequest& operator=(const ReadRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ReadRequest& default_instance();
+
+  void Swap(ReadRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ReadRequest* New() const { return New(NULL); }
+
+  ReadRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ReadRequest& from);
+  void MergeFrom(const ReadRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ReadRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 fileHandler = 1;
+  void clear_filehandler();
+  static const int kFileHandlerFieldNumber = 1;
+  ::google::protobuf::uint32 filehandler() const;
+  void set_filehandler(::google::protobuf::uint32 value);
+
+  // optional uint32 size = 2;
+  void clear_size();
+  static const int kSizeFieldNumber = 2;
+  ::google::protobuf::uint32 size() const;
+  void set_size(::google::protobuf::uint32 value);
+
+  // optional uint32 offset = 3;
+  void clear_offset();
+  static const int kOffsetFieldNumber = 3;
+  ::google::protobuf::uint32 offset() const;
+  void set_offset(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 4;
+  const ::dfsFuse::ClientInfo& info() const;
+  ::dfsFuse::ClientInfo* mutable_info();
+  ::dfsFuse::ClientInfo* release_info();
+  void set_allocated_info(::dfsFuse::ClientInfo* info);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.ReadRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 filehandler_;
+  ::google::protobuf::uint32 size_;
+  ::dfsFuse::ClientInfo* info_;
+  ::google::protobuf::uint32 offset_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static ReadRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ReadResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.ReadResponse) */ {
+ public:
+  ReadResponse();
+  virtual ~ReadResponse();
+
+  ReadResponse(const ReadResponse& from);
+
+  inline ReadResponse& operator=(const ReadResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ReadResponse& default_instance();
+
+  void Swap(ReadResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ReadResponse* New() const { return New(NULL); }
+
+  ReadResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ReadResponse& from);
+  void MergeFrom(const ReadResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ReadResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 dataRead = 1;
+  void clear_dataread();
+  static const int kDataReadFieldNumber = 1;
+  ::google::protobuf::uint32 dataread() const;
+  void set_dataread(::google::protobuf::uint32 value);
+
+  // optional bytes data = 2;
+  void clear_data();
+  static const int kDataFieldNumber = 2;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // optional .dfsFuse.FSstatus status = 3;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 3;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.ReadResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  ::dfsFuse::FSstatus* status_;
+  ::google::protobuf::uint32 dataread_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static ReadResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WriteRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.WriteRequest) */ {
+ public:
+  WriteRequest();
+  virtual ~WriteRequest();
+
+  WriteRequest(const WriteRequest& from);
+
+  inline WriteRequest& operator=(const WriteRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WriteRequest& default_instance();
+
+  void Swap(WriteRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline WriteRequest* New() const { return New(NULL); }
+
+  WriteRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WriteRequest& from);
+  void MergeFrom(const WriteRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(WriteRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 fileHandler = 1;
+  void clear_filehandler();
+  static const int kFileHandlerFieldNumber = 1;
+  ::google::protobuf::uint32 filehandler() const;
+  void set_filehandler(::google::protobuf::uint32 value);
+
+  // optional bytes data = 2;
+  void clear_data();
+  static const int kDataFieldNumber = 2;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // optional uint32 size = 3;
+  void clear_size();
+  static const int kSizeFieldNumber = 3;
+  ::google::protobuf::uint32 size() const;
+  void set_size(::google::protobuf::uint32 value);
+
+  // optional uint32 offset = 4;
+  void clear_offset();
+  static const int kOffsetFieldNumber = 4;
+  ::google::protobuf::uint32 offset() const;
+  void set_offset(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.ClientInfo info = 5;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 5;
+  const ::dfsFuse::ClientInfo& info() const;
+  ::dfsFuse::ClientInfo* mutable_info();
+  ::dfsFuse::ClientInfo* release_info();
+  void set_allocated_info(::dfsFuse::ClientInfo* info);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.WriteRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  ::google::protobuf::uint32 filehandler_;
+  ::google::protobuf::uint32 size_;
+  ::dfsFuse::ClientInfo* info_;
+  ::google::protobuf::uint32 offset_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static WriteRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WriteResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.WriteResponse) */ {
+ public:
+  WriteResponse();
+  virtual ~WriteResponse();
+
+  WriteResponse(const WriteResponse& from);
+
+  inline WriteResponse& operator=(const WriteResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WriteResponse& default_instance();
+
+  void Swap(WriteResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline WriteResponse* New() const { return New(NULL); }
+
+  WriteResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WriteResponse& from);
+  void MergeFrom(const WriteResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(WriteResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 dataWritten = 1;
+  void clear_datawritten();
+  static const int kDataWrittenFieldNumber = 1;
+  ::google::protobuf::uint32 datawritten() const;
+  void set_datawritten(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.FSstatus status = 2;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 2;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.WriteResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::dfsFuse::FSstatus* status_;
+  ::google::protobuf::uint32 datawritten_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static WriteResponse* default_instance_;
+};
 // ===================================================================
 
 
@@ -2040,7 +2662,543 @@ inline void OpenDirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenDirResponse.status)
 }
 
+// -------------------------------------------------------------------
+
+// OpenRequest
+
+// optional string name = 1;
+inline void OpenRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& OpenRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void OpenRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.OpenRequest.name)
+}
+inline void OpenRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.OpenRequest.name)
+}
+inline void OpenRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.OpenRequest.name)
+}
+inline ::std::string* OpenRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* OpenRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void OpenRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenRequest.name)
+}
+
+// optional uint32 flags = 2;
+inline void OpenRequest::clear_flags() {
+  flags_ = 0u;
+}
+inline ::google::protobuf::uint32 OpenRequest::flags() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.flags)
+  return flags_;
+}
+inline void OpenRequest::set_flags(::google::protobuf::uint32 value) {
+  
+  flags_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.OpenRequest.flags)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+inline bool OpenRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+inline void OpenRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+inline const ::dfsFuse::ClientInfo& OpenRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::dfsFuse::ClientInfo* OpenRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenRequest.info)
+  return info_;
+}
+inline ::dfsFuse::ClientInfo* OpenRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void OpenRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenRequest.info)
+}
+
+// -------------------------------------------------------------------
+
+// OpenResponse
+
+// optional uint32 fileHandle = 1;
+inline void OpenResponse::clear_filehandle() {
+  filehandle_ = 0u;
+}
+inline ::google::protobuf::uint32 OpenResponse::filehandle() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenResponse.fileHandle)
+  return filehandle_;
+}
+inline void OpenResponse::set_filehandle(::google::protobuf::uint32 value) {
+  
+  filehandle_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.OpenResponse.fileHandle)
+}
+
+// optional .dfsFuse.FSstatus status = 2;
+inline bool OpenResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void OpenResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& OpenResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* OpenResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* OpenResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void OpenResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenResponse.status)
+}
+
+// -------------------------------------------------------------------
+
+// ReadRequest
+
+// optional uint32 fileHandler = 1;
+inline void ReadRequest::clear_filehandler() {
+  filehandler_ = 0u;
+}
+inline ::google::protobuf::uint32 ReadRequest::filehandler() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.fileHandler)
+  return filehandler_;
+}
+inline void ReadRequest::set_filehandler(::google::protobuf::uint32 value) {
+  
+  filehandler_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.fileHandler)
+}
+
+// optional uint32 size = 2;
+inline void ReadRequest::clear_size() {
+  size_ = 0u;
+}
+inline ::google::protobuf::uint32 ReadRequest::size() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.size)
+  return size_;
+}
+inline void ReadRequest::set_size(::google::protobuf::uint32 value) {
+  
+  size_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.size)
+}
+
+// optional uint32 offset = 3;
+inline void ReadRequest::clear_offset() {
+  offset_ = 0u;
+}
+inline ::google::protobuf::uint32 ReadRequest::offset() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.offset)
+  return offset_;
+}
+inline void ReadRequest::set_offset(::google::protobuf::uint32 value) {
+  
+  offset_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.offset)
+}
+
+// optional .dfsFuse.ClientInfo info = 4;
+inline bool ReadRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+inline void ReadRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+inline const ::dfsFuse::ClientInfo& ReadRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::dfsFuse::ClientInfo* ReadRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ReadRequest.info)
+  return info_;
+}
+inline ::dfsFuse::ClientInfo* ReadRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ReadRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void ReadRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ReadRequest.info)
+}
+
+// -------------------------------------------------------------------
+
+// ReadResponse
+
+// optional uint32 dataRead = 1;
+inline void ReadResponse::clear_dataread() {
+  dataread_ = 0u;
+}
+inline ::google::protobuf::uint32 ReadResponse::dataread() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadResponse.dataRead)
+  return dataread_;
+}
+inline void ReadResponse::set_dataread(::google::protobuf::uint32 value) {
+  
+  dataread_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadResponse.dataRead)
+}
+
+// optional bytes data = 2;
+inline void ReadResponse::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ReadResponse::data() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadResponse.data)
+  return data_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReadResponse::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadResponse.data)
+}
+inline void ReadResponse::set_data(const char* value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.ReadResponse.data)
+}
+inline void ReadResponse::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.ReadResponse.data)
+}
+inline ::std::string* ReadResponse::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ReadResponse.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ReadResponse::release_data() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ReadResponse.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReadResponse::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ReadResponse.data)
+}
+
+// optional .dfsFuse.FSstatus status = 3;
+inline bool ReadResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void ReadResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& ReadResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* ReadResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ReadResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* ReadResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ReadResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void ReadResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ReadResponse.status)
+}
+
+// -------------------------------------------------------------------
+
+// WriteRequest
+
+// optional uint32 fileHandler = 1;
+inline void WriteRequest::clear_filehandler() {
+  filehandler_ = 0u;
+}
+inline ::google::protobuf::uint32 WriteRequest::filehandler() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.fileHandler)
+  return filehandler_;
+}
+inline void WriteRequest::set_filehandler(::google::protobuf::uint32 value) {
+  
+  filehandler_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.fileHandler)
+}
+
+// optional bytes data = 2;
+inline void WriteRequest::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& WriteRequest::data() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.data)
+  return data_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void WriteRequest::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.data)
+}
+inline void WriteRequest::set_data(const char* value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.WriteRequest.data)
+}
+inline void WriteRequest::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.WriteRequest.data)
+}
+inline ::std::string* WriteRequest::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.WriteRequest.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* WriteRequest::release_data() {
+  // @@protoc_insertion_point(field_release:dfsFuse.WriteRequest.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void WriteRequest::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.WriteRequest.data)
+}
+
+// optional uint32 size = 3;
+inline void WriteRequest::clear_size() {
+  size_ = 0u;
+}
+inline ::google::protobuf::uint32 WriteRequest::size() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.size)
+  return size_;
+}
+inline void WriteRequest::set_size(::google::protobuf::uint32 value) {
+  
+  size_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.size)
+}
+
+// optional uint32 offset = 4;
+inline void WriteRequest::clear_offset() {
+  offset_ = 0u;
+}
+inline ::google::protobuf::uint32 WriteRequest::offset() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.offset)
+  return offset_;
+}
+inline void WriteRequest::set_offset(::google::protobuf::uint32 value) {
+  
+  offset_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.offset)
+}
+
+// optional .dfsFuse.ClientInfo info = 5;
+inline bool WriteRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+inline void WriteRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+inline const ::dfsFuse::ClientInfo& WriteRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::dfsFuse::ClientInfo* WriteRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.WriteRequest.info)
+  return info_;
+}
+inline ::dfsFuse::ClientInfo* WriteRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.WriteRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void WriteRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.WriteRequest.info)
+}
+
+// -------------------------------------------------------------------
+
+// WriteResponse
+
+// optional uint32 dataWritten = 1;
+inline void WriteResponse::clear_datawritten() {
+  datawritten_ = 0u;
+}
+inline ::google::protobuf::uint32 WriteResponse::datawritten() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteResponse.dataWritten)
+  return datawritten_;
+}
+inline void WriteResponse::set_datawritten(::google::protobuf::uint32 value) {
+  
+  datawritten_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteResponse.dataWritten)
+}
+
+// optional .dfsFuse.FSstatus status = 2;
+inline bool WriteResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void WriteResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& WriteResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* WriteResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.WriteResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* WriteResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.WriteResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void WriteResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.WriteResponse.status)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

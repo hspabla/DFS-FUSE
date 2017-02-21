@@ -32,11 +32,11 @@ void DSFS::setRootDir(const char *mountPath, const char *path) {
 }
 
 int DSFS::Getattr(const char *path, struct stat *statbuf) {
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        printf("getattr(%s)\n", fullPath);
- 	GetAttrClient client(grpc::CreateChannel(
-      		"localhost:50051", grpc::InsecureChannelCredentials()));
+    char fullPath[ PATH_MAX ];
+    AbsPath( fullPath, path );
+    printf( "getattr(%s)\n", fullPath );
+ 	GetAttrClient client( grpc::CreateChannel(
+                  		  "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	GetAttrRequest request;
 	GetAttrResponse response;
 	request.set_name(fullPath);
@@ -180,17 +180,31 @@ int DSFS::Access(const char *path, int mask)
 {
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        
+
         printf("access(path=%s)\n", fullPath);
 	return RETURN_ERRNO(access(fullPath, mask));
 }
 
 int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        fileInfo->fh = open(fullPath, fileInfo->flags);
-        printf("open(path=%s, fileHandle=%d, flags=%d)\n", fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
-        return 0;
+    char fullPath[ PATH_MAX ];
+    AbsPath( fullPath, path );
+
+    printf( "getattr(%s)\n", fullPath );
+ 	OpenClient client( grpc::CreateChannel(
+                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	OpenRequest request;
+	request.set_name( fullPath );
+    request.set_flags( fileInfo->flags );
+
+  	OpenResponse response = client.Open( request );
+
+    fileInfo->fh = response.filehandle();
+
+    // fileInfo->fh = open(fullPath, fileInfo->flags);
+
+    printf( "client (path=%s, fileHandle=%d, flags=%d)\n",
+            fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
+    return 0;
 }
 
 int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
@@ -198,7 +212,7 @@ int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fu
 	int bytesRead = pread(fileInfo->fh, buf, size, offset);
 	if (bytesRead < 0)
 		return -errno;
-        return bytesRead; 
+        return bytesRead;
 }
 
 int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {

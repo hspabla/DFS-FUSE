@@ -19,6 +19,9 @@ static const char* FileSystem_method_names[] = {
   "/dfsFuse.FileSystem/GetAttr",
   "/dfsFuse.FileSystem/Mkdir",
   "/dfsFuse.FileSystem/Opendir",
+  "/dfsFuse.FileSystem/Open",
+  "/dfsFuse.FileSystem/Read",
+  "/dfsFuse.FileSystem/Write",
 };
 
 std::unique_ptr< FileSystem::Stub> FileSystem::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -30,6 +33,9 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   : channel_(channel), rpcmethod_GetAttr_(FileSystem_method_names[0], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Mkdir_(FileSystem_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Opendir_(FileSystem_method_names[2], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Open_(FileSystem_method_names[3], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Read_(FileSystem_method_names[4], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Write_(FileSystem_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status FileSystem::Stub::GetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::dfsFuse::GetAttrResponse* response) {
@@ -56,6 +62,30 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenDirResponse>(channel_.get(), cq, rpcmethod_Opendir_, context, request);
 }
 
+::grpc::Status FileSystem::Stub::Open(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::dfsFuse::OpenResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Open_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenResponse>* FileSystem::Stub::AsyncOpenRaw(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenResponse>(channel_.get(), cq, rpcmethod_Open_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Read(::grpc::ClientContext* context, const ::dfsFuse::ReadRequest& request, ::dfsFuse::ReadResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Read_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::ReadResponse>* FileSystem::Stub::AsyncReadRaw(::grpc::ClientContext* context, const ::dfsFuse::ReadRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::ReadResponse>(channel_.get(), cq, rpcmethod_Read_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Write(::grpc::ClientContext* context, const ::dfsFuse::WriteRequest& request, ::dfsFuse::WriteResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Write_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::WriteResponse>* FileSystem::Stub::AsyncWriteRaw(::grpc::ClientContext* context, const ::dfsFuse::WriteRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::WriteResponse>(channel_.get(), cq, rpcmethod_Write_, context, request);
+}
+
 FileSystem::Service::Service() {
   (void)FileSystem_method_names;
   AddMethod(new ::grpc::RpcServiceMethod(
@@ -73,6 +103,21 @@ FileSystem::Service::Service() {
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::OpenDirRequest, ::dfsFuse::OpenDirResponse>(
           std::mem_fn(&FileSystem::Service::Opendir), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[3],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::OpenRequest, ::dfsFuse::OpenResponse>(
+          std::mem_fn(&FileSystem::Service::Open), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[4],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::ReadRequest, ::dfsFuse::ReadResponse>(
+          std::mem_fn(&FileSystem::Service::Read), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[5],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::WriteRequest, ::dfsFuse::WriteResponse>(
+          std::mem_fn(&FileSystem::Service::Write), this)));
 }
 
 FileSystem::Service::~Service() {
@@ -93,6 +138,27 @@ FileSystem::Service::~Service() {
 }
 
 ::grpc::Status FileSystem::Service::Opendir(::grpc::ServerContext* context, const ::dfsFuse::OpenDirRequest* request, ::dfsFuse::OpenDirResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Open(::grpc::ServerContext* context, const ::dfsFuse::OpenRequest* request, ::dfsFuse::OpenResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Read(::grpc::ServerContext* context, const ::dfsFuse::ReadRequest* request, ::dfsFuse::ReadResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Write(::grpc::ServerContext* context, const ::dfsFuse::WriteRequest* request, ::dfsFuse::WriteResponse* response) {
   (void) context;
   (void) request;
   (void) response;

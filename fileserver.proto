@@ -4,17 +4,22 @@ package dfsFuse;
 
 service FileSystem {
 
-    // RPC functions for file handling operations. Not everything is implemented
+    // attributes RPC
     rpc GetAttr( GetAttrRequest ) returns ( GetAttrResponse ) {}
+
+    // Directory handling
     rpc Mkdir( MkdirRequest ) returns ( MkdirResponse ) {}
     rpc Opendir( OpenDirRequest ) returns( OpenDirResponse ) {}
 
+    // File handling
+    rpc Open( OpenRequest ) returns ( OpenResponse ) {}
+    rpc Read( ReadRequest ) returns ( ReadResponse ) {}
+    rpc Write( WriteRequest ) returns ( WriteResponse ) {}
 }
 
 message FSstatus {
     int32 retCode = 1;
-    }
-
+}
 
 // process id and owner information
 message Owner {
@@ -89,4 +94,41 @@ message OpenDirResponse {
     FSstatus status = 2;
 }
 
+// File handling
 
+message OpenRequest {
+    string name = 1;
+    uint32 flags = 2;
+    ClientInfo info = 3;
+}
+
+message OpenResponse {
+    uint32 fileHandle = 1;
+    FSstatus status = 2;
+}
+
+message ReadRequest {
+    uint32 fileHandler = 1;
+    uint32 size = 2;
+    uint32 offset = 3;
+    ClientInfo info = 4;
+}
+
+message ReadResponse {
+    uint32 dataRead = 1;
+    bytes data = 2;
+    FSstatus status = 3;
+}
+
+message WriteRequest {
+    uint32 fileHandler = 1;
+    bytes data = 2;
+    uint32 size = 3;
+    uint32 offset = 4;
+    ClientInfo info = 5;
+}
+
+message WriteResponse {
+    uint32 dataWritten = 1;
+    FSstatus status = 2;
+}
