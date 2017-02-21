@@ -39,6 +39,7 @@ void protobuf_ShutdownFile_fileserver_2eproto();
 class Attr;
 class ClientInfo;
 class DirEntry;
+class FSstatus;
 class GetAttrRequest;
 class GetAttrResponse;
 class MkdirRequest;
@@ -46,36 +47,35 @@ class MkdirResponse;
 class OpenDirRequest;
 class OpenDirResponse;
 class Owner;
-class Status;
 
 // ===================================================================
 
-class Status : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.Status) */ {
+class FSstatus : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.FSstatus) */ {
  public:
-  Status();
-  virtual ~Status();
+  FSstatus();
+  virtual ~FSstatus();
 
-  Status(const Status& from);
+  FSstatus(const FSstatus& from);
 
-  inline Status& operator=(const Status& from) {
+  inline FSstatus& operator=(const FSstatus& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Status& default_instance();
+  static const FSstatus& default_instance();
 
-  void Swap(Status* other);
+  void Swap(FSstatus* other);
 
   // implements Message ----------------------------------------------
 
-  inline Status* New() const { return New(NULL); }
+  inline FSstatus* New() const { return New(NULL); }
 
-  Status* New(::google::protobuf::Arena* arena) const;
+  FSstatus* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Status& from);
-  void MergeFrom(const Status& from);
+  void CopyFrom(const FSstatus& from);
+  void MergeFrom(const FSstatus& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -94,7 +94,7 @@ class Status : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(Status* other);
+  void InternalSwap(FSstatus* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -116,7 +116,7 @@ class Status : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::google::protobuf::int32 retcode() const;
   void set_retcode(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:dfsFuse.Status)
+  // @@protoc_insertion_point(class_scope:dfsFuse.FSstatus)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -128,7 +128,7 @@ class Status : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   friend void protobuf_ShutdownFile_fileserver_2eproto();
 
   void InitAsDefaultInstance();
-  static Status* default_instance_;
+  static FSstatus* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -662,14 +662,14 @@ class GetAttrResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::dfsFuse::Attr* release_attr();
   void set_allocated_attr(::dfsFuse::Attr* attr);
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   bool has_status() const;
   void clear_status();
   static const int kStatusFieldNumber = 2;
-  const ::dfsFuse::Status& status() const;
-  ::dfsFuse::Status* mutable_status();
-  ::dfsFuse::Status* release_status();
-  void set_allocated_status(::dfsFuse::Status* status);
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
 
   // @@protoc_insertion_point(class_scope:dfsFuse.GetAttrResponse)
  private:
@@ -677,7 +677,7 @@ class GetAttrResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::dfsFuse::Attr* attr_;
-  ::dfsFuse::Status* status_;
+  ::dfsFuse::FSstatus* status_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -852,21 +852,21 @@ class MkdirResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // optional .dfsFuse.Status status = 1;
+  // optional .dfsFuse.FSstatus status = 1;
   bool has_status() const;
   void clear_status();
   static const int kStatusFieldNumber = 1;
-  const ::dfsFuse::Status& status() const;
-  ::dfsFuse::Status* mutable_status();
-  ::dfsFuse::Status* release_status();
-  void set_allocated_status(::dfsFuse::Status* status);
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
 
   // @@protoc_insertion_point(class_scope:dfsFuse.MkdirResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::dfsFuse::Status* status_;
+  ::dfsFuse::FSstatus* status_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -1140,14 +1140,14 @@ class OpenDirResponse : public ::google::protobuf::Message /* @@protoc_insertion
   const ::google::protobuf::RepeatedPtrField< ::dfsFuse::DirEntry >&
       dirs() const;
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   bool has_status() const;
   void clear_status();
   static const int kStatusFieldNumber = 2;
-  const ::dfsFuse::Status& status() const;
-  ::dfsFuse::Status* mutable_status();
-  ::dfsFuse::Status* release_status();
-  void set_allocated_status(::dfsFuse::Status* status);
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
 
   // @@protoc_insertion_point(class_scope:dfsFuse.OpenDirResponse)
  private:
@@ -1155,7 +1155,7 @@ class OpenDirResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::RepeatedPtrField< ::dfsFuse::DirEntry > dirs_;
-  ::dfsFuse::Status* status_;
+  ::dfsFuse::FSstatus* status_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -1170,20 +1170,20 @@ class OpenDirResponse : public ::google::protobuf::Message /* @@protoc_insertion
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// Status
+// FSstatus
 
 // optional int32 retCode = 1;
-inline void Status::clear_retcode() {
+inline void FSstatus::clear_retcode() {
   retcode_ = 0;
 }
-inline ::google::protobuf::int32 Status::retcode() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.Status.retCode)
+inline ::google::protobuf::int32 FSstatus::retcode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.FSstatus.retCode)
   return retcode_;
 }
-inline void Status::set_retcode(::google::protobuf::int32 value) {
+inline void FSstatus::set_retcode(::google::protobuf::int32 value) {
   
   retcode_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.Status.retCode)
+  // @@protoc_insertion_point(field_set:dfsFuse.FSstatus.retCode)
 }
 
 // -------------------------------------------------------------------
@@ -1640,7 +1640,7 @@ inline void GetAttrResponse::set_allocated_attr(::dfsFuse::Attr* attr) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.GetAttrResponse.attr)
 }
 
-// optional .dfsFuse.Status status = 2;
+// optional .dfsFuse.FSstatus status = 2;
 inline bool GetAttrResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -1648,26 +1648,26 @@ inline void GetAttrResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-inline const ::dfsFuse::Status& GetAttrResponse::status() const {
+inline const ::dfsFuse::FSstatus& GetAttrResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.GetAttrResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-inline ::dfsFuse::Status* GetAttrResponse::mutable_status() {
+inline ::dfsFuse::FSstatus* GetAttrResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.GetAttrResponse.status)
   return status_;
 }
-inline ::dfsFuse::Status* GetAttrResponse::release_status() {
+inline ::dfsFuse::FSstatus* GetAttrResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.GetAttrResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-inline void GetAttrResponse::set_allocated_status(::dfsFuse::Status* status) {
+inline void GetAttrResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {
@@ -1782,7 +1782,7 @@ inline void MkdirRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
 
 // MkdirResponse
 
-// optional .dfsFuse.Status status = 1;
+// optional .dfsFuse.FSstatus status = 1;
 inline bool MkdirResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -1790,26 +1790,26 @@ inline void MkdirResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-inline const ::dfsFuse::Status& MkdirResponse::status() const {
+inline const ::dfsFuse::FSstatus& MkdirResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.MkdirResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-inline ::dfsFuse::Status* MkdirResponse::mutable_status() {
+inline ::dfsFuse::FSstatus* MkdirResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.MkdirResponse.status)
   return status_;
 }
-inline ::dfsFuse::Status* MkdirResponse::release_status() {
+inline ::dfsFuse::FSstatus* MkdirResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.MkdirResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-inline void MkdirResponse::set_allocated_status(::dfsFuse::Status* status) {
+inline void MkdirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {
@@ -2002,7 +2002,7 @@ OpenDirResponse::dirs() const {
   return dirs_;
 }
 
-// optional .dfsFuse.Status status = 2;
+// optional .dfsFuse.FSstatus status = 2;
 inline bool OpenDirResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -2010,26 +2010,26 @@ inline void OpenDirResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-inline const ::dfsFuse::Status& OpenDirResponse::status() const {
+inline const ::dfsFuse::FSstatus& OpenDirResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.OpenDirResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-inline ::dfsFuse::Status* OpenDirResponse::mutable_status() {
+inline ::dfsFuse::FSstatus* OpenDirResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.OpenDirResponse.status)
   return status_;
 }
-inline ::dfsFuse::Status* OpenDirResponse::release_status() {
+inline ::dfsFuse::FSstatus* OpenDirResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.OpenDirResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-inline void OpenDirResponse::set_allocated_status(::dfsFuse::Status* status) {
+inline void OpenDirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {

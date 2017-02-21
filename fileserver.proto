@@ -11,7 +11,7 @@ service FileSystem {
 
 }
 
-message Status {
+message FSstatus {
     int32 retCode = 1;
     }
 
@@ -56,7 +56,7 @@ message GetAttrRequest {
 
 message GetAttrResponse {
 	Attr attr = 1;
-	Status status = 2;
+	FSstatus status = 2;
 }
 
 // Make directory
@@ -68,7 +68,7 @@ message MkdirRequest {
 }
 
 message MkdirResponse {
-    Status status = 1;
+    FSstatus status = 1;
 }
 
 
@@ -86,7 +86,7 @@ message DirEntry {
 
 message OpenDirResponse {
     repeated DirEntry dirs = 1;
-    Status status = 2;
+    FSstatus status = 2;
 }
 
 

@@ -21,9 +21,9 @@ namespace dfsFuse {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Status_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* FSstatus_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Status_reflection_ = NULL;
+  FSstatus_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Owner_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Owner_reflection_ = NULL;
@@ -65,21 +65,21 @@ void protobuf_AssignDesc_fileserver_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "fileserver.proto");
   GOOGLE_CHECK(file != NULL);
-  Status_descriptor_ = file->message_type(0);
-  static const int Status_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, retcode_),
+  FSstatus_descriptor_ = file->message_type(0);
+  static const int FSstatus_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FSstatus, retcode_),
   };
-  Status_reflection_ =
+  FSstatus_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Status_descriptor_,
-      Status::default_instance_,
-      Status_offsets_,
+      FSstatus_descriptor_,
+      FSstatus::default_instance_,
+      FSstatus_offsets_,
       -1,
       -1,
       -1,
-      sizeof(Status),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, _is_default_instance_));
+      sizeof(FSstatus),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FSstatus, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FSstatus, _is_default_instance_));
   Owner_descriptor_ = file->message_type(1);
   static const int Owner_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Owner, uid_),
@@ -267,7 +267,7 @@ void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Status_descriptor_, &Status::default_instance());
+      FSstatus_descriptor_, &FSstatus::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Owner_descriptor_, &Owner::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -293,8 +293,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_fileserver_2eproto() {
-  delete Status::default_instance_;
-  delete Status_reflection_;
+  delete FSstatus::default_instance_;
+  delete FSstatus_reflection_;
   delete Owner::default_instance_;
   delete Owner_reflection_;
   delete ClientInfo::default_instance_;
@@ -325,36 +325,37 @@ void protobuf_AddDesc_fileserver_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020fileserver.proto\022\007dfsFuse\"\031\n\006Status\022\017\n"
-    "\007retCode\030\001 \001(\005\"!\n\005Owner\022\013\n\003uid\030\001 \001(\r\022\013\n\003"
-    "gid\030\002 \001(\r\"8\n\nClientInfo\022\035\n\005Owner\030\001 \001(\0132\016"
-    ".dfsFuse.Owner\022\013\n\003Pid\030\002 \001(\r\"\374\001\n\004Attr\022\013\n\003"
-    "dev\030\001 \001(\r\022\013\n\003ino\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\020\n\010"
-    "st_nlink\030\004 \001(\r\022\035\n\005owner\030\005 \001(\0132\016.dfsFuse."
-    "Owner\022\014\n\004rdev\030\006 \001(\r\022\014\n\004size\030\007 \001(\004\022\017\n\007blk"
-    "size\030\010 \001(\004\022\016\n\006blocks\030\t \001(\004\022\r\n\005atime\030\n \001("
-    "\004\022\017\n\007atimens\030\013 \001(\r\022\r\n\005mtime\030\014 \001(\004\022\017\n\007mti"
-    "mens\030\r \001(\r\022\r\n\005ctime\030\016 \001(\004\022\017\n\007ctimens\030\017 \001"
-    "(\r\"A\n\016GetAttrRequest\022\014\n\004name\030\001 \001(\t\022!\n\004in"
-    "fo\030\002 \001(\0132\023.dfsFuse.ClientInfo\"O\n\017GetAttr"
-    "Response\022\033\n\004attr\030\001 \001(\0132\r.dfsFuse.Attr\022\037\n"
-    "\006status\030\002 \001(\0132\017.dfsFuse.Status\"M\n\014MkdirR"
-    "equest\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\022!\n\004in"
-    "fo\030\003 \001(\0132\023.dfsFuse.ClientInfo\"0\n\rMkdirRe"
-    "sponse\022\037\n\006status\030\001 \001(\0132\017.dfsFuse.Status\""
-    "A\n\016OpenDirRequest\022\014\n\004name\030\001 \001(\t\022!\n\004info\030"
-    "\002 \001(\0132\023.dfsFuse.ClientInfo\"&\n\010DirEntry\022\014"
-    "\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\"S\n\017OpenDirRes"
-    "ponse\022\037\n\004dirs\030\001 \003(\0132\021.dfsFuse.DirEntry\022\037"
-    "\n\006status\030\002 \001(\0132\017.dfsFuse.Status2\306\001\n\nFile"
-    "System\022>\n\007GetAttr\022\027.dfsFuse.GetAttrReque"
-    "st\032\030.dfsFuse.GetAttrResponse\"\000\0228\n\005Mkdir\022"
-    "\025.dfsFuse.MkdirRequest\032\026.dfsFuse.MkdirRe"
-    "sponse\"\000\022>\n\007Opendir\022\027.dfsFuse.OpenDirReq"
-    "uest\032\030.dfsFuse.OpenDirResponse\"\000b\006proto3", 1080);
+    "\n\020fileserver.proto\022\007dfsFuse\"\033\n\010FSstatus\022"
+    "\017\n\007retCode\030\001 \001(\005\"!\n\005Owner\022\013\n\003uid\030\001 \001(\r\022\013"
+    "\n\003gid\030\002 \001(\r\"8\n\nClientInfo\022\035\n\005Owner\030\001 \001(\013"
+    "2\016.dfsFuse.Owner\022\013\n\003Pid\030\002 \001(\r\"\374\001\n\004Attr\022\013"
+    "\n\003dev\030\001 \001(\r\022\013\n\003ino\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\020"
+    "\n\010st_nlink\030\004 \001(\r\022\035\n\005owner\030\005 \001(\0132\016.dfsFus"
+    "e.Owner\022\014\n\004rdev\030\006 \001(\r\022\014\n\004size\030\007 \001(\004\022\017\n\007b"
+    "lksize\030\010 \001(\004\022\016\n\006blocks\030\t \001(\004\022\r\n\005atime\030\n "
+    "\001(\004\022\017\n\007atimens\030\013 \001(\r\022\r\n\005mtime\030\014 \001(\004\022\017\n\007m"
+    "timens\030\r \001(\r\022\r\n\005ctime\030\016 \001(\004\022\017\n\007ctimens\030\017"
+    " \001(\r\"A\n\016GetAttrRequest\022\014\n\004name\030\001 \001(\t\022!\n\004"
+    "info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"Q\n\017GetAt"
+    "trResponse\022\033\n\004attr\030\001 \001(\0132\r.dfsFuse.Attr\022"
+    "!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\"M\n\014Mk"
+    "dirRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\022!"
+    "\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"2\n\rMkd"
+    "irResponse\022!\n\006status\030\001 \001(\0132\021.dfsFuse.FSs"
+    "tatus\"A\n\016OpenDirRequest\022\014\n\004name\030\001 \001(\t\022!\n"
+    "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"&\n\010DirE"
+    "ntry\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\"U\n\017Open"
+    "DirResponse\022\037\n\004dirs\030\001 \003(\0132\021.dfsFuse.DirE"
+    "ntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus2"
+    "\306\001\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.GetA"
+    "ttrRequest\032\030.dfsFuse.GetAttrResponse\"\000\0228"
+    "\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsFuse"
+    ".MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse.Op"
+    "enDirRequest\032\030.dfsFuse.OpenDirResponse\"\000"
+    "b\006proto3", 1088);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
-  Status::default_instance_ = new Status();
+  FSstatus::default_instance_ = new FSstatus();
   Owner::default_instance_ = new Owner();
   ClientInfo::default_instance_ = new ClientInfo();
   Attr::default_instance_ = new Attr();
@@ -365,7 +366,7 @@ void protobuf_AddDesc_fileserver_2eproto() {
   OpenDirRequest::default_instance_ = new OpenDirRequest();
   DirEntry::default_instance_ = new DirEntry();
   OpenDirResponse::default_instance_ = new OpenDirResponse();
-  Status::default_instance_->InitAsDefaultInstance();
+  FSstatus::default_instance_->InitAsDefaultInstance();
   Owner::default_instance_->InitAsDefaultInstance();
   ClientInfo::default_instance_->InitAsDefaultInstance();
   Attr::default_instance_->InitAsDefaultInstance();
@@ -389,78 +390,78 @@ struct StaticDescriptorInitializer_fileserver_2eproto {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Status::kRetCodeFieldNumber;
+const int FSstatus::kRetCodeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Status::Status()
+FSstatus::FSstatus()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:dfsFuse.Status)
+  // @@protoc_insertion_point(constructor:dfsFuse.FSstatus)
 }
 
-void Status::InitAsDefaultInstance() {
+void FSstatus::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 }
 
-Status::Status(const Status& from)
+FSstatus::FSstatus(const FSstatus& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:dfsFuse.Status)
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.FSstatus)
 }
 
-void Status::SharedCtor() {
+void FSstatus::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
   retcode_ = 0;
 }
 
-Status::~Status() {
-  // @@protoc_insertion_point(destructor:dfsFuse.Status)
+FSstatus::~FSstatus() {
+  // @@protoc_insertion_point(destructor:dfsFuse.FSstatus)
   SharedDtor();
 }
 
-void Status::SharedDtor() {
+void FSstatus::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Status::SetCachedSize(int size) const {
+void FSstatus::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Status::descriptor() {
+const ::google::protobuf::Descriptor* FSstatus::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Status_descriptor_;
+  return FSstatus_descriptor_;
 }
 
-const Status& Status::default_instance() {
+const FSstatus& FSstatus::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
   return *default_instance_;
 }
 
-Status* Status::default_instance_ = NULL;
+FSstatus* FSstatus::default_instance_ = NULL;
 
-Status* Status::New(::google::protobuf::Arena* arena) const {
-  Status* n = new Status;
+FSstatus* FSstatus::New(::google::protobuf::Arena* arena) const {
+  FSstatus* n = new FSstatus;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Status::Clear() {
-// @@protoc_insertion_point(message_clear_start:dfsFuse.Status)
+void FSstatus::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.FSstatus)
   retcode_ = 0;
 }
 
-bool Status::MergePartialFromCodedStream(
+bool FSstatus::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dfsFuse.Status)
+  // @@protoc_insertion_point(parse_start:dfsFuse.FSstatus)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -493,39 +494,39 @@ bool Status::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:dfsFuse.Status)
+  // @@protoc_insertion_point(parse_success:dfsFuse.FSstatus)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:dfsFuse.Status)
+  // @@protoc_insertion_point(parse_failure:dfsFuse.FSstatus)
   return false;
 #undef DO_
 }
 
-void Status::SerializeWithCachedSizes(
+void FSstatus::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dfsFuse.Status)
+  // @@protoc_insertion_point(serialize_start:dfsFuse.FSstatus)
   // optional int32 retCode = 1;
   if (this->retcode() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->retcode(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:dfsFuse.Status)
+  // @@protoc_insertion_point(serialize_end:dfsFuse.FSstatus)
 }
 
-::google::protobuf::uint8* Status::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* FSstatus::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.Status)
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.FSstatus)
   // optional int32 retCode = 1;
   if (this->retcode() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->retcode(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.Status)
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.FSstatus)
   return target;
 }
 
-int Status::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:dfsFuse.Status)
+int FSstatus::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.FSstatus)
   int total_size = 0;
 
   // optional int32 retCode = 1;
@@ -541,25 +542,25 @@ int Status::ByteSize() const {
   return total_size;
 }
 
-void Status::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.Status)
+void FSstatus::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.FSstatus)
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
-  const Status* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const Status>(
+  const FSstatus* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const FSstatus>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.Status)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.FSstatus)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.Status)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.FSstatus)
     MergeFrom(*source);
   }
 }
 
-void Status::MergeFrom(const Status& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.Status)
+void FSstatus::MergeFrom(const FSstatus& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.FSstatus)
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
@@ -568,58 +569,58 @@ void Status::MergeFrom(const Status& from) {
   }
 }
 
-void Status::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.Status)
+void FSstatus::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.FSstatus)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Status::CopyFrom(const Status& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.Status)
+void FSstatus::CopyFrom(const FSstatus& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.FSstatus)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Status::IsInitialized() const {
+bool FSstatus::IsInitialized() const {
 
   return true;
 }
 
-void Status::Swap(Status* other) {
+void FSstatus::Swap(FSstatus* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Status::InternalSwap(Status* other) {
+void FSstatus::InternalSwap(FSstatus* other) {
   std::swap(retcode_, other->retcode_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Status::GetMetadata() const {
+::google::protobuf::Metadata FSstatus::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Status_descriptor_;
-  metadata.reflection = Status_reflection_;
+  metadata.descriptor = FSstatus_descriptor_;
+  metadata.reflection = FSstatus_reflection_;
   return metadata;
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Status
+// FSstatus
 
 // optional int32 retCode = 1;
-void Status::clear_retcode() {
+void FSstatus::clear_retcode() {
   retcode_ = 0;
 }
- ::google::protobuf::int32 Status::retcode() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.Status.retCode)
+ ::google::protobuf::int32 FSstatus::retcode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.FSstatus.retCode)
   return retcode_;
 }
- void Status::set_retcode(::google::protobuf::int32 value) {
+ void FSstatus::set_retcode(::google::protobuf::int32 value) {
   
   retcode_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.Status.retCode)
+  // @@protoc_insertion_point(field_set:dfsFuse.FSstatus.retCode)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2651,7 +2652,7 @@ GetAttrResponse::GetAttrResponse()
 void GetAttrResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
   attr_ = const_cast< ::dfsFuse::Attr*>(&::dfsFuse::Attr::default_instance());
-  status_ = const_cast< ::dfsFuse::Status*>(&::dfsFuse::Status::default_instance());
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
 }
 
 GetAttrResponse::GetAttrResponse(const GetAttrResponse& from)
@@ -2736,7 +2737,7 @@ bool GetAttrResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .dfsFuse.Status status = 2;
+      // optional .dfsFuse.FSstatus status = 2;
       case 2: {
         if (tag == 18) {
          parse_status:
@@ -2779,7 +2780,7 @@ void GetAttrResponse::SerializeWithCachedSizes(
       1, *this->attr_, output);
   }
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->status_, output);
@@ -2798,7 +2799,7 @@ void GetAttrResponse::SerializeWithCachedSizes(
         1, *this->attr_, false, target);
   }
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -2820,7 +2821,7 @@ int GetAttrResponse::ByteSize() const {
         *this->attr_);
   }
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2859,7 +2860,7 @@ void GetAttrResponse::MergeFrom(const GetAttrResponse& from) {
     mutable_attr()->::dfsFuse::Attr::MergeFrom(from.attr());
   }
   if (from.has_status()) {
-    mutable_status()->::dfsFuse::Status::MergeFrom(from.status());
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
   }
 }
 
@@ -2942,7 +2943,7 @@ void GetAttrResponse::set_allocated_attr(::dfsFuse::Attr* attr) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.GetAttrResponse.attr)
 }
 
-// optional .dfsFuse.Status status = 2;
+// optional .dfsFuse.FSstatus status = 2;
 bool GetAttrResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -2950,26 +2951,26 @@ void GetAttrResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-const ::dfsFuse::Status& GetAttrResponse::status() const {
+const ::dfsFuse::FSstatus& GetAttrResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.GetAttrResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-::dfsFuse::Status* GetAttrResponse::mutable_status() {
+::dfsFuse::FSstatus* GetAttrResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.GetAttrResponse.status)
   return status_;
 }
-::dfsFuse::Status* GetAttrResponse::release_status() {
+::dfsFuse::FSstatus* GetAttrResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.GetAttrResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-void GetAttrResponse::set_allocated_status(::dfsFuse::Status* status) {
+void GetAttrResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {
@@ -3414,7 +3415,7 @@ MkdirResponse::MkdirResponse()
 
 void MkdirResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  status_ = const_cast< ::dfsFuse::Status*>(&::dfsFuse::Status::default_instance());
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
 }
 
 MkdirResponse::MkdirResponse(const MkdirResponse& from)
@@ -3483,7 +3484,7 @@ bool MkdirResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .dfsFuse.Status status = 1;
+      // optional .dfsFuse.FSstatus status = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -3519,7 +3520,7 @@ failure:
 void MkdirResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.MkdirResponse)
-  // optional .dfsFuse.Status status = 1;
+  // optional .dfsFuse.FSstatus status = 1;
   if (this->has_status()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->status_, output);
@@ -3531,7 +3532,7 @@ void MkdirResponse::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MkdirResponse::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.MkdirResponse)
-  // optional .dfsFuse.Status status = 1;
+  // optional .dfsFuse.FSstatus status = 1;
   if (this->has_status()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -3546,7 +3547,7 @@ int MkdirResponse::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.MkdirResponse)
   int total_size = 0;
 
-  // optional .dfsFuse.Status status = 1;
+  // optional .dfsFuse.FSstatus status = 1;
   if (this->has_status()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3582,7 +3583,7 @@ void MkdirResponse::MergeFrom(const MkdirResponse& from) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
   if (from.has_status()) {
-    mutable_status()->::dfsFuse::Status::MergeFrom(from.status());
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
   }
 }
 
@@ -3626,7 +3627,7 @@ void MkdirResponse::InternalSwap(MkdirResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MkdirResponse
 
-// optional .dfsFuse.Status status = 1;
+// optional .dfsFuse.FSstatus status = 1;
 bool MkdirResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -3634,26 +3635,26 @@ void MkdirResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-const ::dfsFuse::Status& MkdirResponse::status() const {
+const ::dfsFuse::FSstatus& MkdirResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.MkdirResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-::dfsFuse::Status* MkdirResponse::mutable_status() {
+::dfsFuse::FSstatus* MkdirResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.MkdirResponse.status)
   return status_;
 }
-::dfsFuse::Status* MkdirResponse::release_status() {
+::dfsFuse::FSstatus* MkdirResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.MkdirResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-void MkdirResponse::set_allocated_status(::dfsFuse::Status* status) {
+void MkdirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {
@@ -4383,7 +4384,7 @@ OpenDirResponse::OpenDirResponse()
 
 void OpenDirResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  status_ = const_cast< ::dfsFuse::Status*>(&::dfsFuse::Status::default_instance());
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
 }
 
 OpenDirResponse::OpenDirResponse(const OpenDirResponse& from)
@@ -4469,7 +4470,7 @@ bool OpenDirResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .dfsFuse.Status status = 2;
+      // optional .dfsFuse.FSstatus status = 2;
       case 2: {
         if (tag == 18) {
          parse_status:
@@ -4512,7 +4513,7 @@ void OpenDirResponse::SerializeWithCachedSizes(
       1, this->dirs(i), output);
   }
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->status_, output);
@@ -4531,7 +4532,7 @@ void OpenDirResponse::SerializeWithCachedSizes(
         1, this->dirs(i), false, target);
   }
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -4546,7 +4547,7 @@ int OpenDirResponse::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.OpenDirResponse)
   int total_size = 0;
 
-  // optional .dfsFuse.Status status = 2;
+  // optional .dfsFuse.FSstatus status = 2;
   if (this->has_status()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -4591,7 +4592,7 @@ void OpenDirResponse::MergeFrom(const OpenDirResponse& from) {
   }
   dirs_.MergeFrom(from.dirs_);
   if (from.has_status()) {
-    mutable_status()->::dfsFuse::Status::MergeFrom(from.status());
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
   }
 }
 
@@ -4666,7 +4667,7 @@ OpenDirResponse::dirs() const {
   return dirs_;
 }
 
-// optional .dfsFuse.Status status = 2;
+// optional .dfsFuse.FSstatus status = 2;
 bool OpenDirResponse::has_status() const {
   return !_is_default_instance_ && status_ != NULL;
 }
@@ -4674,26 +4675,26 @@ void OpenDirResponse::clear_status() {
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
-const ::dfsFuse::Status& OpenDirResponse::status() const {
+const ::dfsFuse::FSstatus& OpenDirResponse::status() const {
   // @@protoc_insertion_point(field_get:dfsFuse.OpenDirResponse.status)
   return status_ != NULL ? *status_ : *default_instance_->status_;
 }
-::dfsFuse::Status* OpenDirResponse::mutable_status() {
+::dfsFuse::FSstatus* OpenDirResponse::mutable_status() {
   
   if (status_ == NULL) {
-    status_ = new ::dfsFuse::Status;
+    status_ = new ::dfsFuse::FSstatus;
   }
   // @@protoc_insertion_point(field_mutable:dfsFuse.OpenDirResponse.status)
   return status_;
 }
-::dfsFuse::Status* OpenDirResponse::release_status() {
+::dfsFuse::FSstatus* OpenDirResponse::release_status() {
   // @@protoc_insertion_point(field_release:dfsFuse.OpenDirResponse.status)
   
-  ::dfsFuse::Status* temp = status_;
+  ::dfsFuse::FSstatus* temp = status_;
   status_ = NULL;
   return temp;
 }
-void OpenDirResponse::set_allocated_status(::dfsFuse::Status* status) {
+void OpenDirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   delete status_;
   status_ = status;
   if (status) {
