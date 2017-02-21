@@ -6,8 +6,8 @@ service FileSystem {
 
     // RPC functions for file handling operations. Not everything is implemented
     rpc GetAttr( GetAttrRequest ) returns ( GetAttrResponse ) {}
-//    rpc Mkdir( MkdirRequest ) returns ( MkdirResponse ) {}
-//    rpc Opendir( OpenDirRequest ) returns( OpenDirResponse ) {}
+    rpc Mkdir( MkdirRequest ) returns ( MkdirResponse ) {}
+    rpc Opendir( OpenDirRequest ) returns( OpenDirResponse ) {}
 
 }
 
@@ -50,12 +50,43 @@ message Attr {
 }
 
 message GetAttrRequest {
-    String name = 1;
+    string name = 1;
     ClientInfo info = 2;
 }
 
 message GetAttrResponse {
-	Attr Attr = 1;
-	Status Status = 2;
+	Attr attr = 1;
+	Status status = 2;
 }
+
+// Make directory
+
+message MkdirRequest {
+    string name = 1;
+    uint32 mode = 2;
+    ClientInfo info = 3;
+}
+
+message MkdirResponse {
+    Status status = 1;
+}
+
+
+// opening directory
+
+message OpenDirRequest {
+    string name = 1;
+    ClientInfo info = 2;
+}
+
+message DirEntry {
+    string name = 1;
+    uint32 mode = 2;
+}
+
+message OpenDirResponse {
+    repeated DirEntry dirs = 1;
+    Status status = 2;
+}
+
 
