@@ -9,7 +9,7 @@ LINKFLAGS = -Wall `pkg-config fuse --libs`
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
-all: bin/dsfs
+all: bin/dsfs server
 
 server: bin/server
 
