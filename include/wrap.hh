@@ -27,7 +27,7 @@ struct dsfs_state {
 };
 #define DSFS_DATA ((struct dsfs_state *) fuse_get_context()->private_data)
 
-void set_rootdir(const char *path);
+void set_rootdir(const char *mountPath, const char *path);
 
 int wrap_getattr(const char *path, struct stat *statbuf);
 int wrap_readlink(const char *path, char *link, size_t size);

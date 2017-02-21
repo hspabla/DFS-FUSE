@@ -1,8 +1,8 @@
 #include "../include/wrap.hh"
 #include "../include/dsfs.hh"
 
-void set_rootdir(const char *path) {
-        DSFS::Instance()->setRootDir(path);
+void set_rootdir(const char* mountPath, const char *path) {
+        DSFS::Instance()->setRootDir(mountPath, path);
 }
 
 int wrap_getattr(const char *path, struct stat *statbuf) {
