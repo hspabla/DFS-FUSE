@@ -54,6 +54,21 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* OpenDirResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   OpenDirResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* File_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  File_reflection_ = NULL;
+const ::google::protobuf::Descriptor* OpenRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  OpenRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* OpenResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  OpenResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CreateRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CreateRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CreateResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CreateResponse_reflection_ = NULL;
 
 }  // namespace
 
@@ -253,6 +268,89 @@ void protobuf_AssignDesc_fileserver_2eproto() {
       sizeof(OpenDirResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenDirResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenDirResponse, _is_default_instance_));
+  File_descriptor_ = file->message_type(11);
+  static const int File_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(File, data_),
+  };
+  File_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      File_descriptor_,
+      File::default_instance_,
+      File_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(File),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(File, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(File, _is_default_instance_));
+  OpenRequest_descriptor_ = file->message_type(12);
+  static const int OpenRequest_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenRequest, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenRequest, flags_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenRequest, info_),
+  };
+  OpenRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      OpenRequest_descriptor_,
+      OpenRequest::default_instance_,
+      OpenRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(OpenRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenRequest, _is_default_instance_));
+  OpenResponse_descriptor_ = file->message_type(13);
+  static const int OpenResponse_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenResponse, file_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenResponse, status_),
+  };
+  OpenResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      OpenResponse_descriptor_,
+      OpenResponse::default_instance_,
+      OpenResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(OpenResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenResponse, _is_default_instance_));
+  CreateRequest_descriptor_ = file->message_type(14);
+  static const int CreateRequest_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, flags_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, mode_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, info_),
+  };
+  CreateRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      CreateRequest_descriptor_,
+      CreateRequest::default_instance_,
+      CreateRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(CreateRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateRequest, _is_default_instance_));
+  CreateResponse_descriptor_ = file->message_type(15);
+  static const int CreateResponse_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateResponse, file_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateResponse, status_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateResponse, info_),
+  };
+  CreateResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      CreateResponse_descriptor_,
+      CreateResponse::default_instance_,
+      CreateResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(CreateResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateResponse, _is_default_instance_));
 }
 
 namespace {
@@ -288,6 +386,16 @@ void protobuf_RegisterTypes(const ::std::string&) {
       DirEntry_descriptor_, &DirEntry::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       OpenDirResponse_descriptor_, &OpenDirResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      File_descriptor_, &File::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      OpenRequest_descriptor_, &OpenRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      OpenResponse_descriptor_, &OpenResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      CreateRequest_descriptor_, &CreateRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      CreateResponse_descriptor_, &CreateResponse::default_instance());
 }
 
 }  // namespace
@@ -315,6 +423,16 @@ void protobuf_ShutdownFile_fileserver_2eproto() {
   delete DirEntry_reflection_;
   delete OpenDirResponse::default_instance_;
   delete OpenDirResponse_reflection_;
+  delete File::default_instance_;
+  delete File_reflection_;
+  delete OpenRequest::default_instance_;
+  delete OpenRequest_reflection_;
+  delete OpenResponse::default_instance_;
+  delete OpenResponse_reflection_;
+  delete CreateRequest::default_instance_;
+  delete CreateRequest_reflection_;
+  delete CreateResponse::default_instance_;
+  delete CreateResponse_reflection_;
 }
 
 void protobuf_AddDesc_fileserver_2eproto() GOOGLE_ATTRIBUTE_COLD;
@@ -346,13 +464,25 @@ void protobuf_AddDesc_fileserver_2eproto() {
     "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"&\n\010DirE"
     "ntry\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\"U\n\017Open"
     "DirResponse\022\037\n\004dirs\030\001 \003(\0132\021.dfsFuse.DirE"
-    "ntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus2"
-    "\306\001\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.GetA"
-    "ttrRequest\032\030.dfsFuse.GetAttrResponse\"\000\0228"
-    "\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsFuse"
-    ".MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse.Op"
-    "enDirRequest\032\030.dfsFuse.OpenDirResponse\"\000"
-    "b\006proto3", 1088);
+    "ntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\""
+    "\024\n\004File\022\014\n\004data\030\001 \001(\014\"M\n\013OpenRequest\022\014\n\004"
+    "name\030\001 \001(\t\022\r\n\005flags\030\002 \001(\r\022!\n\004info\030\003 \001(\0132"
+    "\023.dfsFuse.ClientInfo\"N\n\014OpenResponse\022\033\n\004"
+    "file\030\001 \001(\0132\r.dfsFuse.File\022!\n\006status\030\002 \001("
+    "\0132\021.dfsFuse.FSstatus\"]\n\rCreateRequest\022\014\n"
+    "\004name\030\001 \001(\t\022\r\n\005flags\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r"
+    "\022!\n\004info\030\004 \001(\0132\023.dfsFuse.ClientInfo\"s\n\016C"
+    "reateResponse\022\033\n\004file\030\001 \001(\0132\r.dfsFuse.Fi"
+    "le\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\022!\n"
+    "\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo2\272\002\n\nFil"
+    "eSystem\022>\n\007GetAttr\022\027.dfsFuse.GetAttrRequ"
+    "est\032\030.dfsFuse.GetAttrResponse\"\000\0228\n\005Mkdir"
+    "\022\025.dfsFuse.MkdirRequest\032\026.dfsFuse.MkdirR"
+    "esponse\"\000\022>\n\007Opendir\022\027.dfsFuse.OpenDirRe"
+    "quest\032\030.dfsFuse.OpenDirResponse\"\000\0225\n\004Ope"
+    "n\022\024.dfsFuse.OpenRequest\032\025.dfsFuse.OpenRe"
+    "sponse\"\000\022;\n\006Create\022\026.dfsFuse.CreateReque"
+    "st\032\027.dfsFuse.CreateResponse\"\000b\006proto3", 1597);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
   FSstatus::default_instance_ = new FSstatus();
@@ -366,6 +496,11 @@ void protobuf_AddDesc_fileserver_2eproto() {
   OpenDirRequest::default_instance_ = new OpenDirRequest();
   DirEntry::default_instance_ = new DirEntry();
   OpenDirResponse::default_instance_ = new OpenDirResponse();
+  File::default_instance_ = new File();
+  OpenRequest::default_instance_ = new OpenRequest();
+  OpenResponse::default_instance_ = new OpenResponse();
+  CreateRequest::default_instance_ = new CreateRequest();
+  CreateResponse::default_instance_ = new CreateResponse();
   FSstatus::default_instance_->InitAsDefaultInstance();
   Owner::default_instance_->InitAsDefaultInstance();
   ClientInfo::default_instance_->InitAsDefaultInstance();
@@ -377,6 +512,11 @@ void protobuf_AddDesc_fileserver_2eproto() {
   OpenDirRequest::default_instance_->InitAsDefaultInstance();
   DirEntry::default_instance_->InitAsDefaultInstance();
   OpenDirResponse::default_instance_->InitAsDefaultInstance();
+  File::default_instance_->InitAsDefaultInstance();
+  OpenRequest::default_instance_->InitAsDefaultInstance();
+  OpenResponse::default_instance_->InitAsDefaultInstance();
+  CreateRequest::default_instance_->InitAsDefaultInstance();
+  CreateResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_fileserver_2eproto);
 }
 
@@ -4703,6 +4843,1961 @@ void OpenDirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
     
   }
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenDirResponse.status)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int File::kDataFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+File::File()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.File)
+}
+
+void File::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+File::File(const File& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.File)
+}
+
+void File::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+File::~File() {
+  // @@protoc_insertion_point(destructor:dfsFuse.File)
+  SharedDtor();
+}
+
+void File::SharedDtor() {
+  data_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void File::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* File::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return File_descriptor_;
+}
+
+const File& File::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+File* File::default_instance_ = NULL;
+
+File* File::New(::google::protobuf::Arena* arena) const {
+  File* n = new File;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void File::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.File)
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+bool File::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.File)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional bytes data = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_data()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.File)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.File)
+  return false;
+#undef DO_
+}
+
+void File::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.File)
+  // optional bytes data = 1;
+  if (this->data().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->data(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.File)
+}
+
+::google::protobuf::uint8* File::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.File)
+  // optional bytes data = 1;
+  if (this->data().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->data(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.File)
+  return target;
+}
+
+int File::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.File)
+  int total_size = 0;
+
+  // optional bytes data = 1;
+  if (this->data().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->data());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void File::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.File)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const File* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const File>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.File)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.File)
+    MergeFrom(*source);
+  }
+}
+
+void File::MergeFrom(const File& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.File)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.data().size() > 0) {
+
+    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  }
+}
+
+void File::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.File)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void File::CopyFrom(const File& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.File)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool File::IsInitialized() const {
+
+  return true;
+}
+
+void File::Swap(File* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void File::InternalSwap(File* other) {
+  data_.Swap(&other->data_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata File::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = File_descriptor_;
+  metadata.reflection = File_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// File
+
+// optional bytes data = 1;
+void File::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& File::data() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.File.data)
+  return data_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void File::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.File.data)
+}
+ void File::set_data(const char* value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.File.data)
+}
+ void File::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.File.data)
+}
+ ::std::string* File::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.File.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* File::release_data() {
+  // @@protoc_insertion_point(field_release:dfsFuse.File.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void File::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.File.data)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int OpenRequest::kNameFieldNumber;
+const int OpenRequest::kFlagsFieldNumber;
+const int OpenRequest::kInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+OpenRequest::OpenRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.OpenRequest)
+}
+
+void OpenRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  info_ = const_cast< ::dfsFuse::ClientInfo*>(&::dfsFuse::ClientInfo::default_instance());
+}
+
+OpenRequest::OpenRequest(const OpenRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.OpenRequest)
+}
+
+void OpenRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  flags_ = 0u;
+  info_ = NULL;
+}
+
+OpenRequest::~OpenRequest() {
+  // @@protoc_insertion_point(destructor:dfsFuse.OpenRequest)
+  SharedDtor();
+}
+
+void OpenRequest::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void OpenRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* OpenRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return OpenRequest_descriptor_;
+}
+
+const OpenRequest& OpenRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+OpenRequest* OpenRequest::default_instance_ = NULL;
+
+OpenRequest* OpenRequest::New(::google::protobuf::Arena* arena) const {
+  OpenRequest* n = new OpenRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void OpenRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.OpenRequest)
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  flags_ = 0u;
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+
+bool OpenRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.OpenRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dfsFuse.OpenRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_flags;
+        break;
+      }
+
+      // optional uint32 flags = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_flags:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &flags_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_info;
+        break;
+      }
+
+      // optional .dfsFuse.ClientInfo info = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.OpenRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.OpenRequest)
+  return false;
+#undef DO_
+}
+
+void OpenRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.OpenRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.OpenRequest.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->flags(), output);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->info_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.OpenRequest)
+}
+
+::google::protobuf::uint8* OpenRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.OpenRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.OpenRequest.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->flags(), target);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *this->info_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.OpenRequest)
+  return target;
+}
+
+int OpenRequest::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.OpenRequest)
+  int total_size = 0;
+
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->flags());
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void OpenRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.OpenRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const OpenRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const OpenRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.OpenRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.OpenRequest)
+    MergeFrom(*source);
+  }
+}
+
+void OpenRequest::MergeFrom(const OpenRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.OpenRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.flags() != 0) {
+    set_flags(from.flags());
+  }
+  if (from.has_info()) {
+    mutable_info()->::dfsFuse::ClientInfo::MergeFrom(from.info());
+  }
+}
+
+void OpenRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.OpenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void OpenRequest::CopyFrom(const OpenRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.OpenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool OpenRequest::IsInitialized() const {
+
+  return true;
+}
+
+void OpenRequest::Swap(OpenRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void OpenRequest::InternalSwap(OpenRequest* other) {
+  name_.Swap(&other->name_);
+  std::swap(flags_, other->flags_);
+  std::swap(info_, other->info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata OpenRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = OpenRequest_descriptor_;
+  metadata.reflection = OpenRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// OpenRequest
+
+// optional string name = 1;
+void OpenRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& OpenRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void OpenRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.OpenRequest.name)
+}
+ void OpenRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.OpenRequest.name)
+}
+ void OpenRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.OpenRequest.name)
+}
+ ::std::string* OpenRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* OpenRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void OpenRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenRequest.name)
+}
+
+// optional uint32 flags = 2;
+void OpenRequest::clear_flags() {
+  flags_ = 0u;
+}
+ ::google::protobuf::uint32 OpenRequest::flags() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.flags)
+  return flags_;
+}
+ void OpenRequest::set_flags(::google::protobuf::uint32 value) {
+  
+  flags_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.OpenRequest.flags)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+bool OpenRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+void OpenRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+const ::dfsFuse::ClientInfo& OpenRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+::dfsFuse::ClientInfo* OpenRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenRequest.info)
+  return info_;
+}
+::dfsFuse::ClientInfo* OpenRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+void OpenRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenRequest.info)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int OpenResponse::kFileFieldNumber;
+const int OpenResponse::kStatusFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+OpenResponse::OpenResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.OpenResponse)
+}
+
+void OpenResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  file_ = const_cast< ::dfsFuse::File*>(&::dfsFuse::File::default_instance());
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
+}
+
+OpenResponse::OpenResponse(const OpenResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.OpenResponse)
+}
+
+void OpenResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  file_ = NULL;
+  status_ = NULL;
+}
+
+OpenResponse::~OpenResponse() {
+  // @@protoc_insertion_point(destructor:dfsFuse.OpenResponse)
+  SharedDtor();
+}
+
+void OpenResponse::SharedDtor() {
+  if (this != default_instance_) {
+    delete file_;
+    delete status_;
+  }
+}
+
+void OpenResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* OpenResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return OpenResponse_descriptor_;
+}
+
+const OpenResponse& OpenResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+OpenResponse* OpenResponse::default_instance_ = NULL;
+
+OpenResponse* OpenResponse::New(::google::protobuf::Arena* arena) const {
+  OpenResponse* n = new OpenResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void OpenResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.OpenResponse)
+  if (GetArenaNoVirtual() == NULL && file_ != NULL) delete file_;
+  file_ = NULL;
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+
+bool OpenResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.OpenResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .dfsFuse.File file = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_file()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_status;
+        break;
+      }
+
+      // optional .dfsFuse.FSstatus status = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_status:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_status()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.OpenResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.OpenResponse)
+  return false;
+#undef DO_
+}
+
+void OpenResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.OpenResponse)
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->file_, output);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->status_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.OpenResponse)
+}
+
+::google::protobuf::uint8* OpenResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.OpenResponse)
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->file_, false, target);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *this->status_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.OpenResponse)
+  return target;
+}
+
+int OpenResponse::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.OpenResponse)
+  int total_size = 0;
+
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->file_);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->status_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void OpenResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.OpenResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const OpenResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const OpenResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.OpenResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.OpenResponse)
+    MergeFrom(*source);
+  }
+}
+
+void OpenResponse::MergeFrom(const OpenResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.OpenResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.has_file()) {
+    mutable_file()->::dfsFuse::File::MergeFrom(from.file());
+  }
+  if (from.has_status()) {
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
+  }
+}
+
+void OpenResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.OpenResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void OpenResponse::CopyFrom(const OpenResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.OpenResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool OpenResponse::IsInitialized() const {
+
+  return true;
+}
+
+void OpenResponse::Swap(OpenResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void OpenResponse::InternalSwap(OpenResponse* other) {
+  std::swap(file_, other->file_);
+  std::swap(status_, other->status_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata OpenResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = OpenResponse_descriptor_;
+  metadata.reflection = OpenResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// OpenResponse
+
+// optional .dfsFuse.File file = 1;
+bool OpenResponse::has_file() const {
+  return !_is_default_instance_ && file_ != NULL;
+}
+void OpenResponse::clear_file() {
+  if (GetArenaNoVirtual() == NULL && file_ != NULL) delete file_;
+  file_ = NULL;
+}
+const ::dfsFuse::File& OpenResponse::file() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenResponse.file)
+  return file_ != NULL ? *file_ : *default_instance_->file_;
+}
+::dfsFuse::File* OpenResponse::mutable_file() {
+  
+  if (file_ == NULL) {
+    file_ = new ::dfsFuse::File;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenResponse.file)
+  return file_;
+}
+::dfsFuse::File* OpenResponse::release_file() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenResponse.file)
+  
+  ::dfsFuse::File* temp = file_;
+  file_ = NULL;
+  return temp;
+}
+void OpenResponse::set_allocated_file(::dfsFuse::File* file) {
+  delete file_;
+  file_ = file;
+  if (file) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenResponse.file)
+}
+
+// optional .dfsFuse.FSstatus status = 2;
+bool OpenResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+void OpenResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+const ::dfsFuse::FSstatus& OpenResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.OpenResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+::dfsFuse::FSstatus* OpenResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.OpenResponse.status)
+  return status_;
+}
+::dfsFuse::FSstatus* OpenResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.OpenResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+void OpenResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.OpenResponse.status)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CreateRequest::kNameFieldNumber;
+const int CreateRequest::kFlagsFieldNumber;
+const int CreateRequest::kModeFieldNumber;
+const int CreateRequest::kInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CreateRequest::CreateRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.CreateRequest)
+}
+
+void CreateRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  info_ = const_cast< ::dfsFuse::ClientInfo*>(&::dfsFuse::ClientInfo::default_instance());
+}
+
+CreateRequest::CreateRequest(const CreateRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.CreateRequest)
+}
+
+void CreateRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  flags_ = 0u;
+  mode_ = 0u;
+  info_ = NULL;
+}
+
+CreateRequest::~CreateRequest() {
+  // @@protoc_insertion_point(destructor:dfsFuse.CreateRequest)
+  SharedDtor();
+}
+
+void CreateRequest::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void CreateRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CreateRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CreateRequest_descriptor_;
+}
+
+const CreateRequest& CreateRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+CreateRequest* CreateRequest::default_instance_ = NULL;
+
+CreateRequest* CreateRequest::New(::google::protobuf::Arena* arena) const {
+  CreateRequest* n = new CreateRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CreateRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.CreateRequest)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(CreateRequest, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<CreateRequest*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(flags_, mode_);
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool CreateRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.CreateRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dfsFuse.CreateRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_flags;
+        break;
+      }
+
+      // optional uint32 flags = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_flags:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &flags_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_mode;
+        break;
+      }
+
+      // optional uint32 mode = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_mode:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mode_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_info;
+        break;
+      }
+
+      // optional .dfsFuse.ClientInfo info = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.CreateRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.CreateRequest)
+  return false;
+#undef DO_
+}
+
+void CreateRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.CreateRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.CreateRequest.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->flags(), output);
+  }
+
+  // optional uint32 mode = 3;
+  if (this->mode() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->mode(), output);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->info_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.CreateRequest)
+}
+
+::google::protobuf::uint8* CreateRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.CreateRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.CreateRequest.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->flags(), target);
+  }
+
+  // optional uint32 mode = 3;
+  if (this->mode() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->mode(), target);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *this->info_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.CreateRequest)
+  return target;
+}
+
+int CreateRequest::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.CreateRequest)
+  int total_size = 0;
+
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // optional uint32 flags = 2;
+  if (this->flags() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->flags());
+  }
+
+  // optional uint32 mode = 3;
+  if (this->mode() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mode());
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CreateRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.CreateRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const CreateRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const CreateRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.CreateRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.CreateRequest)
+    MergeFrom(*source);
+  }
+}
+
+void CreateRequest::MergeFrom(const CreateRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.CreateRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.flags() != 0) {
+    set_flags(from.flags());
+  }
+  if (from.mode() != 0) {
+    set_mode(from.mode());
+  }
+  if (from.has_info()) {
+    mutable_info()->::dfsFuse::ClientInfo::MergeFrom(from.info());
+  }
+}
+
+void CreateRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.CreateRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateRequest::CopyFrom(const CreateRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.CreateRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateRequest::IsInitialized() const {
+
+  return true;
+}
+
+void CreateRequest::Swap(CreateRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CreateRequest::InternalSwap(CreateRequest* other) {
+  name_.Swap(&other->name_);
+  std::swap(flags_, other->flags_);
+  std::swap(mode_, other->mode_);
+  std::swap(info_, other->info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CreateRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CreateRequest_descriptor_;
+  metadata.reflection = CreateRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CreateRequest
+
+// optional string name = 1;
+void CreateRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& CreateRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CreateRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.CreateRequest.name)
+}
+ void CreateRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.CreateRequest.name)
+}
+ void CreateRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.CreateRequest.name)
+}
+ ::std::string* CreateRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.CreateRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* CreateRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.CreateRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CreateRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.CreateRequest.name)
+}
+
+// optional uint32 flags = 2;
+void CreateRequest::clear_flags() {
+  flags_ = 0u;
+}
+ ::google::protobuf::uint32 CreateRequest::flags() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateRequest.flags)
+  return flags_;
+}
+ void CreateRequest::set_flags(::google::protobuf::uint32 value) {
+  
+  flags_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.CreateRequest.flags)
+}
+
+// optional uint32 mode = 3;
+void CreateRequest::clear_mode() {
+  mode_ = 0u;
+}
+ ::google::protobuf::uint32 CreateRequest::mode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateRequest.mode)
+  return mode_;
+}
+ void CreateRequest::set_mode(::google::protobuf::uint32 value) {
+  
+  mode_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.CreateRequest.mode)
+}
+
+// optional .dfsFuse.ClientInfo info = 4;
+bool CreateRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+void CreateRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+const ::dfsFuse::ClientInfo& CreateRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+::dfsFuse::ClientInfo* CreateRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.CreateRequest.info)
+  return info_;
+}
+::dfsFuse::ClientInfo* CreateRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.CreateRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+void CreateRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.CreateRequest.info)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CreateResponse::kFileFieldNumber;
+const int CreateResponse::kStatusFieldNumber;
+const int CreateResponse::kInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CreateResponse::CreateResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.CreateResponse)
+}
+
+void CreateResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  file_ = const_cast< ::dfsFuse::File*>(&::dfsFuse::File::default_instance());
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
+  info_ = const_cast< ::dfsFuse::ClientInfo*>(&::dfsFuse::ClientInfo::default_instance());
+}
+
+CreateResponse::CreateResponse(const CreateResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.CreateResponse)
+}
+
+void CreateResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  file_ = NULL;
+  status_ = NULL;
+  info_ = NULL;
+}
+
+CreateResponse::~CreateResponse() {
+  // @@protoc_insertion_point(destructor:dfsFuse.CreateResponse)
+  SharedDtor();
+}
+
+void CreateResponse::SharedDtor() {
+  if (this != default_instance_) {
+    delete file_;
+    delete status_;
+    delete info_;
+  }
+}
+
+void CreateResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CreateResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CreateResponse_descriptor_;
+}
+
+const CreateResponse& CreateResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+CreateResponse* CreateResponse::default_instance_ = NULL;
+
+CreateResponse* CreateResponse::New(::google::protobuf::Arena* arena) const {
+  CreateResponse* n = new CreateResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CreateResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.CreateResponse)
+  if (GetArenaNoVirtual() == NULL && file_ != NULL) delete file_;
+  file_ = NULL;
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+
+bool CreateResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.CreateResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .dfsFuse.File file = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_file()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_status;
+        break;
+      }
+
+      // optional .dfsFuse.FSstatus status = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_status:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_status()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_info;
+        break;
+      }
+
+      // optional .dfsFuse.ClientInfo info = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.CreateResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.CreateResponse)
+  return false;
+#undef DO_
+}
+
+void CreateResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.CreateResponse)
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->file_, output);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->status_, output);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->info_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.CreateResponse)
+}
+
+::google::protobuf::uint8* CreateResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.CreateResponse)
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->file_, false, target);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *this->status_, false, target);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *this->info_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.CreateResponse)
+  return target;
+}
+
+int CreateResponse::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.CreateResponse)
+  int total_size = 0;
+
+  // optional .dfsFuse.File file = 1;
+  if (this->has_file()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->file_);
+  }
+
+  // optional .dfsFuse.FSstatus status = 2;
+  if (this->has_status()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->status_);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CreateResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.CreateResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const CreateResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const CreateResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.CreateResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.CreateResponse)
+    MergeFrom(*source);
+  }
+}
+
+void CreateResponse::MergeFrom(const CreateResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.CreateResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.has_file()) {
+    mutable_file()->::dfsFuse::File::MergeFrom(from.file());
+  }
+  if (from.has_status()) {
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
+  }
+  if (from.has_info()) {
+    mutable_info()->::dfsFuse::ClientInfo::MergeFrom(from.info());
+  }
+}
+
+void CreateResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.CreateResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateResponse::CopyFrom(const CreateResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.CreateResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateResponse::IsInitialized() const {
+
+  return true;
+}
+
+void CreateResponse::Swap(CreateResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CreateResponse::InternalSwap(CreateResponse* other) {
+  std::swap(file_, other->file_);
+  std::swap(status_, other->status_);
+  std::swap(info_, other->info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CreateResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CreateResponse_descriptor_;
+  metadata.reflection = CreateResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CreateResponse
+
+// optional .dfsFuse.File file = 1;
+bool CreateResponse::has_file() const {
+  return !_is_default_instance_ && file_ != NULL;
+}
+void CreateResponse::clear_file() {
+  if (GetArenaNoVirtual() == NULL && file_ != NULL) delete file_;
+  file_ = NULL;
+}
+const ::dfsFuse::File& CreateResponse::file() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateResponse.file)
+  return file_ != NULL ? *file_ : *default_instance_->file_;
+}
+::dfsFuse::File* CreateResponse::mutable_file() {
+  
+  if (file_ == NULL) {
+    file_ = new ::dfsFuse::File;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.CreateResponse.file)
+  return file_;
+}
+::dfsFuse::File* CreateResponse::release_file() {
+  // @@protoc_insertion_point(field_release:dfsFuse.CreateResponse.file)
+  
+  ::dfsFuse::File* temp = file_;
+  file_ = NULL;
+  return temp;
+}
+void CreateResponse::set_allocated_file(::dfsFuse::File* file) {
+  delete file_;
+  file_ = file;
+  if (file) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.CreateResponse.file)
+}
+
+// optional .dfsFuse.FSstatus status = 2;
+bool CreateResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+void CreateResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+const ::dfsFuse::FSstatus& CreateResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+::dfsFuse::FSstatus* CreateResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.CreateResponse.status)
+  return status_;
+}
+::dfsFuse::FSstatus* CreateResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.CreateResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+void CreateResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.CreateResponse.status)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+bool CreateResponse::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+void CreateResponse::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+const ::dfsFuse::ClientInfo& CreateResponse::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.CreateResponse.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+::dfsFuse::ClientInfo* CreateResponse::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.CreateResponse.info)
+  return info_;
+}
+::dfsFuse::ClientInfo* CreateResponse::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.CreateResponse.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+void CreateResponse::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.CreateResponse.info)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

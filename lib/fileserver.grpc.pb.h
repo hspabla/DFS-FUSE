@@ -30,11 +30,12 @@ class FileSystem GRPC_FINAL {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // RPC functions for file handling operations. Not everything is implemented
+    // attributes RPC
     virtual ::grpc::Status GetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::dfsFuse::GetAttrResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::GetAttrResponse>> AsyncGetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::GetAttrResponse>>(AsyncGetAttrRaw(context, request, cq));
     }
+    // Directory handling
     virtual ::grpc::Status Mkdir(::grpc::ClientContext* context, const ::dfsFuse::MkdirRequest& request, ::dfsFuse::MkdirResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::MkdirResponse>> AsyncMkdir(::grpc::ClientContext* context, const ::dfsFuse::MkdirRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::MkdirResponse>>(AsyncMkdirRaw(context, request, cq));
@@ -43,10 +44,21 @@ class FileSystem GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenDirResponse>> AsyncOpendir(::grpc::ClientContext* context, const ::dfsFuse::OpenDirRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenDirResponse>>(AsyncOpendirRaw(context, request, cq));
     }
+    // File handling
+    virtual ::grpc::Status Open(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::dfsFuse::OpenResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenResponse>> AsyncOpen(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenResponse>>(AsyncOpenRaw(context, request, cq));
+    }
+    virtual ::grpc::Status Create(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::dfsFuse::CreateResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::CreateResponse>> AsyncCreate(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::CreateResponse>>(AsyncCreateRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::GetAttrResponse>* AsyncGetAttrRaw(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::MkdirResponse>* AsyncMkdirRaw(::grpc::ClientContext* context, const ::dfsFuse::MkdirRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenDirResponse>* AsyncOpendirRaw(::grpc::ClientContext* context, const ::dfsFuse::OpenDirRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::OpenResponse>* AsyncOpenRaw(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dfsFuse::CreateResponse>* AsyncCreateRaw(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
@@ -63,15 +75,27 @@ class FileSystem GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenDirResponse>> AsyncOpendir(::grpc::ClientContext* context, const ::dfsFuse::OpenDirRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenDirResponse>>(AsyncOpendirRaw(context, request, cq));
     }
+    ::grpc::Status Open(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::dfsFuse::OpenResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenResponse>> AsyncOpen(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenResponse>>(AsyncOpenRaw(context, request, cq));
+    }
+    ::grpc::Status Create(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::dfsFuse::CreateResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::CreateResponse>> AsyncCreate(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dfsFuse::CreateResponse>>(AsyncCreateRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     ::grpc::ClientAsyncResponseReader< ::dfsFuse::GetAttrResponse>* AsyncGetAttrRaw(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::dfsFuse::MkdirResponse>* AsyncMkdirRaw(::grpc::ClientContext* context, const ::dfsFuse::MkdirRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenDirResponse>* AsyncOpendirRaw(::grpc::ClientContext* context, const ::dfsFuse::OpenDirRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::dfsFuse::OpenResponse>* AsyncOpenRaw(::grpc::ClientContext* context, const ::dfsFuse::OpenRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::dfsFuse::CreateResponse>* AsyncCreateRaw(::grpc::ClientContext* context, const ::dfsFuse::CreateRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_GetAttr_;
     const ::grpc::RpcMethod rpcmethod_Mkdir_;
     const ::grpc::RpcMethod rpcmethod_Opendir_;
+    const ::grpc::RpcMethod rpcmethod_Open_;
+    const ::grpc::RpcMethod rpcmethod_Create_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -79,10 +103,14 @@ class FileSystem GRPC_FINAL {
    public:
     Service();
     virtual ~Service();
-    // RPC functions for file handling operations. Not everything is implemented
+    // attributes RPC
     virtual ::grpc::Status GetAttr(::grpc::ServerContext* context, const ::dfsFuse::GetAttrRequest* request, ::dfsFuse::GetAttrResponse* response);
+    // Directory handling
     virtual ::grpc::Status Mkdir(::grpc::ServerContext* context, const ::dfsFuse::MkdirRequest* request, ::dfsFuse::MkdirResponse* response);
     virtual ::grpc::Status Opendir(::grpc::ServerContext* context, const ::dfsFuse::OpenDirRequest* request, ::dfsFuse::OpenDirResponse* response);
+    // File handling
+    virtual ::grpc::Status Open(::grpc::ServerContext* context, const ::dfsFuse::OpenRequest* request, ::dfsFuse::OpenResponse* response);
+    virtual ::grpc::Status Create(::grpc::ServerContext* context, const ::dfsFuse::CreateRequest* request, ::dfsFuse::CreateResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetAttr : public BaseClass {
@@ -144,7 +172,47 @@ class FileSystem GRPC_FINAL {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetAttr<WithAsyncMethod_Mkdir<WithAsyncMethod_Opendir<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Open : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_Open() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_Open() GRPC_OVERRIDE {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Open(::grpc::ServerContext* context, const ::dfsFuse::OpenRequest* request, ::dfsFuse::OpenResponse* response) GRPC_FINAL GRPC_OVERRIDE {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestOpen(::grpc::ServerContext* context, ::dfsFuse::OpenRequest* request, ::grpc::ServerAsyncResponseWriter< ::dfsFuse::OpenResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_Create : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_Create() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_Create() GRPC_OVERRIDE {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Create(::grpc::ServerContext* context, const ::dfsFuse::CreateRequest* request, ::dfsFuse::CreateResponse* response) GRPC_FINAL GRPC_OVERRIDE {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreate(::grpc::ServerContext* context, ::dfsFuse::CreateRequest* request, ::grpc::ServerAsyncResponseWriter< ::dfsFuse::CreateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetAttr<WithAsyncMethod_Mkdir<WithAsyncMethod_Opendir<WithAsyncMethod_Open<WithAsyncMethod_Create<Service > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_GetAttr : public BaseClass {
    private:
@@ -192,6 +260,40 @@ class FileSystem GRPC_FINAL {
     }
     // disable synchronous version of this method
     ::grpc::Status Opendir(::grpc::ServerContext* context, const ::dfsFuse::OpenDirRequest* request, ::dfsFuse::OpenDirResponse* response) GRPC_FINAL GRPC_OVERRIDE {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Open : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_Open() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_Open() GRPC_OVERRIDE {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Open(::grpc::ServerContext* context, const ::dfsFuse::OpenRequest* request, ::dfsFuse::OpenResponse* response) GRPC_FINAL GRPC_OVERRIDE {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Create : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_Create() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_Create() GRPC_OVERRIDE {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Create(::grpc::ServerContext* context, const ::dfsFuse::CreateRequest* request, ::dfsFuse::CreateResponse* response) GRPC_FINAL GRPC_OVERRIDE {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
