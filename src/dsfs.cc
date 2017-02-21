@@ -32,19 +32,39 @@ void DSFS::setRootDir(const char *mountPath, const char *path) {
 }
 
 int DSFS::Getattr(const char *path, struct stat *statbuf) {
-    char fullPath[ PATH_MAX ];
-    AbsPath( fullPath, path );
-    printf( "getattr(%s)\n", fullPath );
+    	char fullPath[ PATH_MAX ];
+    	AbsPath( fullPath, path );
+    	printf( "getattr(%s)\n", fullPath );
  	GetAttrClient client( grpc::CreateChannel(
                   		  "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	GetAttrRequest request;
-	request.set_name( fullPath );
-  	GetAttrResponse response = client.GetAttr(request);
-	Attr attributes = response.attr();
-
-  	//std::cout << "received: " << response << std::endl;
-	printf("Reached here: %d\n", attributes.dev());
-    return RETURN_ERRNO(lstat(fullPath, statbuf));
+	GetAttrResponse response;
+	request.set_name(fullPath);
+	try {
+           response = client.GetAttr(request);
+	   Attr attributes = response.attr();
+	   FSstatus status = response.status();
+	   if (status.retcode() == 0) {
+		statbuf->st_dev = attributes.dev();
+		statbuf->st_ino = attributes.ino();
+		statbuf->st_mode = attributes.mode();
+		statbuf->st_nlink = attributes.st_nlink();
+		Owner owner = attributes.owner();
+		statbuf->st_uid = owner.uid();
+		statbuf->st_gid = owner.gid();
+		statbuf->st_rdev = attributes.rdev();
+		statbuf->st_size = attributes.size();
+		statbuf->st_blksize = attributes.blksize();
+		statbuf->st_blocks = attributes.blocks();
+		statbuf->st_atime = attributes.atime();
+		statbuf->st_mtime = attributes.mtime();
+		statbuf->st_ctime = attributes.ctime();
+		return 0;
+	   } else
+		throw status.retcode();
+	} catch (int errorCode) {
+		return -errno;
+	}
 }
 
 int DSFS::Readlink(const char *path, char *link, size_t size) {
@@ -86,7 +106,22 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
         printf("**mkdir(path=%s, mode=%d)\n", path, (int)mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(mkdir(fullPath, mode));
+        MkdirClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        MkdirRequest request;
+        MkdirResponse response;
+        request.set_name(fullPath);
+	request.set_mode(mode);
+        try {
+           response = client.Mkdir(request);
+	   FSstatus status = response.status();
+	   if (status.retcode() == 0)
+		return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }	
 }
 
 int DSFS::Unlink(const char *path) {
@@ -304,11 +339,7 @@ int DSFS::Removexattr(const char *path, const char *name) {
 
 int DSFS::Opendir(const char *path, struct fuse_file_info *fileInfo) {
         printf("opendir(path=%s)\n", path);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        DIR *dir = opendir(fullPath);
-        fileInfo->fh = (uint64_t)dir;
-        return NULL == dir ? -errno : 0;
+	return 0;
 }
 
 int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fileInfo)
@@ -317,7 +348,29 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
         AbsPath(fullPath, path);
 	printf("readdir(path=%s, offset=%d)\n", fullPath, (int)offset);
 
-	DIR *dp;
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() );	
+        OpenDirClient client( channel);
+        OpenDirRequest request;
+        OpenDirResponse response;
+        request.set_name(fullPath);
+        try {
+           response = client.Opendir(request);
+	   //DirEntry dirs = response.dirs();
+	   for(int i=0; i< response.dirs_size(); i++) {
+		struct stat st;
+                memset(&st, 0, sizeof(st));
+		DirEntry dir = response.dirs(i);
+                st.st_ino = dir.ino();
+                st.st_mode = dir.mode() << 12;
+	        if (filler(buf, (dir.name()).c_str(), &st, 0) != 0)
+                    break;	
+	   }
+	} catch (int errno) {
+	   return -errno;
+	}
+
+	/*DIR *dp;
 	struct dirent *de;
 
    	(void) offset;
@@ -333,9 +386,9 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
       		st.st_mode = de->d_type << 12;
       		if (filler(buf, de->d_name, &st, 0) != 0)
          		break;
-   	}
+   	}*/
 
-   	closedir(dp);
+   	//closedir(dp);
    	return 0;
 }
 
