@@ -35,13 +35,15 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
         printf("getattr(%s)\n", fullPath);
-/* 	GetAttrClient client(grpc::CreateChannel(
+ 	GetAttrClient client(grpc::CreateChannel(
       		"localhost:50051", grpc::InsecureChannelCredentials()));
 	GetAttrRequest request;
-	request.set_name(path);
-  	GetAttrResponse response = client.GetAttr(request);*/
+	request.set_name(fullPath);
+  	GetAttrResponse response = client.GetAttr(request);
+	Attr attributes = response.attr();
+	
   	//std::cout << "received: " << response << std::endl;	
-	printf("Reached here\n");
+	printf("Reached here: %d\n", attributes.dev());
         return RETURN_ERRNO(lstat(fullPath, statbuf));
 }
 

@@ -22,10 +22,18 @@ using dfsFuse::OpenDirResponse;
 Status FileSystemImpl::GetAttr( ServerContext* context,
                                  const GetAttrRequest* request,
                                  GetAttrResponse* reply ) {
-	// implement get Attr based on request
-	//std::string prefix("Hello ");
-    //reply->set_message(prefix + request->name());
-    return Status::OK;
+	struct stat statbuf;
+  	std::string path = request->name();
+	int retstat = stat(path.c_str(), &statbuf);
+	Attr attributes;
+	FSstatus status;
+	status.set_retcode(retstat);
+ 	attributes.set_dev(statbuf.st_dev);
+	//attributes
+	reply->mutable_attr()->CopyFrom(attributes);
+	reply->mutable_status()->CopyFrom(status);
+    	printf("GRPC call successful\n");
+    	return Status::OK;
 }
 
 Status FileSystemImpl::Mkdir( ServerContext* context,
