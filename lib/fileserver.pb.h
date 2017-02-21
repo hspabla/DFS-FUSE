@@ -1428,11 +1428,11 @@ class ReadRequest : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 fileHandler = 1;
-  void clear_filehandler();
-  static const int kFileHandlerFieldNumber = 1;
-  ::google::protobuf::uint32 filehandler() const;
-  void set_filehandler(::google::protobuf::uint32 value);
+  // optional uint32 fileHandle = 1;
+  void clear_filehandle();
+  static const int kFileHandleFieldNumber = 1;
+  ::google::protobuf::uint32 filehandle() const;
+  void set_filehandle(::google::protobuf::uint32 value);
 
   // optional uint32 size = 2;
   void clear_size();
@@ -1460,7 +1460,7 @@ class ReadRequest : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::uint32 filehandler_;
+  ::google::protobuf::uint32 filehandle_;
   ::google::protobuf::uint32 size_;
   ::dfsFuse::ClientInfo* info_;
   ::google::protobuf::uint32 offset_;
@@ -1534,11 +1534,11 @@ class ReadResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 dataRead = 1;
+  // optional int32 dataRead = 1;
   void clear_dataread();
   static const int kDataReadFieldNumber = 1;
-  ::google::protobuf::uint32 dataread() const;
-  void set_dataread(::google::protobuf::uint32 value);
+  ::google::protobuf::int32 dataread() const;
+  void set_dataread(::google::protobuf::int32 value);
 
   // optional bytes data = 2;
   void clear_data();
@@ -1567,7 +1567,7 @@ class ReadResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr data_;
   ::dfsFuse::FSstatus* status_;
-  ::google::protobuf::uint32 dataread_;
+  ::google::protobuf::int32 dataread_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -1638,11 +1638,11 @@ class WriteRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 fileHandler = 1;
-  void clear_filehandler();
-  static const int kFileHandlerFieldNumber = 1;
-  ::google::protobuf::uint32 filehandler() const;
-  void set_filehandler(::google::protobuf::uint32 value);
+  // optional uint32 fileHandle = 1;
+  void clear_filehandle();
+  static const int kFileHandleFieldNumber = 1;
+  ::google::protobuf::uint32 filehandle() const;
+  void set_filehandle(::google::protobuf::uint32 value);
 
   // optional bytes data = 2;
   void clear_data();
@@ -1682,7 +1682,7 @@ class WriteRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr data_;
-  ::google::protobuf::uint32 filehandler_;
+  ::google::protobuf::uint32 filehandle_;
   ::google::protobuf::uint32 size_;
   ::dfsFuse::ClientInfo* info_;
   ::google::protobuf::uint32 offset_;
@@ -1756,11 +1756,11 @@ class WriteResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 dataWritten = 1;
+  // optional int32 dataWritten = 1;
   void clear_datawritten();
   static const int kDataWrittenFieldNumber = 1;
-  ::google::protobuf::uint32 datawritten() const;
-  void set_datawritten(::google::protobuf::uint32 value);
+  ::google::protobuf::int32 datawritten() const;
+  void set_datawritten(::google::protobuf::int32 value);
 
   // optional .dfsFuse.FSstatus status = 2;
   bool has_status() const;
@@ -1777,7 +1777,7 @@ class WriteResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::dfsFuse::FSstatus* status_;
-  ::google::protobuf::uint32 datawritten_;
+  ::google::protobuf::int32 datawritten_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -2822,18 +2822,18 @@ inline void OpenResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 
 // ReadRequest
 
-// optional uint32 fileHandler = 1;
-inline void ReadRequest::clear_filehandler() {
-  filehandler_ = 0u;
+// optional uint32 fileHandle = 1;
+inline void ReadRequest::clear_filehandle() {
+  filehandle_ = 0u;
 }
-inline ::google::protobuf::uint32 ReadRequest::filehandler() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.fileHandler)
-  return filehandler_;
+inline ::google::protobuf::uint32 ReadRequest::filehandle() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.fileHandle)
+  return filehandle_;
 }
-inline void ReadRequest::set_filehandler(::google::protobuf::uint32 value) {
+inline void ReadRequest::set_filehandle(::google::protobuf::uint32 value) {
   
-  filehandler_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.fileHandler)
+  filehandle_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.fileHandle)
 }
 
 // optional uint32 size = 2;
@@ -2906,15 +2906,15 @@ inline void ReadRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
 
 // ReadResponse
 
-// optional uint32 dataRead = 1;
+// optional int32 dataRead = 1;
 inline void ReadResponse::clear_dataread() {
-  dataread_ = 0u;
+  dataread_ = 0;
 }
-inline ::google::protobuf::uint32 ReadResponse::dataread() const {
+inline ::google::protobuf::int32 ReadResponse::dataread() const {
   // @@protoc_insertion_point(field_get:dfsFuse.ReadResponse.dataRead)
   return dataread_;
 }
-inline void ReadResponse::set_dataread(::google::protobuf::uint32 value) {
+inline void ReadResponse::set_dataread(::google::protobuf::int32 value) {
   
   dataread_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.ReadResponse.dataRead)
@@ -3006,18 +3006,18 @@ inline void ReadResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 
 // WriteRequest
 
-// optional uint32 fileHandler = 1;
-inline void WriteRequest::clear_filehandler() {
-  filehandler_ = 0u;
+// optional uint32 fileHandle = 1;
+inline void WriteRequest::clear_filehandle() {
+  filehandle_ = 0u;
 }
-inline ::google::protobuf::uint32 WriteRequest::filehandler() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.fileHandler)
-  return filehandler_;
+inline ::google::protobuf::uint32 WriteRequest::filehandle() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.fileHandle)
+  return filehandle_;
 }
-inline void WriteRequest::set_filehandler(::google::protobuf::uint32 value) {
+inline void WriteRequest::set_filehandle(::google::protobuf::uint32 value) {
   
-  filehandler_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.fileHandler)
+  filehandle_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.fileHandle)
 }
 
 // optional bytes data = 2;
@@ -3134,15 +3134,15 @@ inline void WriteRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
 
 // WriteResponse
 
-// optional uint32 dataWritten = 1;
+// optional int32 dataWritten = 1;
 inline void WriteResponse::clear_datawritten() {
-  datawritten_ = 0u;
+  datawritten_ = 0;
 }
-inline ::google::protobuf::uint32 WriteResponse::datawritten() const {
+inline ::google::protobuf::int32 WriteResponse::datawritten() const {
   // @@protoc_insertion_point(field_get:dfsFuse.WriteResponse.dataWritten)
   return datawritten_;
 }
-inline void WriteResponse::set_datawritten(::google::protobuf::uint32 value) {
+inline void WriteResponse::set_datawritten(::google::protobuf::int32 value) {
   
   datawritten_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.WriteResponse.dataWritten)

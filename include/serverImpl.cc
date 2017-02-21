@@ -44,6 +44,17 @@ Status FileSystemImpl::Read( ServerContext* context,
                              const ReadRequest* request,
 				             ReadResponse* reply ) {
 
+    char* buf = new char [ request->size() ];
+    int byteRead = pread( request->filehandle(), buf,
+                          request->size(), request->offset() );
+    if ( byteRead < 0 ){
+        // set error
+    } else {
+        reply->data().copy( buf, 0, byteRead );
+    }
+    reply->set_dataread( byteRead );
+
+    delete buf;
 	return Status::OK;
 }
 
@@ -51,6 +62,20 @@ Status FileSystemImpl::Write( ServerContext* context,
                               const WriteRequest* request,
 				              WriteResponse* reply ) {
 
-	return Status::OK;
+    char *buf = new char[ request->size() ];
+    memcpy( buf, request->data().c_str(), request->size() );
+
+    int bytesWritten = pwrite( request->filehandle(), buf,
+                               request->size(),
+                               request->offset() );
+
+    if ( bytesWritten < 0 ) {
+        // set error code
+    } else {
+       reply->set_datawritten( bytesWritten );
+    }
+
+    delete buf;
+    return Status::OK;
 }
 

@@ -108,20 +108,20 @@ message OpenResponse {
 }
 
 message ReadRequest {
-    uint32 fileHandler = 1;
+    uint32 fileHandle = 1;
     uint32 size = 2;
     uint32 offset = 3;
     ClientInfo info = 4;
 }
 
 message ReadResponse {
-    uint32 dataRead = 1;
+    int32 dataRead = 1;
     bytes data = 2;
     FSstatus status = 3;
 }
 
 message WriteRequest {
-    uint32 fileHandler = 1;
+    uint32 fileHandle = 1;
     bytes data = 2;
     uint32 size = 3;
     uint32 offset = 4;
@@ -129,6 +129,6 @@ message WriteRequest {
 }
 
 message WriteResponse {
-    uint32 dataWritten = 1;
+    int32 dataWritten = 1;
     FSstatus status = 2;
 }

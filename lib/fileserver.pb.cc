@@ -306,7 +306,7 @@ void protobuf_AssignDesc_fileserver_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OpenResponse, _is_default_instance_));
   ReadRequest_descriptor_ = file->message_type(13);
   static const int ReadRequest_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadRequest, filehandler_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadRequest, filehandle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadRequest, size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadRequest, offset_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadRequest, info_),
@@ -341,7 +341,7 @@ void protobuf_AssignDesc_fileserver_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReadResponse, _is_default_instance_));
   WriteRequest_descriptor_ = file->message_type(15);
   static const int WriteRequest_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteRequest, filehandler_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteRequest, filehandle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteRequest, data_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteRequest, size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteRequest, offset_),
@@ -495,26 +495,26 @@ void protobuf_AddDesc_fileserver_2eproto() {
     "M\n\013OpenRequest\022\014\n\004name\030\001 \001(\t\022\r\n\005flags\030\002 "
     "\001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"E"
     "\n\014OpenResponse\022\022\n\nfileHandle\030\001 \001(\r\022!\n\006st"
-    "atus\030\002 \001(\0132\021.dfsFuse.FSstatus\"c\n\013ReadReq"
-    "uest\022\023\n\013fileHandler\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022"
-    "\016\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001(\0132\023.dfsFuse."
-    "ClientInfo\"Q\n\014ReadResponse\022\020\n\010dataRead\030\001"
-    " \001(\r\022\014\n\004data\030\002 \001(\014\022!\n\006status\030\003 \001(\0132\021.dfs"
-    "Fuse.FSstatus\"r\n\014WriteRequest\022\023\n\013fileHan"
-    "dler\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\016"
-    "\n\006offset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.dfsFuse.C"
-    "lientInfo\"G\n\rWriteResponse\022\023\n\013dataWritte"
-    "n\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstat"
-    "us2\356\002\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.G"
-    "etAttrRequest\032\030.dfsFuse.GetAttrResponse\""
-    "\000\0228\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsF"
-    "use.MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse"
-    ".OpenDirRequest\032\030.dfsFuse.OpenDirRespons"
-    "e\"\000\0225\n\004Open\022\024.dfsFuse.OpenRequest\032\025.dfsF"
-    "use.OpenResponse\"\000\0225\n\004Read\022\024.dfsFuse.Rea"
-    "dRequest\032\025.dfsFuse.ReadResponse\"\000\0228\n\005Wri"
-    "te\022\025.dfsFuse.WriteRequest\032\026.dfsFuse.Writ"
-    "eResponse\"\000b\006proto3", 1779);
+    "atus\030\002 \001(\0132\021.dfsFuse.FSstatus\"b\n\013ReadReq"
+    "uest\022\022\n\nfileHandle\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022\016"
+    "\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001(\0132\023.dfsFuse.C"
+    "lientInfo\"Q\n\014ReadResponse\022\020\n\010dataRead\030\001 "
+    "\001(\005\022\014\n\004data\030\002 \001(\014\022!\n\006status\030\003 \001(\0132\021.dfsF"
+    "use.FSstatus\"q\n\014WriteRequest\022\022\n\nfileHand"
+    "le\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\016\n\006"
+    "offset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.dfsFuse.Cli"
+    "entInfo\"G\n\rWriteResponse\022\023\n\013dataWritten\030"
+    "\001 \001(\005\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus"
+    "2\356\002\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.Get"
+    "AttrRequest\032\030.dfsFuse.GetAttrResponse\"\000\022"
+    "8\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsFus"
+    "e.MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse.O"
+    "penDirRequest\032\030.dfsFuse.OpenDirResponse\""
+    "\000\0225\n\004Open\022\024.dfsFuse.OpenRequest\032\025.dfsFus"
+    "e.OpenResponse\"\000\0225\n\004Read\022\024.dfsFuse.ReadR"
+    "equest\032\025.dfsFuse.ReadResponse\"\000\0228\n\005Write"
+    "\022\025.dfsFuse.WriteRequest\032\026.dfsFuse.WriteR"
+    "esponse\"\000b\006proto3", 1777);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
   FSstatus::default_instance_ = new FSstatus();
@@ -5621,7 +5621,7 @@ void OpenResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ReadRequest::kFileHandlerFieldNumber;
+const int ReadRequest::kFileHandleFieldNumber;
 const int ReadRequest::kSizeFieldNumber;
 const int ReadRequest::kOffsetFieldNumber;
 const int ReadRequest::kInfoFieldNumber;
@@ -5649,7 +5649,7 @@ ReadRequest::ReadRequest(const ReadRequest& from)
 void ReadRequest::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
-  filehandler_ = 0u;
+  filehandle_ = 0u;
   size_ = 0u;
   offset_ = 0u;
   info_ = NULL;
@@ -5709,7 +5709,7 @@ void ReadRequest::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(filehandler_, size_);
+  ZR_(filehandle_, size_);
   offset_ = 0u;
   if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
   info_ = NULL;
@@ -5729,12 +5729,12 @@ bool ReadRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 fileHandler = 1;
+      // optional uint32 fileHandle = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &filehandler_)));
+                 input, &filehandle_)));
 
         } else {
           goto handle_unusual;
@@ -5810,9 +5810,9 @@ failure:
 void ReadRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.ReadRequest)
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->filehandler(), output);
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->filehandle(), output);
   }
 
   // optional uint32 size = 2;
@@ -5837,9 +5837,9 @@ void ReadRequest::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ReadRequest::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ReadRequest)
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->filehandler(), target);
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->filehandle(), target);
   }
 
   // optional uint32 size = 2;
@@ -5867,11 +5867,11 @@ int ReadRequest::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.ReadRequest)
   int total_size = 0;
 
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->filehandler());
+        this->filehandle());
   }
 
   // optional uint32 size = 2;
@@ -5923,8 +5923,8 @@ void ReadRequest::MergeFrom(const ReadRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
-  if (from.filehandler() != 0) {
-    set_filehandler(from.filehandler());
+  if (from.filehandle() != 0) {
+    set_filehandle(from.filehandle());
   }
   if (from.size() != 0) {
     set_size(from.size());
@@ -5961,7 +5961,7 @@ void ReadRequest::Swap(ReadRequest* other) {
   InternalSwap(other);
 }
 void ReadRequest::InternalSwap(ReadRequest* other) {
-  std::swap(filehandler_, other->filehandler_);
+  std::swap(filehandle_, other->filehandle_);
   std::swap(size_, other->size_);
   std::swap(offset_, other->offset_);
   std::swap(info_, other->info_);
@@ -5980,18 +5980,18 @@ void ReadRequest::InternalSwap(ReadRequest* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ReadRequest
 
-// optional uint32 fileHandler = 1;
-void ReadRequest::clear_filehandler() {
-  filehandler_ = 0u;
+// optional uint32 fileHandle = 1;
+void ReadRequest::clear_filehandle() {
+  filehandle_ = 0u;
 }
- ::google::protobuf::uint32 ReadRequest::filehandler() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.fileHandler)
-  return filehandler_;
+ ::google::protobuf::uint32 ReadRequest::filehandle() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ReadRequest.fileHandle)
+  return filehandle_;
 }
- void ReadRequest::set_filehandler(::google::protobuf::uint32 value) {
+ void ReadRequest::set_filehandle(::google::protobuf::uint32 value) {
   
-  filehandler_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.fileHandler)
+  filehandle_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ReadRequest.fileHandle)
 }
 
 // optional uint32 size = 2;
@@ -6093,7 +6093,7 @@ void ReadResponse::SharedCtor() {
     _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  dataread_ = 0u;
+  dataread_ = 0;
   data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   status_ = NULL;
 }
@@ -6137,7 +6137,7 @@ ReadResponse* ReadResponse::New(::google::protobuf::Arena* arena) const {
 
 void ReadResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dfsFuse.ReadResponse)
-  dataread_ = 0u;
+  dataread_ = 0;
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
@@ -6153,11 +6153,11 @@ bool ReadResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 dataRead = 1;
+      // optional int32 dataRead = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &dataread_)));
 
         } else {
@@ -6217,9 +6217,9 @@ failure:
 void ReadResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.ReadResponse)
-  // optional uint32 dataRead = 1;
+  // optional int32 dataRead = 1;
   if (this->dataread() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->dataread(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->dataread(), output);
   }
 
   // optional bytes data = 2;
@@ -6240,9 +6240,9 @@ void ReadResponse::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ReadResponse::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ReadResponse)
-  // optional uint32 dataRead = 1;
+  // optional int32 dataRead = 1;
   if (this->dataread() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->dataread(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->dataread(), target);
   }
 
   // optional bytes data = 2;
@@ -6267,10 +6267,10 @@ int ReadResponse::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.ReadResponse)
   int total_size = 0;
 
-  // optional uint32 dataRead = 1;
+  // optional int32 dataRead = 1;
   if (this->dataread() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->dataread());
   }
 
@@ -6370,15 +6370,15 @@ void ReadResponse::InternalSwap(ReadResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ReadResponse
 
-// optional uint32 dataRead = 1;
+// optional int32 dataRead = 1;
 void ReadResponse::clear_dataread() {
-  dataread_ = 0u;
+  dataread_ = 0;
 }
- ::google::protobuf::uint32 ReadResponse::dataread() const {
+ ::google::protobuf::int32 ReadResponse::dataread() const {
   // @@protoc_insertion_point(field_get:dfsFuse.ReadResponse.dataRead)
   return dataread_;
 }
- void ReadResponse::set_dataread(::google::protobuf::uint32 value) {
+ void ReadResponse::set_dataread(::google::protobuf::int32 value) {
   
   dataread_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.ReadResponse.dataRead)
@@ -6471,7 +6471,7 @@ void ReadResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int WriteRequest::kFileHandlerFieldNumber;
+const int WriteRequest::kFileHandleFieldNumber;
 const int WriteRequest::kDataFieldNumber;
 const int WriteRequest::kSizeFieldNumber;
 const int WriteRequest::kOffsetFieldNumber;
@@ -6501,7 +6501,7 @@ void WriteRequest::SharedCtor() {
     _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  filehandler_ = 0u;
+  filehandle_ = 0u;
   data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   size_ = 0u;
   offset_ = 0u;
@@ -6563,7 +6563,7 @@ void WriteRequest::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(filehandler_, size_);
+  ZR_(filehandle_, size_);
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   offset_ = 0u;
   if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
@@ -6584,12 +6584,12 @@ bool WriteRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 fileHandler = 1;
+      // optional uint32 fileHandle = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &filehandler_)));
+                 input, &filehandle_)));
 
         } else {
           goto handle_unusual;
@@ -6678,9 +6678,9 @@ failure:
 void WriteRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.WriteRequest)
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->filehandler(), output);
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->filehandle(), output);
   }
 
   // optional bytes data = 2;
@@ -6711,9 +6711,9 @@ void WriteRequest::SerializeWithCachedSizes(
 ::google::protobuf::uint8* WriteRequest::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.WriteRequest)
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->filehandler(), target);
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->filehandle(), target);
   }
 
   // optional bytes data = 2;
@@ -6748,11 +6748,11 @@ int WriteRequest::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.WriteRequest)
   int total_size = 0;
 
-  // optional uint32 fileHandler = 1;
-  if (this->filehandler() != 0) {
+  // optional uint32 fileHandle = 1;
+  if (this->filehandle() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->filehandler());
+        this->filehandle());
   }
 
   // optional bytes data = 2;
@@ -6811,8 +6811,8 @@ void WriteRequest::MergeFrom(const WriteRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
-  if (from.filehandler() != 0) {
-    set_filehandler(from.filehandler());
+  if (from.filehandle() != 0) {
+    set_filehandle(from.filehandle());
   }
   if (from.data().size() > 0) {
 
@@ -6853,7 +6853,7 @@ void WriteRequest::Swap(WriteRequest* other) {
   InternalSwap(other);
 }
 void WriteRequest::InternalSwap(WriteRequest* other) {
-  std::swap(filehandler_, other->filehandler_);
+  std::swap(filehandle_, other->filehandle_);
   data_.Swap(&other->data_);
   std::swap(size_, other->size_);
   std::swap(offset_, other->offset_);
@@ -6873,18 +6873,18 @@ void WriteRequest::InternalSwap(WriteRequest* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // WriteRequest
 
-// optional uint32 fileHandler = 1;
-void WriteRequest::clear_filehandler() {
-  filehandler_ = 0u;
+// optional uint32 fileHandle = 1;
+void WriteRequest::clear_filehandle() {
+  filehandle_ = 0u;
 }
- ::google::protobuf::uint32 WriteRequest::filehandler() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.fileHandler)
-  return filehandler_;
+ ::google::protobuf::uint32 WriteRequest::filehandle() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.WriteRequest.fileHandle)
+  return filehandle_;
 }
- void WriteRequest::set_filehandler(::google::protobuf::uint32 value) {
+ void WriteRequest::set_filehandle(::google::protobuf::uint32 value) {
   
-  filehandler_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.fileHandler)
+  filehandle_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.WriteRequest.fileHandle)
 }
 
 // optional bytes data = 2;
@@ -7028,7 +7028,7 @@ WriteResponse::WriteResponse(const WriteResponse& from)
 void WriteResponse::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
-  datawritten_ = 0u;
+  datawritten_ = 0;
   status_ = NULL;
 }
 
@@ -7070,7 +7070,7 @@ WriteResponse* WriteResponse::New(::google::protobuf::Arena* arena) const {
 
 void WriteResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dfsFuse.WriteResponse)
-  datawritten_ = 0u;
+  datawritten_ = 0;
   if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
   status_ = NULL;
 }
@@ -7085,11 +7085,11 @@ bool WriteResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 dataWritten = 1;
+      // optional int32 dataWritten = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &datawritten_)));
 
         } else {
@@ -7136,9 +7136,9 @@ failure:
 void WriteResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.WriteResponse)
-  // optional uint32 dataWritten = 1;
+  // optional int32 dataWritten = 1;
   if (this->datawritten() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->datawritten(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->datawritten(), output);
   }
 
   // optional .dfsFuse.FSstatus status = 2;
@@ -7153,9 +7153,9 @@ void WriteResponse::SerializeWithCachedSizes(
 ::google::protobuf::uint8* WriteResponse::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.WriteResponse)
-  // optional uint32 dataWritten = 1;
+  // optional int32 dataWritten = 1;
   if (this->datawritten() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->datawritten(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->datawritten(), target);
   }
 
   // optional .dfsFuse.FSstatus status = 2;
@@ -7173,10 +7173,10 @@ int WriteResponse::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.WriteResponse)
   int total_size = 0;
 
-  // optional uint32 dataWritten = 1;
+  // optional int32 dataWritten = 1;
   if (this->datawritten() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->datawritten());
   }
 
@@ -7264,15 +7264,15 @@ void WriteResponse::InternalSwap(WriteResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // WriteResponse
 
-// optional uint32 dataWritten = 1;
+// optional int32 dataWritten = 1;
 void WriteResponse::clear_datawritten() {
-  datawritten_ = 0u;
+  datawritten_ = 0;
 }
- ::google::protobuf::uint32 WriteResponse::datawritten() const {
+ ::google::protobuf::int32 WriteResponse::datawritten() const {
   // @@protoc_insertion_point(field_get:dfsFuse.WriteResponse.dataWritten)
   return datawritten_;
 }
- void WriteResponse::set_datawritten(::google::protobuf::uint32 value) {
+ void WriteResponse::set_datawritten(::google::protobuf::int32 value) {
   
   datawritten_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.WriteResponse.dataWritten)

@@ -170,17 +170,18 @@ int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
     AbsPath( fullPath, path );
 
     printf( "getattr(%s)\n", fullPath );
- 	OpenClient client( grpc::CreateChannel(
+
+    // RPC request prep
+    OpenClient client( grpc::CreateChannel(
                   	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	OpenRequest request;
 	request.set_name( fullPath );
     request.set_flags( fileInfo->flags );
 
+    // RPC call
   	OpenResponse response = client.Open( request );
 
     fileInfo->fh = response.filehandle();
-
-    // fileInfo->fh = open(fullPath, fileInfo->flags);
 
     printf( "client (path=%s, fileHandle=%d, flags=%d)\n",
             fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
@@ -188,19 +189,54 @@ int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
 }
 
 int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
-        printf("read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n", path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
-	int bytesRead = pread(fileInfo->fh, buf, size, offset);
-	if (bytesRead < 0)
-		return -errno;
-        return bytesRead;
+
+    printf( "read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+            path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
+
+
+    // RPC request prep
+    ReadClient client( grpc::CreateChannel(
+                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	ReadRequest request;
+
+	request.set_filehandle( fileInfo->fh );
+    request.set_size( size );
+    request.set_offset( offset );
+
+    // RPC call
+    ReadResponse response = client.Read( request );
+
+    int byteRead = response.dataread();
+    if ( byteRead > 0 )
+        memcpy( buf, response.data().c_str(), byteRead );
+
+    return byteRead;
 }
 
 int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
-        printf("write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n", path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
-	int bytesWritten= pwrite(fileInfo->fh, buf, size, offset);
-        if (bytesWritten < 0)
-                return -errno;
-        return bytesWritten;
+
+
+
+    printf( "write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+            path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
+
+
+    // RPC request prep
+    WriteClient client( grpc::CreateChannel(
+                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	WriteRequest request;
+
+	request.set_filehandle( fileInfo->fh );
+    request.data().copy( (char*) buf, 0, size );
+    request.set_size( size );
+    request.set_offset( offset );
+
+    // RPC call
+    WriteResponse response = client.Write( request );
+
+    int bytesWritten = response.datawritten();
+
+    return bytesWritten;
 }
 
 int DSFS::Statfs(const char *path, struct statvfs *statInfo) {
