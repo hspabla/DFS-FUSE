@@ -33,6 +33,14 @@ using dfsFuse::MkdirResponse;
 using dfsFuse::OpenDirRequest;
 using dfsFuse::DirEntry;
 using dfsFuse::OpenDirResponse;
+using dfsFuse::OpenRequest;
+using dfsFuse::OpenResponse;
+using dfsFuse::ReadRequest;
+using dfsFuse::ReadResponse;
+using dfsFuse::WriteRequest;
+using dfsFuse::WriteResponse;
+
+
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -43,6 +51,15 @@ class FileSystemImpl final : public FileSystem::Service {
 				MkdirResponse* reply ) override;
 
   Status Opendir( ServerContext* context, const OpenDirRequest* request,
-				OpenDirResponse* reply ) override;
+				  OpenDirResponse* reply ) override;
+
+  Status Open( ServerContext* context, const OpenRequest* request,
+               OpenResponse* reply ) override;
+
+  Status Read( ServerContext* context, const ReadRequest* request,
+               ReadResponse* reply ) override;
+
+  Status Write( ServerContext* context, const WriteRequest* request,
+                WriteResponse* reply ) override;
 
 };

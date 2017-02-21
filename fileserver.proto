@@ -13,7 +13,8 @@ service FileSystem {
 
     // File handling
     rpc Open( OpenRequest ) returns ( OpenResponse ) {}
-    rpc Create( CreateRequest ) returns ( CreateResponse ) {}
+    rpc Read( ReadRequest ) returns ( ReadResponse ) {}
+    rpc Write( WriteRequest ) returns ( WriteResponse ) {}
 }
 
 message FSstatus {
@@ -95,10 +96,6 @@ message OpenDirResponse {
 
 // File handling
 
-message File {
-    bytes data = 1;
-}
-
 message OpenRequest {
     string name = 1;
     uint32 flags = 2;
@@ -106,19 +103,32 @@ message OpenRequest {
 }
 
 message OpenResponse {
-    File file = 1;
+    uint32 fileHandle = 1;
     FSstatus status = 2;
 }
 
-message CreateRequest {
-    string name = 1;
-    uint32 flags = 2;
-    uint32 mode = 3;
+message ReadRequest {
+    uint32 fileHandler = 1;
+    uint32 size = 2;
+    uint32 offset = 3;
     ClientInfo info = 4;
 }
 
-message CreateResponse {
-    File file = 1;
+message ReadResponse {
+    uint32 dataRead = 1;
+    bytes data = 2;
+    FSstatus status = 3;
+}
+
+message WriteRequest {
+    uint32 fileHandler = 1;
+    bytes data = 2;
+    uint32 size = 3;
+    uint32 offset = 4;
+    ClientInfo info = 5;
+}
+
+message WriteResponse {
+    uint32 dataWritten = 1;
     FSstatus status = 2;
-    ClientInfo info = 3;
 }

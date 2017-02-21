@@ -32,19 +32,19 @@ void DSFS::setRootDir(const char *mountPath, const char *path) {
 }
 
 int DSFS::Getattr(const char *path, struct stat *statbuf) {
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        printf("getattr(%s)\n", fullPath);
- 	GetAttrClient client(grpc::CreateChannel(
-      		"localhost:50051", grpc::InsecureChannelCredentials()));
+    char fullPath[ PATH_MAX ];
+    AbsPath( fullPath, path );
+    printf( "getattr(%s)\n", fullPath );
+ 	GetAttrClient client( grpc::CreateChannel(
+                  		  "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	GetAttrRequest request;
-	request.set_name(fullPath);
+	request.set_name( fullPath );
   	GetAttrResponse response = client.GetAttr(request);
 	Attr attributes = response.attr();
-	
-  	//std::cout << "received: " << response << std::endl;	
+
+  	//std::cout << "received: " << response << std::endl;
 	printf("Reached here: %d\n", attributes.dev());
-        return RETURN_ERRNO(lstat(fullPath, statbuf));
+    return RETURN_ERRNO(lstat(fullPath, statbuf));
 }
 
 int DSFS::Readlink(const char *path, char *link, size_t size) {
@@ -160,7 +160,7 @@ int DSFS::Access(const char *path, int mask)
 {
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        
+
         printf("access(path=%s)\n", fullPath);
 	return RETURN_ERRNO(access(fullPath, mask));
 }
@@ -178,7 +178,7 @@ int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fu
 	int bytesRead = pread(fileInfo->fh, buf, size, offset);
 	if (bytesRead < 0)
 		return -errno;
-        return bytesRead; 
+        return bytesRead;
 }
 
 int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
