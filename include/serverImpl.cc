@@ -24,16 +24,33 @@ Status FileSystemImpl::GetAttr( ServerContext* context,
                                  GetAttrResponse* reply ) {
 	struct stat statbuf;
   	std::string path = request->name();
-	int retstat = stat(path.c_str(), &statbuf);
-	Attr attributes;
-	FSstatus status;
+	int retstat = lstat(path.c_str(), &statbuf);
+
+	//Populate the response
+	Owner owner;
+	owner.set_uid(statbuf.st_uid);
+	owner.set_gid(statbuf.st_gid);
+
+        FSstatus status;
 	status.set_retcode(retstat);
+
+        Attr attributes;
  	attributes.set_dev(statbuf.st_dev);
-	//attributes
+	attributes.set_ino(statbuf.st_ino);
+	attributes.set_mode(statbuf.st_mode);
+	attributes.set_st_nlink(statbuf.st_nlink);
+	attributes.mutable_owner()->CopyFrom(owner);
+	attributes.set_rdev(statbuf.st_rdev);
+	attributes.set_size(statbuf.st_size);
+	attributes.set_blksize(statbuf.st_blksize);
+	attributes.set_blocks(statbuf.st_blocks);
+	attributes.set_atime(statbuf.st_atime);
+	attributes.set_mtime(statbuf.st_mtime);
+	attributes.set_ctime(statbuf.st_ctime);
+
 	reply->mutable_attr()->CopyFrom(attributes);
 	reply->mutable_status()->CopyFrom(status);
-    	printf("GRPC call successful\n");
-    	return Status::OK;
+	return Status::OK;
 }
 
 Status FileSystemImpl::Mkdir( ServerContext* context,
@@ -41,13 +58,34 @@ Status FileSystemImpl::Mkdir( ServerContext* context,
 				              MkdirResponse* reply ) {
 
 	// Mkdir implementation
-	return Status::OK;
+	std::string path = request->name();
+	int retstat = mkdir(path.c_str(), request->mode());
+
+	//Populate the response
+	FSstatus status;
+        status.set_retcode(retstat);
+	reply->mutable_status()->CopyFrom(status);
+	return Status::OK; 
 }
 
 Status FileSystemImpl::Opendir( ServerContext* context,
                                 const OpenDirRequest* request,
 				                OpenDirResponse* reply ) {
 	// openDir impementation
+ 	std::string path = request->name();
+	DIR *dp;
+        struct dirent *de;
+
+        dp = opendir(path.c_str());
+
+        FSstatus status;
+	if (dp == NULL) 
+		status.set_retcode(-1);
+
+ 	//while ((de = readdir(dp)) != NULL) {
+			
+		
+ //	int retstat = mkdir(path.c_str(), request->mode());		
 	return Status::OK;
 }
 

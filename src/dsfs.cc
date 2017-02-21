@@ -38,13 +38,33 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
  	GetAttrClient client(grpc::CreateChannel(
       		"localhost:50051", grpc::InsecureChannelCredentials()));
 	GetAttrRequest request;
+	GetAttrResponse response;
 	request.set_name(fullPath);
-  	GetAttrResponse response = client.GetAttr(request);
-	Attr attributes = response.attr();
-	
-  	//std::cout << "received: " << response << std::endl;	
-	printf("Reached here: %d\n", attributes.dev());
-        return RETURN_ERRNO(lstat(fullPath, statbuf));
+	try {
+           response = client.GetAttr(request);
+	   Attr attributes = response.attr();
+	   FSstatus status = response.status();
+	   if (status.retcode() == 0) {
+		statbuf->st_dev = attributes.dev();
+		statbuf->st_ino = attributes.ino();
+		statbuf->st_mode = attributes.mode();
+		statbuf->st_nlink = attributes.st_nlink();
+		Owner owner = attributes.owner();
+		statbuf->st_uid = owner.uid();
+		statbuf->st_gid = owner.gid();
+		statbuf->st_rdev = attributes.rdev();
+		statbuf->st_size = attributes.size();
+		statbuf->st_blksize = attributes.blksize();
+		statbuf->st_blocks = attributes.blocks();
+		statbuf->st_atime = attributes.atime();
+		statbuf->st_mtime = attributes.mtime();
+		statbuf->st_ctime = attributes.ctime();
+		return 0;
+	   } else
+		throw status.retcode();
+	} catch (int errorCode) {
+		return -errno;
+	}
 }
 
 int DSFS::Readlink(const char *path, char *link, size_t size) {
@@ -254,11 +274,7 @@ int DSFS::Removexattr(const char *path, const char *name) {
 
 int DSFS::Opendir(const char *path, struct fuse_file_info *fileInfo) {
         printf("opendir(path=%s)\n", path);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        DIR *dir = opendir(fullPath);
-        fileInfo->fh = (uint64_t)dir;
-        return NULL == dir ? -errno : 0;
+	return 0;
 }
 
 int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fileInfo)
