@@ -25,13 +25,13 @@ using dfsFuse::OpenDirResponse;
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
-  Status GetAttr( ServerContext* context, const struct GetAttrRequest* request,
-                  struct GetAttrResponse* reply ) override;
+  Status GetAttr( ServerContext* context, const GetAttrRequest* request,
+                  GetAttrResponse* reply ) override;
 
-  Status Mkdir( ServerContext* context, const struct MkdirRequest* request,
-				struct MkdirResponse* reply ) override;
+  Status Mkdir( ServerContext* context, const MkdirRequest* request,
+				MkdirResponse* reply ) override;
 
-  Status Opendir( ServerContext* context, const struct OpenDirRequest* request,
-				struct OpenDirResponse* reply ) override;
+  Status Opendir( ServerContext* context, const OpenDirRequest* request,
+				OpenDirResponse* reply ) override;
 
 };

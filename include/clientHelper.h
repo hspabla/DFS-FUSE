@@ -26,7 +26,7 @@ class GetAttrClient {
  public:
   GetAttrClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
-  struct GetAttrResponse GetAttr( const struct GetAttrRequest & request );
+  GetAttrResponse GetAttr( const GetAttrRequest& request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;
@@ -37,17 +37,17 @@ class MkdirClient {
  public:
   MkdirClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
-  struct MkdirResponse Mkdir( const struct MkdirRequest & request );
+  MkdirResponse Mkdir( const MkdirRequest& request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;
 };
 
-class OpendirClient {
+class OpenDirClient {
  public:
-  OpendirClient( std::shared_ptr<Channel> channel )
+  OpenDirClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
-  struct OpendirResponse Opendir( const struct OpendirRequest & request );
+  OpenDirResponse Opendir( const OpenDirRequest & request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;

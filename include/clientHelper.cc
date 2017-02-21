@@ -18,9 +18,8 @@ using dfsFuse::DirEntry;
 using dfsFuse::OpenDirResponse;
 
 
-struct GetAttrResponse GetAttrClient::GetAttr(
-                                            const struct GetAttrRequest & request ) {
-  struct GetAttrResponse reply;
+GetAttrResponse GetAttrClient::GetAttr(const GetAttrRequest & request ) {
+  GetAttrResponse reply;
   ClientContext context;
 
   grpc::Status status = stub_->GetAttr( &context, request, &reply );
@@ -34,8 +33,8 @@ struct GetAttrResponse GetAttrClient::GetAttr(
   }
 }
 
-struct MkdirResponse MkdirClient::Mkdir( const struct MkdirRequest & request ) {
-  struct MkdirResponse reply;
+MkdirResponse MkdirClient::Mkdir( const MkdirRequest & request ) {
+  MkdirResponse reply;
   ClientContext context;
 
   grpc::Status status = stub_->Mkdir( &context, request, &reply );
@@ -49,8 +48,8 @@ struct MkdirResponse MkdirClient::Mkdir( const struct MkdirRequest & request ) {
   }
 }
 
-struct OpendirResponse OpendirClient::Opendir( const struct OpendirRequest & request ) {
-  struct OpendirResponse reply;
+OpenDirResponse OpenDirClient::Opendir( const OpenDirRequest & request ) {
+  OpenDirResponse reply;
   ClientContext context;
 
   grpc::Status status = stub_->Opendir( &context, request, &reply );

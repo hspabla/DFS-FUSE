@@ -1,4 +1,5 @@
 #include "../include/dsfs.hh"
+#include "../include/clientHelper.h"
 
 DSFS* DSFS::_instance = NULL;
 
@@ -34,6 +35,13 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
         printf("getattr(%s)\n", fullPath);
+/* 	GetAttrClient client(grpc::CreateChannel(
+      		"localhost:50051", grpc::InsecureChannelCredentials()));
+	GetAttrRequest request;
+	request.set_name(path);
+  	GetAttrResponse response = client.GetAttr(request);*/
+  	//std::cout << "received: " << response << std::endl;	
+	printf("Reached here\n");
         return RETURN_ERRNO(lstat(fullPath, statbuf));
 }
 
@@ -59,6 +67,7 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
        			return RETURN_ERRNO(mkfifo(fullPath, mode));
    		else
        			return RETURN_ERRNO(mknod(fullPath, mode, dev));
+	return 0;
 }
 
 /*

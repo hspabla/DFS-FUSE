@@ -20,8 +20,8 @@ using dfsFuse::OpenDirResponse;
 
 
 Status FileSystemImpl::GetAttr( ServerContext* context,
-                                 const struct GetAttrRequest* request,
-                                 struct GetAttrResponse* reply ) {
+                                 const GetAttrRequest* request,
+                                 GetAttrResponse* reply ) {
 	// implement get Attr based on request
 	//std::string prefix("Hello ");
     //reply->set_message(prefix + request->name());
@@ -29,16 +29,16 @@ Status FileSystemImpl::GetAttr( ServerContext* context,
 }
 
 Status FileSystemImpl::Mkdir( ServerContext* context,
-                              const struct MkdirRequest* request,
-				              struct MkdirResponse* reply ) {
+                              const MkdirRequest* request,
+				              MkdirResponse* reply ) {
 
 	// Mkdir implementation
 	return Status::OK;
 }
 
 Status FileSystemImpl::Opendir( ServerContext* context,
-                                const struct OpenDirRequest* request,
-				                struct OpenDirResponse* reply ) {
+                                const OpenDirRequest* request,
+				                OpenDirResponse* reply ) {
 	// openDir impementation
 	return Status::OK;
 }
