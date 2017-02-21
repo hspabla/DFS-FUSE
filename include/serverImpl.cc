@@ -35,7 +35,8 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 Status FileSystemImpl::Open( ServerContext* context,
                              const OpenRequest* request,
 				             OpenResponse* reply ) {
-
+    int fileHandle = open( request->name().c_str(), request->flags() );
+    reply->set_filehandle( fileHandle );
 	return Status::OK;
 }
 
