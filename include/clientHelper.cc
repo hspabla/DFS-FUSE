@@ -1,23 +1,5 @@
 #include "clientHelper.h"
 
-using grpc::Channel;
-using grpc::ClientContext;
-using grpc::Status;
-
-using dfsFuse::FileSystem;
-using dfsFuse::FSstatus;
-using dfsFuse::Owner;
-using dfsFuse::ClientInfo;
-using dfsFuse::Attr;
-using dfsFuse::GetAttrRequest;
-using dfsFuse::GetAttrResponse;
-using dfsFuse::MkdirRequest;
-using dfsFuse::MkdirResponse;
-using dfsFuse::OpenDirRequest;
-using dfsFuse::DirEntry;
-using dfsFuse::OpenDirResponse;
-
-
 GetAttrResponse GetAttrClient::GetAttr(const GetAttrRequest & request ) {
   GetAttrResponse reply;
   ClientContext context;
@@ -64,3 +46,49 @@ OpenDirResponse OpenDirClient::Opendir( const OpenDirRequest & request ) {
 }
 
 
+OpenResponse OpenClient::Open( const OpenRequest & request ) {
+  OpenResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Open( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}
+
+
+ReadResponse ReadClient::Read( const ReadRequest & request ) {
+  ReadResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Read( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}
+
+
+WriteResponse WriteClient::Write( const WriteRequest & request ) {
+  WriteResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Write( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}

@@ -21,6 +21,12 @@ using dfsFuse::MkdirResponse;
 using dfsFuse::OpenDirRequest;
 using dfsFuse::DirEntry;
 using dfsFuse::OpenDirResponse;
+using dfsFuse::OpenRequest;
+using dfsFuse::OpenResponse;
+using dfsFuse::ReadRequest;
+using dfsFuse::ReadResponse;
+using dfsFuse::WriteRequest;
+using dfsFuse::WriteResponse;
 
 class GetAttrClient {
  public:
@@ -54,4 +60,35 @@ class OpenDirClient {
 };
 
 
+class OpenClient {
+ public:
+  OpenClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  OpenResponse Open( const OpenRequest & request );
 
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+
+class ReadClient {
+ public:
+  ReadClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  ReadResponse Read( const ReadRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+
+
+class WriteClient {
+ public:
+  WriteClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  WriteResponse Write( const WriteRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
