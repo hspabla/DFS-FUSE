@@ -78,30 +78,6 @@ int DSFS::Readlink(const char *path, char *link, size_t size) {
         return RETURN_ERRNO(readlink(fullPath, link, size));
 }
 
-/*int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
-        char fullPath[PATH_MAX];int retstat;
-        AbsPath(fullPath, path);
-        printf("mknod(path=%s, mode=%d)\n", fullPath, mode);
-
-    	if (S_ISREG(mode)) {
-   		retstat = open(fullPath, O_CREAT | O_EXCL | O_WRONLY, mode);
-		printf("file created %d\n", retstat);
-   		if (retstat >= 0)
-       			return RETURN_ERRNO(close(retstat));
-    	} else
-   		if (S_ISFIFO(mode))
-       			return RETURN_ERRNO(mkfifo(fullPath, mode));
-   		else
-		int ret = mknod(fullPath, mode, dev);
-
-	
-        printf("mknod(path=%s, mode=%d, retstat=%d)\n", fullPath, mode, retstat);
-		printf("Return status mknod:%d\n", ret);
-       			return RETURN_ERRNO(ret);
-	return 0;
-}*/
-
-
 int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
         printf("mknod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
@@ -161,29 +137,12 @@ int DSFS::Rmdir(const char *path) {
         return RETURN_ERRNO(rmdir(fullPath));
 }
 
-int DSFS::Symlink(const char *path, const char *link) {
-        printf("symlink(path=%s, link=%s)\n", path, link);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(symlink(fullPath, link));
-}
-
-
 int DSFS::Rename(const char *path, const char *newpath) {
         printf("rename(path=%s, newPath=%s)\n", path, newpath);
         char fullPath[PATH_MAX], newFullPath[PATH_MAX];
         AbsPath(fullPath, path);
 	AbsPath(newFullPath, newpath);
         return RETURN_ERRNO(rename(fullPath, newFullPath));
-}
-
-int DSFS::Link(const char *path, const char *newpath) {
-        printf("link(path=%s, newPath=%s)\n", path, newpath);
-        char fullPath[PATH_MAX];
-        char fullNewPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        AbsPath(fullNewPath, newpath);
-        return RETURN_ERRNO(link(fullPath, fullNewPath));
 }
 
 int DSFS::Chmod(const char *path, mode_t mode) {
@@ -207,13 +166,6 @@ int DSFS::Truncate(const char *path, off_t newSize) {
         return RETURN_ERRNO(truncate(fullPath, newSize));
 }
 
-int DSFS::Utime(const char *path, struct utimbuf *ubuf) {
-        printf("utime(path=%s)\n", path);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(utime(fullPath, ubuf));
-}
-
 int DSFS::Access(const char *path, int mask)
 {
         char fullPath[PATH_MAX];
@@ -224,91 +176,72 @@ int DSFS::Access(const char *path, int mask)
 }
 
 int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
-    char fullPath[ PATH_MAX ];
-    AbsPath( fullPath, path );
+	char fullPath[ PATH_MAX ];
+	AbsPath( fullPath, path );
 
-    printf( "getattr(%s)\n", fullPath );
-
-    // RPC request prep
-    OpenClient client( grpc::CreateChannel(
-                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	// RPC request prep
+	OpenClient client( grpc::CreateChannel(
+			   "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	OpenRequest request;
 	request.set_name( fullPath );
-    request.set_flags( fileInfo->flags );
+	request.set_flags( fileInfo->flags );
 
-    // RPC call
-  	OpenResponse response = client.Open( request );
+	// RPC call
+	OpenResponse response = client.Open( request );
+	fileInfo->fh = response.filehandle();
 
-    fileInfo->fh = response.filehandle();
-
-    printf( "client (path=%s, fileHandle=%d, flags=%d)\n",
-            fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
-    return 0;
+	printf( "open (path=%s, fileHandle=%d, flags=%d)\n",
+	    fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
+	return 0;
 }
 
 int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
 
-    printf( "read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
-            path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
+	printf( "read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+	    path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
 
-    // RPC request prep
-    ReadClient client( grpc::CreateChannel(
-                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	// RPC request prep
+	ReadClient client( grpc::CreateChannel(
+			   "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	ReadRequest request;
 
 	request.set_filehandle( fileInfo->fh );
-    request.set_size( size );
-    request.set_offset( offset );
+	request.set_size( size );
+	request.set_offset( offset );
 
-    // RPC call
-    ReadResponse response = client.Read( request );
+	// RPC call
+	ReadResponse response = client.Read( request );
 
-    int byteRead = response.dataread();
-    if ( byteRead > 0 )
-        memcpy( buf, response.data().c_str(), byteRead );
+	int byteRead = response.dataread();
+	if ( byteRead > 0 )
+		memcpy( buf, response.data().c_str(), byteRead );
 
-    return byteRead;
+	return byteRead;
 }
 
 int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
 
+	printf( "write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+	    path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
-
-    printf( "write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
-            path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
-
-
-    std::string data( buf, size );
-    // RPC request prep
-    WriteClient client( grpc::CreateChannel(
-                  	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	std::string data( buf, size );
+	
+	// RPC request prep
+	WriteClient client( grpc::CreateChannel(
+			   "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	WriteRequest request;
 
 	request.set_filehandle( fileInfo->fh );
-    request.set_data( data );
-    request.set_size( size );
-    request.set_offset( offset );
+	request.set_data( data );
+	request.set_size( size );
+	request.set_offset( offset );
 
-    // RPC call
-    WriteResponse response = client.Write( request );
+	// RPC call
+	WriteResponse response = client.Write( request );
+	int bytesWritten = response.datawritten();
 
-    int bytesWritten = response.datawritten();
-
-    return bytesWritten;
-}
-
-int DSFS::Statfs(const char *path, struct statvfs *statInfo) {
-        printf("statfs(path=%s)\n", path);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(statvfs(fullPath, statInfo));
-}
-
-int DSFS::Flush(const char *path, struct fuse_file_info *fileInfo) {
-        printf("flush(path=%s)\n", path);
-        //noop because we don't maintain our own buffers
-        return 0;
+	return bytesWritten;
 }
 
 int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
@@ -322,47 +255,26 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         return RETURN_ERRNO(fsync(fi->fh));
 }
 
+//Extended attributes not implemented for RPC calls.
+
 int DSFS::Setxattr(const char *path, const char *name, const char *value, size_t size, int flags) {
         printf("setxattr(path=%s, name=%s, value=%s, size=%d, flags=%d\n",
                 path, name, value, (int)size, flags);
-        /*char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(lsetxattr(fullPath, name, value, size, flags));*/
 	return 0;
 }
 
 int DSFS::Getxattr(const char *path, const char *name, char *value, size_t size) {
         printf("getxattr(path=%s, name=%s, size=%d\n", path, name, (int)size);
-	/*
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(getxattr(fullPath, name, value, size));
-	*/
 	return 0;
 }
 
 int DSFS::Listxattr(const char *path, char *list, size_t size) {
         printf("listxattr(path=%s, size=%d)\n", path, (int)size);
-	/*
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(llistxattr(fullPath, list, size));
-	*/
 	return 0;
 }
 
 int DSFS::Removexattr(const char *path, const char *name) {
         printf("removexattry(path=%s, name=%s)\n", path, name);
-	/*
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(lremovexattr(fullPath, name));
-	*/
-	return 0;
-}
-
-int DSFS::Opendir(const char *path, struct fuse_file_info *fileInfo) {
-        printf("opendir(path=%s)\n", path);
 	return 0;
 }
 
@@ -402,10 +314,6 @@ int DSFS::Releasedir(const char *path, struct fuse_file_info *fileInfo) {
         return 0;
 }
 
-int DSFS::Fsyncdir(const char *path, int datasync, struct fuse_file_info *fileInfo) {
-        return 0;
-}
-
 int DSFS::Init(struct fuse_conn_info *conn) {
 	log_msg("\ndsfs_init()\n");
 
@@ -414,9 +322,8 @@ int DSFS::Init(struct fuse_conn_info *conn) {
         return 0;
 }
 
-int DSFS::Truncate(const char *path, off_t offset, struct fuse_file_info *fileInfo) {
-        printf("truncate(path=%s, offset=%d)\n", path, (int)offset);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(ftruncate(fileInfo->fh, offset));
-}
+/*int DSFS::Flush(const char *path, struct fuse_file_info *fileInfo) {
+        printf("flush(path=%s)\n", path);
+        //noop because we don't maintain our own buffers
+        return 0;
+}*/

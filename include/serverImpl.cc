@@ -96,8 +96,11 @@ Status FileSystemImpl::Mknod( ServerContext* context, const MknodRequest* reques
 Status FileSystemImpl::Open( ServerContext* context,
                              const OpenRequest* request,
 				             OpenResponse* reply ) {
-    int fileHandle = open( request->name().c_str(), request->flags() );
-    reply->set_filehandle( fileHandle );
+        int fileHandle = open( request->name().c_str(), request->flags() );
+        FSstatus status;
+        status.set_retcode( fileHandle > 0 ? 0 : -errno);
+        reply->set_filehandle( fileHandle );
+	reply->mutable_status()->CopyFrom(status);
 	return Status::OK;
 }
 
@@ -105,17 +108,21 @@ Status FileSystemImpl::Read( ServerContext* context,
                              const ReadRequest* request,
 				             ReadResponse* reply ) {
 
-    char* buf = new char [ request->size() ];
-    int byteRead = pread( request->filehandle(), buf,
+    	char* buf = new char [ request->size() ];
+    	int byteRead = pread( request->filehandle(), buf,
                           request->size(), request->offset() );
-    if ( byteRead < 0 ){
-        // set error
-    } else {
-        reply->set_data( buf, byteRead );
-    }
-    reply->set_dataread( byteRead );
 
-    delete buf;
+	FSstatus status;
+    	if ( byteRead < 0 ){
+		status.set_retcode(-errno);
+    	} else {
+		status.set_retcode(0);
+        	reply->set_data( buf, byteRead );
+		reply->set_dataread( byteRead );
+    	}
+	reply->mutable_status()->CopyFrom(status);
+
+    	delete buf;
 	return Status::OK;
 }
 
@@ -123,20 +130,23 @@ Status FileSystemImpl::Write( ServerContext* context,
                               const WriteRequest* request,
 				              WriteResponse* reply ) {
 
-    char *buf = new char[ request->size() ];
-    memcpy( buf, request->data().c_str(), request->size() );
+    	char *buf = new char[ request->size() ];
+    	memcpy( buf, request->data().c_str(), request->size() );
 
-    int bytesWritten = pwrite( request->filehandle(), buf,
+    	int bytesWritten = pwrite( request->filehandle(), buf,
                                request->size(),
                                request->offset() );
 
-    if ( bytesWritten < 0 ) {
-        // set error code
-    } else {
-       reply->set_datawritten( bytesWritten );
-    }
+        FSstatus status;
+	if ( bytesWritten < 0 ) {
+		status.set_retcode(-errno);
+	} else {
+		status.set_retcode(0);
+		reply->set_datawritten( bytesWritten );
+	}
+	reply->mutable_status()->CopyFrom(status);
 
-    delete buf;
-    return Status::OK;
+        delete buf;
+        return Status::OK;
 }
 
