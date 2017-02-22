@@ -41,17 +41,17 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 	GetAttrResponse response;
 	request.set_name(fullPath);
 	try {
-           response = client.GetAttr(request);
+       response = client.GetAttr(request);
 	   Attr attributes = response.attr();
 	   FSstatus status = response.status();
-           statbuf->st_dev = attributes.dev();
+       statbuf->st_dev = attributes.dev();
 	   statbuf->st_ino = attributes.ino();
 	   statbuf->st_mode = attributes.mode();
 	   statbuf->st_nlink = attributes.nlink();
 	   Owner owner = attributes.owner();
 	   statbuf->st_uid = owner.uid();
-           statbuf->st_gid = owner.gid();
-           statbuf->st_rdev = attributes.rdev();
+       statbuf->st_gid = owner.gid();
+       statbuf->st_rdev = attributes.rdev();
 	   statbuf->st_size = attributes.size();
 	   statbuf->st_blksize = attributes.blksize();
 	   statbuf->st_blocks = attributes.blocks();
@@ -279,13 +279,14 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
             path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
 
+    std::string data( buf, size );
     // RPC request prep
     WriteClient client( grpc::CreateChannel(
                   	   "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	WriteRequest request;
 
 	request.set_filehandle( fileInfo->fh );
-    request.data().copy( (char*) buf, 0, size );
+    request.set_data( data );
     request.set_size( size );
     request.set_offset( offset );
 
