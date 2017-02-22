@@ -15,7 +15,7 @@ FILE *LOGFILE;
 
 FILE *log_open()
 {
-    LOGFILE = fopen("dsfs.log", "w");
+    LOGFILE = fopen("log/dsfs.log","w");
     if (LOGFILE == NULL) {
 	perror("logfile");
 	exit(EXIT_FAILURE);

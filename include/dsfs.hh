@@ -36,7 +36,7 @@ public:
 	DSFS();
 	~DSFS();
 
-        void setRootDir(const char *mountPath, const char *path);
+        void setRootDir(const char *path);
 
         int Getattr(const char *path, struct stat *statbuf);
         int Mknod(const char *path, mode_t mode, dev_t dev);

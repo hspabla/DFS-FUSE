@@ -10,23 +10,32 @@ LINKFLAGS = -Wall `pkg-config fuse --libs`
 //           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
 //           -lprotobuf -lpthread -ldl -Wall `pkg-config fuse`
 
-all: client server 
+all: log proto client server 
 
 client: bin/client
 
 server: bin/server
 
 clean:
-	rm -rf bin obj dsfs.log
+	rm -rf bin obj log lib
 
 bin:
 	mkdir -p bin
 
-bin/client: bin obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o
-	$(CXX) -o bin/client obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o -g $(LINKFLAGS) $(LDFLAGS)
+log:
+	mkdir -p log
+
+lib: 
+	mkdir -p lib
 
 obj:
 	mkdir -p obj
+
+proto: lib 
+	protoc fileserver.proto --grpc_out=lib/ --plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin ; protoc fileserver.proto --cpp_out=lib/
+
+bin/client: bin obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o
+	$(CXX) -o bin/client obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o -g $(LINKFLAGS) $(LDFLAGS)
 
 obj/log.o: obj src/log.cc include/log.hh include/wrap.hh
 	$(CXX) -g -std=c++11 $(CFLAGS) -c src/log.cc -o obj/log.o

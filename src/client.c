@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 
 	printf("mounting file system...: %s\n", argv[i+1]);
 
-	set_rootdir(argv[i+1], realpath(argv[i], NULL));
+	set_rootdir(realpath(argv[i], NULL));
 
 	data = malloc(sizeof(struct dsfs_state));
         data->rootdir = realpath(argv[i], NULL);

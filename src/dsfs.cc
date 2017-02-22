@@ -21,13 +21,12 @@ DSFS::~DSFS() {
 }
 
 void DSFS::AbsPath(char dest[PATH_MAX], const char *path) {
+	log_msg("dsfs_AbsPath:  rootdir = \"%s\", path = \"%s\", destination = \"%s\"\n", _root, path, dest);
         strcpy(dest, _root);
         strncat(dest, path, PATH_MAX);
-        printf("translated path: %s to %s\n", path, dest);
 }
 
-void DSFS::setRootDir(const char *mountPath, const char *path) {
-        printf("setting FS root for %s to: %s\n", mountPath, path);
+void DSFS::setRootDir(const char *path) {
         _root = path;
 }
 
@@ -35,6 +34,8 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
     	char fullPath[ PATH_MAX ];
     	AbsPath( fullPath, path );
     	printf( "getattr(%s)\n", fullPath );
+	log_msg("\ndsfs_Getattr(path=\"%s\", statbuf=%s)\n", path, *statbuf); 
+	
  	GetAttrClient client( grpc::CreateChannel(
                   		  "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	GetAttrRequest request;
@@ -75,7 +76,9 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
         printf("mknod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-	    MknodClient client( grpc::CreateChannel(
+	log_msg("\ndsfs_Mknod(path=\"%s\", mode=0%3o, dev=%lld)\n", path, mode, dev);
+        
+	MknodClient client( grpc::CreateChannel(
                            "localhost:50051", grpc::InsecureChannelCredentials() ) );
         MknodRequest request;
         request.set_name(fullPath);
@@ -98,6 +101,8 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
         printf("**mkdir(path=%s, mode=%d)\n", path, (int)mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
+	log_msg("\ndsfs_Mkdir(path=\"%s\", mode=0%3o)\n", path, mode);
+
         MkdirClient client( grpc::CreateChannel(
                                   "localhost:50051", grpc::InsecureChannelCredentials() ) );
         MkdirRequest request;
@@ -120,6 +125,7 @@ int DSFS::Unlink(const char *path) {
         printf("unlink(path=%s\n)", path);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
+	log_msg("dsfs_Unlink(path=\"%s\")\n", path);
 
         UnlinkClient client( grpc::CreateChannel(
                                   "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -141,6 +147,7 @@ int DSFS::Rmdir(const char *path) {
         printf("rmdir(path=%s\n)", path);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
+	log_msg("dsfs_Rmdir(fullPath=\"%s\")\n", fullPath);
 
         RmdirClient client( grpc::CreateChannel(
                                   "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -163,6 +170,7 @@ int DSFS::Rename(const char *path, const char *newpath) {
         char fullPath[PATH_MAX], newFullPath[PATH_MAX];
         AbsPath(fullPath, path);
 	AbsPath(newFullPath, newpath);
+	log_msg("dsfs_Rename(fullPath=\"%s\", newpath=\"%s\")\n", fullPath, newFullPath);
 
         RenameClient client( grpc::CreateChannel(
                                   "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -185,8 +193,9 @@ int DSFS::Chmod(const char *path, mode_t mode) {
         printf("chmod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
+	log_msg("\ndsfs_Chmod(fullPath=\"%s\", mode=0%03o)\n", fullPath, mode);
 
-	    ChmodClient client( grpc::CreateChannel(
+	ChmodClient client( grpc::CreateChannel(
                            "localhost:50051", grpc::InsecureChannelCredentials() ) );
         ChmodRequest request;
         request.set_name( fullPath );

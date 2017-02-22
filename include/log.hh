@@ -11,7 +11,7 @@ extern "C" {
 #define log_struct(st, field, format, typecast) \
   log_msg("    " #field " = " #format "\n", typecast st->field)
 
-FILE *log_open(void);
+FILE *log_open();
 void log_msg(const char *format, ...);
 void log_conn(struct fuse_conn_info *conn);
 int log_error(char *func);
