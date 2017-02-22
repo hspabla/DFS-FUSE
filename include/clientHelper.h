@@ -9,48 +9,7 @@ using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
 
-using dfsFuse::FileSystem;
-using dfsFuse::FSstatus;
-using dfsFuse::Owner;
-using dfsFuse::ClientInfo;
-using dfsFuse::Attr;
-using dfsFuse::GetAttrRequest;
-using dfsFuse::GetAttrResponse;
-using dfsFuse::MkdirRequest;
-using dfsFuse::MkdirResponse;
-using dfsFuse::OpenDirRequest;
-using dfsFuse::DirEntry;
-using dfsFuse::OpenDirResponse;
-using dfsFuse::MknodRequest;
-using dfsFuse::MknodResponse;
-using dfsFuse::OpenRequest;
-using dfsFuse::OpenResponse;
-using dfsFuse::ReadRequest;
-using dfsFuse::ReadResponse;
-using dfsFuse::WriteRequest;
-using dfsFuse::WriteResponse;
-using dfsFuse::UnlinkRequest;
-using dfsFuse::UnlinkResponse;
-using dfsFuse::RmdirRequest;
-using dfsFuse::RmdirResponse;
-using dfsFuse::RenameRequest;
-using dfsFuse::RenameResponse;
-using dfsFuse::ReleaseRequest;
-using dfsFuse::ReleaseResponse;
-using dfsFuse::ChmodRequest;
-using dfsFuse::ChmodResponse;
-using dfsFuse::ChownRequest;
-using dfsFuse::ChownResponse;
-using dfsFuse::ReleasedirRequest;
-using dfsFuse::ReleasedirResponse;
-using dfsFuse::AccessRequest;
-using dfsFuse::AccessResponse;
-using dfsFuse::TruncateRequest;
-using dfsFuse::TruncateResponse;
-using dfsFuse::FsyncRequest;
-using dfsFuse::FsyncResponse;
-
-
+using namespace dfsFuse;
 
 class GetAttrClient {
  public:

@@ -10,11 +10,25 @@ LINKFLAGS = -Wall `pkg-config fuse --libs`
 //           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
 //           -lprotobuf -lpthread -ldl -Wall `pkg-config fuse`
 
+LIB = lib
+
+PROTOC = protoc
+GRPC_CPP_PLUGIN = grpc_cpp_plugin
+GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
+
+PROTOS_PATH = .
+
 all: client server 
 
 client: bin/client
 
 server: bin/server
+
+#%.grpc.pb.cc: %.proto
+#	    $(PROTOC) -I $(PROTOS_PATH) --grpc_out=$(LIB) --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
+#
+#%.pb.cc: %.proto
+#	    $(PROTOC) -I $(PROTOS_PATH) --cpp_out=$(LIB) $<
 
 clean:
 	rm -rf bin obj dsfs.log
@@ -57,3 +71,6 @@ obj/fileserver.grpc.pb.o: obj lib/fileserver.grpc.pb.cc lib/fileserver.grpc.pb.h
 
 obj/fileserver.pb.o: obj lib/fileserver.pb.cc lib/fileserver.pb.h
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) -c lib/fileserver.pb.cc -o obj/fileserver.pb.o
+
+
+
