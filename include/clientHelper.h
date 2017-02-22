@@ -29,6 +29,11 @@ using dfsFuse::ReadRequest;
 using dfsFuse::ReadResponse;
 using dfsFuse::WriteRequest;
 using dfsFuse::WriteResponse;
+using dfsFuse::ChmodRequest;
+using dfsFuse::ChmodResponse;
+using dfsFuse::ChownRequest;
+using dfsFuse::ChownResponse;
+
 
 class GetAttrClient {
  public:
@@ -100,6 +105,29 @@ class WriteClient {
   WriteClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
   WriteResponse Write( const WriteRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+
+
+class ChmodClient {
+ public:
+  ChmodClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  ChmodResponse Chmod( const ChmodRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+
+class ChownClient {
+ public:
+  ChownClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  ChownResponse Chown( const ChownRequest & request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;

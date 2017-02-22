@@ -75,12 +75,12 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
         printf("mknod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-	MknodClient client( grpc::CreateChannel(
-                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+	    MknodClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
         MknodRequest request;
         request.set_name(fullPath);
         request.set_mode(mode);
-	request.set_dev(dev);
+	    request.set_dev(dev);
         try {
            MknodResponse response = client.Mknod(request);
            FSstatus status = response.status();
@@ -103,17 +103,17 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
         MkdirRequest request;
         MkdirResponse response;
         request.set_name(fullPath);
-	request.set_mode(mode);
+        request.set_mode(mode);
         try {
-           response = client.Mkdir(request);
-	   FSstatus status = response.status();
-	   if (status.retcode() == 0)
-		return 0;
-           else
+            response = client.Mkdir(request);
+	        FSstatus status = response.status();
+	        if (status.retcode() == 0)
+		        return 0;
+            else
                 throw status.retcode();
         } catch (int errorCode) {
                 return -errno;
-        }	
+        }
 }
 
 int DSFS::Unlink(const char *path) {
@@ -142,14 +142,35 @@ int DSFS::Chmod(const char *path, mode_t mode) {
         printf("chmod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(chmod(fullPath, mode));
+
+	    ChmodClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        ChmodRequest request;
+        request.set_name( fullPath );
+        request.set_mode( mode );
+
+        ChmodResponse response = client.Chmod( request );
+
+        FSstatus status = response.status();
+        return status.retcode();
 }
 
 int DSFS::Chown(const char *path, uid_t uid, gid_t gid) {
         printf("chown(path=%s, uid=%d, gid=%d)\n", path, (int)uid, (int)gid);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(chown(fullPath, uid, gid));
+
+	    ChownClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        ChownRequest request;
+        request.set_name( fullPath );
+        request.set_uid( uid );
+        request.set_gid( gid );
+
+        ChownResponse response = client.Chown( request );
+
+        FSstatus status = response.status();
+        return status.retcode();
 }
 
 int DSFS::Truncate(const char *path, off_t newSize) {
@@ -219,7 +240,7 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
 	    path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
 	std::string data( buf, size );
-	
+
 	// RPC request prep
 	WriteClient client( grpc::CreateChannel(
 			   "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -278,7 +299,7 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
 	printf("readdir(path=%s, offset=%d)\n", fullPath, (int)offset);
 
 	std::shared_ptr<Channel> channel = grpc::CreateChannel(
-                                  "localhost:50051", grpc::InsecureChannelCredentials() );	
+                                  "localhost:50051", grpc::InsecureChannelCredentials() );
         OpenDirClient client( channel);
         OpenDirRequest request;
         OpenDirResponse response;
@@ -293,7 +314,7 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
                 st.st_ino = dir.ino();
                 st.st_mode = dir.mode() << 12;
 	        if (filler(buf, (dir.name()).c_str(), &st, 0) != 0)
-                    break;	
+                    break;
 	   }
 	} catch (int errno) {
 	   return -errno;

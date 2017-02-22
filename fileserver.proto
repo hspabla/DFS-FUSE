@@ -16,6 +16,10 @@ service FileSystem {
     rpc Open( OpenRequest ) returns ( OpenResponse ) {}
     rpc Read( ReadRequest ) returns ( ReadResponse ) {}
     rpc Write( WriteRequest ) returns ( WriteResponse ) {}
+
+    rpc Chmod( ChmodRequest ) returns ( ChmodResponse ) {}
+    rpc Chown( ChownRequest ) returns ( ChownResponse ) {}
+
 }
 
 message FSstatus {
@@ -143,3 +147,29 @@ message WriteResponse {
     int32 dataWritten = 1;
     FSstatus status = 2;
 }
+
+message ChmodRequest {
+	string name = 1;
+	uint32 mode = 2;
+	ClientInfo info = 3;
+}
+
+message ChmodResponse {
+	FSstatus status = 1;
+}
+
+
+message ChownRequest {
+	string name = 1;
+	uint32 uid = 2;
+	uint32 gid = 3;
+	ClientInfo info = 4;
+}
+
+message ChownResponse {
+	FSstatus status = 1;
+}
+
+
+
+

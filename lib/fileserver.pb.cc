@@ -78,6 +78,18 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* WriteResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   WriteResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ChmodRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ChmodRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ChmodResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ChmodResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ChownRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ChownRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ChownResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ChownResponse_reflection_ = NULL;
 
 }  // namespace
 
@@ -413,6 +425,71 @@ void protobuf_AssignDesc_fileserver_2eproto() {
       sizeof(WriteResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WriteResponse, _is_default_instance_));
+  ChmodRequest_descriptor_ = file->message_type(19);
+  static const int ChmodRequest_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodRequest, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodRequest, mode_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodRequest, info_),
+  };
+  ChmodRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ChmodRequest_descriptor_,
+      ChmodRequest::default_instance_,
+      ChmodRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ChmodRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodRequest, _is_default_instance_));
+  ChmodResponse_descriptor_ = file->message_type(20);
+  static const int ChmodResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodResponse, status_),
+  };
+  ChmodResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ChmodResponse_descriptor_,
+      ChmodResponse::default_instance_,
+      ChmodResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ChmodResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChmodResponse, _is_default_instance_));
+  ChownRequest_descriptor_ = file->message_type(21);
+  static const int ChownRequest_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, uid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, gid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, info_),
+  };
+  ChownRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ChownRequest_descriptor_,
+      ChownRequest::default_instance_,
+      ChownRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ChownRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownRequest, _is_default_instance_));
+  ChownResponse_descriptor_ = file->message_type(22);
+  static const int ChownResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownResponse, status_),
+  };
+  ChownResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ChownResponse_descriptor_,
+      ChownResponse::default_instance_,
+      ChownResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ChownResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChownResponse, _is_default_instance_));
 }
 
 namespace {
@@ -464,6 +541,14 @@ void protobuf_RegisterTypes(const ::std::string&) {
       WriteRequest_descriptor_, &WriteRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       WriteResponse_descriptor_, &WriteResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ChmodRequest_descriptor_, &ChmodRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ChmodResponse_descriptor_, &ChmodResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ChownRequest_descriptor_, &ChownRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ChownResponse_descriptor_, &ChownResponse::default_instance());
 }
 
 }  // namespace
@@ -507,6 +592,14 @@ void protobuf_ShutdownFile_fileserver_2eproto() {
   delete WriteRequest_reflection_;
   delete WriteResponse::default_instance_;
   delete WriteResponse_reflection_;
+  delete ChmodRequest::default_instance_;
+  delete ChmodRequest_reflection_;
+  delete ChmodResponse::default_instance_;
+  delete ChmodResponse_reflection_;
+  delete ChownRequest::default_instance_;
+  delete ChownRequest_reflection_;
+  delete ChownResponse::default_instance_;
+  delete ChownResponse_reflection_;
 }
 
 void protobuf_AddDesc_fileserver_2eproto() GOOGLE_ATTRIBUTE_COLD;
@@ -554,18 +647,28 @@ void protobuf_AddDesc_fileserver_2eproto() {
     "e\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\016\n\006o"
     "ffset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.dfsFuse.Clie"
     "ntInfo\"G\n\rWriteResponse\022\023\n\013dataWritten\030\001"
-    " \001(\005\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus2"
-    "\250\003\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.GetA"
-    "ttrRequest\032\030.dfsFuse.GetAttrResponse\"\000\0228"
-    "\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsFuse"
-    ".MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse.Op"
-    "enDirRequest\032\030.dfsFuse.OpenDirResponse\"\000"
-    "\0228\n\005Mknod\022\025.dfsFuse.MknodRequest\032\026.dfsFu"
-    "se.MknodResponse\"\000\0225\n\004Open\022\024.dfsFuse.Ope"
-    "nRequest\032\025.dfsFuse.OpenResponse\"\000\0225\n\004Rea"
-    "d\022\024.dfsFuse.ReadRequest\032\025.dfsFuse.ReadRe"
-    "sponse\"\000\0228\n\005Write\022\025.dfsFuse.WriteRequest"
-    "\032\026.dfsFuse.WriteResponse\"\000b\006proto3", 1954);
+    " \001(\005\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\""
+    "M\n\014ChmodRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 "
+    "\001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"2"
+    "\n\rChmodResponse\022!\n\006status\030\001 \001(\0132\021.dfsFus"
+    "e.FSstatus\"Y\n\014ChownRequest\022\014\n\004name\030\001 \001(\t"
+    "\022\013\n\003uid\030\002 \001(\r\022\013\n\003gid\030\003 \001(\r\022!\n\004info\030\004 \001(\013"
+    "2\023.dfsFuse.ClientInfo\"2\n\rChownResponse\022!"
+    "\n\006status\030\001 \001(\0132\021.dfsFuse.FSstatus2\234\004\n\nFi"
+    "leSystem\022>\n\007GetAttr\022\027.dfsFuse.GetAttrReq"
+    "uest\032\030.dfsFuse.GetAttrResponse\"\000\0228\n\005Mkdi"
+    "r\022\025.dfsFuse.MkdirRequest\032\026.dfsFuse.Mkdir"
+    "Response\"\000\022>\n\007Opendir\022\027.dfsFuse.OpenDirR"
+    "equest\032\030.dfsFuse.OpenDirResponse\"\000\0228\n\005Mk"
+    "nod\022\025.dfsFuse.MknodRequest\032\026.dfsFuse.Mkn"
+    "odResponse\"\000\0225\n\004Open\022\024.dfsFuse.OpenReque"
+    "st\032\025.dfsFuse.OpenResponse\"\000\0225\n\004Read\022\024.df"
+    "sFuse.ReadRequest\032\025.dfsFuse.ReadResponse"
+    "\"\000\0228\n\005Write\022\025.dfsFuse.WriteRequest\032\026.dfs"
+    "Fuse.WriteResponse\"\000\0228\n\005Chmod\022\025.dfsFuse."
+    "ChmodRequest\032\026.dfsFuse.ChmodResponse\"\000\0228"
+    "\n\005Chown\022\025.dfsFuse.ChownRequest\032\026.dfsFuse"
+    ".ChownResponse\"\000b\006proto3", 2344);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
   FSstatus::default_instance_ = new FSstatus();
@@ -587,6 +690,10 @@ void protobuf_AddDesc_fileserver_2eproto() {
   ReadResponse::default_instance_ = new ReadResponse();
   WriteRequest::default_instance_ = new WriteRequest();
   WriteResponse::default_instance_ = new WriteResponse();
+  ChmodRequest::default_instance_ = new ChmodRequest();
+  ChmodResponse::default_instance_ = new ChmodResponse();
+  ChownRequest::default_instance_ = new ChownRequest();
+  ChownResponse::default_instance_ = new ChownResponse();
   FSstatus::default_instance_->InitAsDefaultInstance();
   Owner::default_instance_->InitAsDefaultInstance();
   ClientInfo::default_instance_->InitAsDefaultInstance();
@@ -606,6 +713,10 @@ void protobuf_AddDesc_fileserver_2eproto() {
   ReadResponse::default_instance_->InitAsDefaultInstance();
   WriteRequest::default_instance_->InitAsDefaultInstance();
   WriteResponse::default_instance_->InitAsDefaultInstance();
+  ChmodRequest::default_instance_->InitAsDefaultInstance();
+  ChmodResponse::default_instance_->InitAsDefaultInstance();
+  ChownRequest::default_instance_->InitAsDefaultInstance();
+  ChownResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_fileserver_2eproto);
 }
 
@@ -8116,6 +8227,1446 @@ void WriteResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
     
   }
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.WriteResponse.status)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ChmodRequest::kNameFieldNumber;
+const int ChmodRequest::kModeFieldNumber;
+const int ChmodRequest::kInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ChmodRequest::ChmodRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.ChmodRequest)
+}
+
+void ChmodRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  info_ = const_cast< ::dfsFuse::ClientInfo*>(&::dfsFuse::ClientInfo::default_instance());
+}
+
+ChmodRequest::ChmodRequest(const ChmodRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.ChmodRequest)
+}
+
+void ChmodRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mode_ = 0u;
+  info_ = NULL;
+}
+
+ChmodRequest::~ChmodRequest() {
+  // @@protoc_insertion_point(destructor:dfsFuse.ChmodRequest)
+  SharedDtor();
+}
+
+void ChmodRequest::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void ChmodRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ChmodRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ChmodRequest_descriptor_;
+}
+
+const ChmodRequest& ChmodRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+ChmodRequest* ChmodRequest::default_instance_ = NULL;
+
+ChmodRequest* ChmodRequest::New(::google::protobuf::Arena* arena) const {
+  ChmodRequest* n = new ChmodRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ChmodRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.ChmodRequest)
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mode_ = 0u;
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+
+bool ChmodRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.ChmodRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dfsFuse.ChmodRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_mode;
+        break;
+      }
+
+      // optional uint32 mode = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_mode:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mode_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_info;
+        break;
+      }
+
+      // optional .dfsFuse.ClientInfo info = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.ChmodRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.ChmodRequest)
+  return false;
+#undef DO_
+}
+
+void ChmodRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.ChmodRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.ChmodRequest.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // optional uint32 mode = 2;
+  if (this->mode() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->mode(), output);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->info_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.ChmodRequest)
+}
+
+::google::protobuf::uint8* ChmodRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ChmodRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.ChmodRequest.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // optional uint32 mode = 2;
+  if (this->mode() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->mode(), target);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *this->info_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.ChmodRequest)
+  return target;
+}
+
+int ChmodRequest::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.ChmodRequest)
+  int total_size = 0;
+
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // optional uint32 mode = 2;
+  if (this->mode() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mode());
+  }
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ChmodRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.ChmodRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const ChmodRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ChmodRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.ChmodRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.ChmodRequest)
+    MergeFrom(*source);
+  }
+}
+
+void ChmodRequest::MergeFrom(const ChmodRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.ChmodRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.mode() != 0) {
+    set_mode(from.mode());
+  }
+  if (from.has_info()) {
+    mutable_info()->::dfsFuse::ClientInfo::MergeFrom(from.info());
+  }
+}
+
+void ChmodRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.ChmodRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ChmodRequest::CopyFrom(const ChmodRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.ChmodRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ChmodRequest::IsInitialized() const {
+
+  return true;
+}
+
+void ChmodRequest::Swap(ChmodRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ChmodRequest::InternalSwap(ChmodRequest* other) {
+  name_.Swap(&other->name_);
+  std::swap(mode_, other->mode_);
+  std::swap(info_, other->info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ChmodRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ChmodRequest_descriptor_;
+  metadata.reflection = ChmodRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ChmodRequest
+
+// optional string name = 1;
+void ChmodRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& ChmodRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChmodRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ChmodRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.ChmodRequest.name)
+}
+ void ChmodRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.ChmodRequest.name)
+}
+ void ChmodRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.ChmodRequest.name)
+}
+ ::std::string* ChmodRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChmodRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ChmodRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChmodRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ChmodRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChmodRequest.name)
+}
+
+// optional uint32 mode = 2;
+void ChmodRequest::clear_mode() {
+  mode_ = 0u;
+}
+ ::google::protobuf::uint32 ChmodRequest::mode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChmodRequest.mode)
+  return mode_;
+}
+ void ChmodRequest::set_mode(::google::protobuf::uint32 value) {
+  
+  mode_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ChmodRequest.mode)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+bool ChmodRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+void ChmodRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+const ::dfsFuse::ClientInfo& ChmodRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChmodRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+::dfsFuse::ClientInfo* ChmodRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChmodRequest.info)
+  return info_;
+}
+::dfsFuse::ClientInfo* ChmodRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChmodRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+void ChmodRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChmodRequest.info)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ChmodResponse::kStatusFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ChmodResponse::ChmodResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.ChmodResponse)
+}
+
+void ChmodResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
+}
+
+ChmodResponse::ChmodResponse(const ChmodResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.ChmodResponse)
+}
+
+void ChmodResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  status_ = NULL;
+}
+
+ChmodResponse::~ChmodResponse() {
+  // @@protoc_insertion_point(destructor:dfsFuse.ChmodResponse)
+  SharedDtor();
+}
+
+void ChmodResponse::SharedDtor() {
+  if (this != default_instance_) {
+    delete status_;
+  }
+}
+
+void ChmodResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ChmodResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ChmodResponse_descriptor_;
+}
+
+const ChmodResponse& ChmodResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+ChmodResponse* ChmodResponse::default_instance_ = NULL;
+
+ChmodResponse* ChmodResponse::New(::google::protobuf::Arena* arena) const {
+  ChmodResponse* n = new ChmodResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ChmodResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.ChmodResponse)
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+
+bool ChmodResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.ChmodResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .dfsFuse.FSstatus status = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_status()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.ChmodResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.ChmodResponse)
+  return false;
+#undef DO_
+}
+
+void ChmodResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.ChmodResponse)
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->status_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.ChmodResponse)
+}
+
+::google::protobuf::uint8* ChmodResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ChmodResponse)
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->status_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.ChmodResponse)
+  return target;
+}
+
+int ChmodResponse::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.ChmodResponse)
+  int total_size = 0;
+
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->status_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ChmodResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.ChmodResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const ChmodResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ChmodResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.ChmodResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.ChmodResponse)
+    MergeFrom(*source);
+  }
+}
+
+void ChmodResponse::MergeFrom(const ChmodResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.ChmodResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.has_status()) {
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
+  }
+}
+
+void ChmodResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.ChmodResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ChmodResponse::CopyFrom(const ChmodResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.ChmodResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ChmodResponse::IsInitialized() const {
+
+  return true;
+}
+
+void ChmodResponse::Swap(ChmodResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ChmodResponse::InternalSwap(ChmodResponse* other) {
+  std::swap(status_, other->status_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ChmodResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ChmodResponse_descriptor_;
+  metadata.reflection = ChmodResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ChmodResponse
+
+// optional .dfsFuse.FSstatus status = 1;
+bool ChmodResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+void ChmodResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+const ::dfsFuse::FSstatus& ChmodResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChmodResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+::dfsFuse::FSstatus* ChmodResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChmodResponse.status)
+  return status_;
+}
+::dfsFuse::FSstatus* ChmodResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChmodResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+void ChmodResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChmodResponse.status)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ChownRequest::kNameFieldNumber;
+const int ChownRequest::kUidFieldNumber;
+const int ChownRequest::kGidFieldNumber;
+const int ChownRequest::kInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ChownRequest::ChownRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.ChownRequest)
+}
+
+void ChownRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  info_ = const_cast< ::dfsFuse::ClientInfo*>(&::dfsFuse::ClientInfo::default_instance());
+}
+
+ChownRequest::ChownRequest(const ChownRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.ChownRequest)
+}
+
+void ChownRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  uid_ = 0u;
+  gid_ = 0u;
+  info_ = NULL;
+}
+
+ChownRequest::~ChownRequest() {
+  // @@protoc_insertion_point(destructor:dfsFuse.ChownRequest)
+  SharedDtor();
+}
+
+void ChownRequest::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void ChownRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ChownRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ChownRequest_descriptor_;
+}
+
+const ChownRequest& ChownRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+ChownRequest* ChownRequest::default_instance_ = NULL;
+
+ChownRequest* ChownRequest::New(::google::protobuf::Arena* arena) const {
+  ChownRequest* n = new ChownRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ChownRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.ChownRequest)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(ChownRequest, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<ChownRequest*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(uid_, gid_);
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool ChownRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.ChownRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dfsFuse.ChownRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_uid;
+        break;
+      }
+
+      // optional uint32 uid = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_uid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &uid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_gid;
+        break;
+      }
+
+      // optional uint32 gid = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_gid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &gid_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_info;
+        break;
+      }
+
+      // optional .dfsFuse.ClientInfo info = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.ChownRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.ChownRequest)
+  return false;
+#undef DO_
+}
+
+void ChownRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.ChownRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.ChownRequest.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // optional uint32 uid = 2;
+  if (this->uid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->uid(), output);
+  }
+
+  // optional uint32 gid = 3;
+  if (this->gid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->gid(), output);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->info_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.ChownRequest)
+}
+
+::google::protobuf::uint8* ChownRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ChownRequest)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dfsFuse.ChownRequest.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // optional uint32 uid = 2;
+  if (this->uid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->uid(), target);
+  }
+
+  // optional uint32 gid = 3;
+  if (this->gid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->gid(), target);
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *this->info_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.ChownRequest)
+  return target;
+}
+
+int ChownRequest::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.ChownRequest)
+  int total_size = 0;
+
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // optional uint32 uid = 2;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->uid());
+  }
+
+  // optional uint32 gid = 3;
+  if (this->gid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->gid());
+  }
+
+  // optional .dfsFuse.ClientInfo info = 4;
+  if (this->has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ChownRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.ChownRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const ChownRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ChownRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.ChownRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.ChownRequest)
+    MergeFrom(*source);
+  }
+}
+
+void ChownRequest::MergeFrom(const ChownRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.ChownRequest)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.uid() != 0) {
+    set_uid(from.uid());
+  }
+  if (from.gid() != 0) {
+    set_gid(from.gid());
+  }
+  if (from.has_info()) {
+    mutable_info()->::dfsFuse::ClientInfo::MergeFrom(from.info());
+  }
+}
+
+void ChownRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.ChownRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ChownRequest::CopyFrom(const ChownRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.ChownRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ChownRequest::IsInitialized() const {
+
+  return true;
+}
+
+void ChownRequest::Swap(ChownRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ChownRequest::InternalSwap(ChownRequest* other) {
+  name_.Swap(&other->name_);
+  std::swap(uid_, other->uid_);
+  std::swap(gid_, other->gid_);
+  std::swap(info_, other->info_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ChownRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ChownRequest_descriptor_;
+  metadata.reflection = ChownRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ChownRequest
+
+// optional string name = 1;
+void ChownRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& ChownRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChownRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ChownRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.ChownRequest.name)
+}
+ void ChownRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.ChownRequest.name)
+}
+ void ChownRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.ChownRequest.name)
+}
+ ::std::string* ChownRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChownRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ChownRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChownRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ChownRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChownRequest.name)
+}
+
+// optional uint32 uid = 2;
+void ChownRequest::clear_uid() {
+  uid_ = 0u;
+}
+ ::google::protobuf::uint32 ChownRequest::uid() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChownRequest.uid)
+  return uid_;
+}
+ void ChownRequest::set_uid(::google::protobuf::uint32 value) {
+  
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ChownRequest.uid)
+}
+
+// optional uint32 gid = 3;
+void ChownRequest::clear_gid() {
+  gid_ = 0u;
+}
+ ::google::protobuf::uint32 ChownRequest::gid() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChownRequest.gid)
+  return gid_;
+}
+ void ChownRequest::set_gid(::google::protobuf::uint32 value) {
+  
+  gid_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.ChownRequest.gid)
+}
+
+// optional .dfsFuse.ClientInfo info = 4;
+bool ChownRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+void ChownRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+const ::dfsFuse::ClientInfo& ChownRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChownRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+::dfsFuse::ClientInfo* ChownRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChownRequest.info)
+  return info_;
+}
+::dfsFuse::ClientInfo* ChownRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChownRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+void ChownRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChownRequest.info)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ChownResponse::kStatusFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ChownResponse::ChownResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dfsFuse.ChownResponse)
+}
+
+void ChownResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  status_ = const_cast< ::dfsFuse::FSstatus*>(&::dfsFuse::FSstatus::default_instance());
+}
+
+ChownResponse::ChownResponse(const ChownResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:dfsFuse.ChownResponse)
+}
+
+void ChownResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  status_ = NULL;
+}
+
+ChownResponse::~ChownResponse() {
+  // @@protoc_insertion_point(destructor:dfsFuse.ChownResponse)
+  SharedDtor();
+}
+
+void ChownResponse::SharedDtor() {
+  if (this != default_instance_) {
+    delete status_;
+  }
+}
+
+void ChownResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ChownResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ChownResponse_descriptor_;
+}
+
+const ChownResponse& ChownResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_fileserver_2eproto();
+  return *default_instance_;
+}
+
+ChownResponse* ChownResponse::default_instance_ = NULL;
+
+ChownResponse* ChownResponse::New(::google::protobuf::Arena* arena) const {
+  ChownResponse* n = new ChownResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ChownResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dfsFuse.ChownResponse)
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+
+bool ChownResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dfsFuse.ChownResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .dfsFuse.FSstatus status = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_status()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dfsFuse.ChownResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dfsFuse.ChownResponse)
+  return false;
+#undef DO_
+}
+
+void ChownResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dfsFuse.ChownResponse)
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->status_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:dfsFuse.ChownResponse)
+}
+
+::google::protobuf::uint8* ChownResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.ChownResponse)
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->status_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.ChownResponse)
+  return target;
+}
+
+int ChownResponse::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:dfsFuse.ChownResponse)
+  int total_size = 0;
+
+  // optional .dfsFuse.FSstatus status = 1;
+  if (this->has_status()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->status_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ChownResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dfsFuse.ChownResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  const ChownResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ChownResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dfsFuse.ChownResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dfsFuse.ChownResponse)
+    MergeFrom(*source);
+  }
+}
+
+void ChownResponse::MergeFrom(const ChownResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dfsFuse.ChownResponse)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from.has_status()) {
+    mutable_status()->::dfsFuse::FSstatus::MergeFrom(from.status());
+  }
+}
+
+void ChownResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dfsFuse.ChownResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ChownResponse::CopyFrom(const ChownResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dfsFuse.ChownResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ChownResponse::IsInitialized() const {
+
+  return true;
+}
+
+void ChownResponse::Swap(ChownResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ChownResponse::InternalSwap(ChownResponse* other) {
+  std::swap(status_, other->status_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ChownResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ChownResponse_descriptor_;
+  metadata.reflection = ChownResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ChownResponse
+
+// optional .dfsFuse.FSstatus status = 1;
+bool ChownResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+void ChownResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+const ::dfsFuse::FSstatus& ChownResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.ChownResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+::dfsFuse::FSstatus* ChownResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.ChownResponse.status)
+  return status_;
+}
+::dfsFuse::FSstatus* ChownResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.ChownResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+void ChownResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChownResponse.status)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

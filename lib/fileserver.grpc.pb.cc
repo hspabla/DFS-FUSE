@@ -23,6 +23,8 @@ static const char* FileSystem_method_names[] = {
   "/dfsFuse.FileSystem/Open",
   "/dfsFuse.FileSystem/Read",
   "/dfsFuse.FileSystem/Write",
+  "/dfsFuse.FileSystem/Chmod",
+  "/dfsFuse.FileSystem/Chown",
 };
 
 std::unique_ptr< FileSystem::Stub> FileSystem::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -38,6 +40,8 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   , rpcmethod_Open_(FileSystem_method_names[4], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Read_(FileSystem_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Write_(FileSystem_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Chmod_(FileSystem_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Chown_(FileSystem_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status FileSystem::Stub::GetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::dfsFuse::GetAttrResponse* response) {
@@ -96,6 +100,22 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::WriteResponse>(channel_.get(), cq, rpcmethod_Write_, context, request);
 }
 
+::grpc::Status FileSystem::Stub::Chmod(::grpc::ClientContext* context, const ::dfsFuse::ChmodRequest& request, ::dfsFuse::ChmodResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Chmod_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::ChmodResponse>* FileSystem::Stub::AsyncChmodRaw(::grpc::ClientContext* context, const ::dfsFuse::ChmodRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::ChmodResponse>(channel_.get(), cq, rpcmethod_Chmod_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Chown(::grpc::ClientContext* context, const ::dfsFuse::ChownRequest& request, ::dfsFuse::ChownResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Chown_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::ChownResponse>* FileSystem::Stub::AsyncChownRaw(::grpc::ClientContext* context, const ::dfsFuse::ChownRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::ChownResponse>(channel_.get(), cq, rpcmethod_Chown_, context, request);
+}
+
 FileSystem::Service::Service() {
   (void)FileSystem_method_names;
   AddMethod(new ::grpc::RpcServiceMethod(
@@ -133,6 +153,16 @@ FileSystem::Service::Service() {
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::WriteRequest, ::dfsFuse::WriteResponse>(
           std::mem_fn(&FileSystem::Service::Write), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[7],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::ChmodRequest, ::dfsFuse::ChmodResponse>(
+          std::mem_fn(&FileSystem::Service::Chmod), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[8],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::ChownRequest, ::dfsFuse::ChownResponse>(
+          std::mem_fn(&FileSystem::Service::Chown), this)));
 }
 
 FileSystem::Service::~Service() {
@@ -181,6 +211,20 @@ FileSystem::Service::~Service() {
 }
 
 ::grpc::Status FileSystem::Service::Write(::grpc::ServerContext* context, const ::dfsFuse::WriteRequest* request, ::dfsFuse::WriteResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Chmod(::grpc::ServerContext* context, const ::dfsFuse::ChmodRequest* request, ::dfsFuse::ChmodResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Chown(::grpc::ServerContext* context, const ::dfsFuse::ChownRequest* request, ::dfsFuse::ChownResponse* response) {
   (void) context;
   (void) request;
   (void) response;

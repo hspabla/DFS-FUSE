@@ -114,3 +114,40 @@ WriteResponse WriteClient::Write( const WriteRequest & request ) {
     throw status.error_code();
   }
 }
+
+
+ChownResponse ChownClient::Chown( const ChownRequest & request ) {
+  ChownResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Chown( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}
+
+
+ChmodResponse ChmodClient::Chmod( const ChmodRequest & request ) {
+  ChmodResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Chmod( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}
+
+
+
+
+

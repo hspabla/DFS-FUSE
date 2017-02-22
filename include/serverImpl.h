@@ -41,8 +41,10 @@ using dfsFuse::ReadRequest;
 using dfsFuse::ReadResponse;
 using dfsFuse::WriteRequest;
 using dfsFuse::WriteResponse;
-
-
+using dfsFuse::ChmodRequest;
+using dfsFuse::ChmodResponse;
+using dfsFuse::ChownRequest;
+using dfsFuse::ChownResponse;
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -66,5 +68,11 @@ class FileSystemImpl final : public FileSystem::Service {
 
   Status Write( ServerContext* context, const WriteRequest* request,
                 WriteResponse* reply ) override;
+
+  Status Chmod( ServerContext* context, const ChmodRequest* request,
+                ChmodResponse* reply ) override;
+
+  Status Chown( ServerContext* context, const ChownRequest* request,
+                ChownResponse* reply ) override;
 
 };
