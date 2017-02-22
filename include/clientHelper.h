@@ -29,17 +29,28 @@ using dfsFuse::ReadRequest;
 using dfsFuse::ReadResponse;
 using dfsFuse::WriteRequest;
 using dfsFuse::WriteResponse;
+using dfsFuse::UnlinkRequest;
+using dfsFuse::UnlinkResponse;
+using dfsFuse::RmdirRequest;
+using dfsFuse::RmdirResponse;
+using dfsFuse::RenameRequest;
+using dfsFuse::RenameResponse;
+using dfsFuse::ReleaseRequest;
+using dfsFuse::ReleaseResponse;
 using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
 using dfsFuse::ChownResponse;
 
+<<<<<<< HEAD
 using dfsFuse::AccessRequest;
 using dfsFuse::AccessResponse;
 
 using dfsFuse::TruncateRequest;
 using dfsFuse::TruncateResponse;
 
+=======
+>>>>>>> 9e800a4b671985b4d9cf11093446d27c3f368bde
 class GetAttrClient {
  public:
   GetAttrClient( std::shared_ptr<Channel> channel )
@@ -115,6 +126,25 @@ class WriteClient {
   std::unique_ptr<FileSystem::Stub> stub_;
 };
 
+class UnlinkClient {
+ public:
+  UnlinkClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  UnlinkResponse Unlink( const UnlinkRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+class RmdirClient {
+ public:
+  RmdirClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  RmdirResponse Rmdir( const RmdirRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
 
 
 class ChmodClient {
@@ -127,6 +157,25 @@ class ChmodClient {
   std::unique_ptr<FileSystem::Stub> stub_;
 };
 
+class RenameClient {
+ public:
+  RenameClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  RenameResponse Rename( const RenameRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+class ReleaseClient {
+ public:
+  ReleaseClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  ReleaseResponse Release( const ReleaseRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
 
 class ChownClient {
  public:

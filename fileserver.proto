@@ -16,7 +16,10 @@ service FileSystem {
     rpc Open( OpenRequest ) returns ( OpenResponse ) {}
     rpc Read( ReadRequest ) returns ( ReadResponse ) {}
     rpc Write( WriteRequest ) returns ( WriteResponse ) {}
-
+    rpc Unlink( UnlinkRequest ) returns ( UnlinkResponse ) {}
+    rpc Rmdir( RmdirRequest ) returns ( RmdirResponse ) {}
+    rpc Rename( RenameRequest ) returns ( RenameResponse ) {}
+    rpc Release( ReleaseRequest ) returns ( ReleaseResponse ) {} 
     rpc Chmod( ChmodRequest ) returns ( ChmodResponse ) {}
     rpc Chown( ChownRequest ) returns ( ChownResponse ) {}
 
@@ -151,6 +154,39 @@ message WriteResponse {
     FSstatus status = 2;
 }
 
+message UnlinkRequest {
+    string name = 1;
+}
+
+message UnlinkResponse {
+    FSstatus status = 1;
+}
+
+message RenameRequest {
+    string oldname = 1;
+    string newname = 2;
+}
+
+message RenameResponse {
+    FSstatus status = 1;
+}
+
+message RmdirRequest {
+    string name = 1;
+}
+
+message RmdirResponse {
+    FSstatus status = 1;
+}
+
+message ReleaseRequest {
+    uint32 fileHandle = 1;
+}
+
+message ReleaseResponse {
+    FSstatus status = 1;
+}
+
 message ChmodRequest {
 	string name = 1;
 	uint32 mode = 2;
@@ -172,6 +208,7 @@ message ChownRequest {
 message ChownResponse {
 	FSstatus status = 1;
 }
+<<<<<<< HEAD
 
 
 message AccessRequest {
@@ -194,3 +231,5 @@ message TruncateResponse {
 	FSstatus status = 1;
 }
 
+=======
+>>>>>>> 9e800a4b671985b4d9cf11093446d27c3f368bde

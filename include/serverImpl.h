@@ -41,6 +41,14 @@ using dfsFuse::ReadRequest;
 using dfsFuse::ReadResponse;
 using dfsFuse::WriteRequest;
 using dfsFuse::WriteResponse;
+using dfsFuse::UnlinkRequest;
+using dfsFuse::UnlinkResponse;
+using dfsFuse::RmdirRequest;
+using dfsFuse::RmdirResponse;
+using dfsFuse::RenameRequest;
+using dfsFuse::RenameResponse;
+using dfsFuse::ReleaseRequest;
+using dfsFuse::ReleaseResponse;
 using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
@@ -74,6 +82,17 @@ class FileSystemImpl final : public FileSystem::Service {
   Status Write( ServerContext* context, const WriteRequest* request,
                 WriteResponse* reply ) override;
 
+  Status Unlink( ServerContext* context, const UnlinkRequest* request,
+                UnlinkResponse* reply ) override;
+
+  Status Rmdir( ServerContext* context, const RmdirRequest* request,
+                RmdirResponse* reply ) override;
+
+  Status Rename( ServerContext* context, const RenameRequest* request,
+                RenameResponse* reply ) override;
+
+  Status Release( ServerContext* context, const ReleaseRequest* request,
+                ReleaseResponse* reply ) override;
   Status Chmod( ServerContext* context, const ChmodRequest* request,
                 ChmodResponse* reply ) override;
 
