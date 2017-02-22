@@ -245,3 +245,34 @@ ReleasedirResponse ReleasedirClient::Releasedir( const ReleasedirRequest & reque
   } catch (int errCode) {
   }
 }
+
+AccessResponse AccessClient::Access( const AccessRequest & request ) {
+  AccessResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Access( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}
+
+
+TruncateResponse TruncateClient::Truncate( const TruncateRequest & request ) {
+  TruncateResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Truncate( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}

@@ -220,7 +220,17 @@ int DSFS::Truncate(const char *path, off_t newSize) {
         printf("truncate(path=%s, newSize=%d\n", path, (int)newSize);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(truncate(fullPath, newSize));
+
+        TruncateClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        TruncateRequest request;
+        request.set_name( fullPath );
+        request.set_size( newSize );
+
+        TruncateResponse response = client.Truncate( request );
+
+        FSstatus status = response.status();
+        return status.retcode();
 }
 
 int DSFS::Access(const char *path, int mask)
@@ -229,7 +239,17 @@ int DSFS::Access(const char *path, int mask)
         AbsPath(fullPath, path);
 
         printf("access(path=%s)\n", fullPath);
-	return RETURN_ERRNO(access(fullPath, mask));
+
+        AccessClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        AccessRequest request;
+        request.set_name( fullPath );
+        request.set_mode( mask );
+
+        AccessResponse response = client.Access( request );
+
+        FSstatus status = response.status();
+        return status.retcode();
 }
 
 int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
