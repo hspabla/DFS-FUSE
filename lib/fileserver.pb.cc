@@ -135,7 +135,7 @@ void protobuf_AssignDesc_fileserver_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, dev_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, ino_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, mode_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, st_nlink_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, nlink_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, owner_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, rdev_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Attr, size_),
@@ -474,78 +474,48 @@ void protobuf_AddDesc_fileserver_2eproto() {
     "\n\020fileserver.proto\022\007dfsFuse\"\033\n\010FSstatus\022"
     "\017\n\007retCode\030\001 \001(\005\"!\n\005Owner\022\013\n\003uid\030\001 \001(\r\022\013"
     "\n\003gid\030\002 \001(\r\"8\n\nClientInfo\022\035\n\005Owner\030\001 \001(\013"
-    "2\016.dfsFuse.Owner\022\013\n\003Pid\030\002 \001(\r\"\374\001\n\004Attr\022\013"
-    "\n\003dev\030\001 \001(\r\022\013\n\003ino\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\020"
-    "\n\010st_nlink\030\004 \001(\r\022\035\n\005owner\030\005 \001(\0132\016.dfsFus"
-    "e.Owner\022\014\n\004rdev\030\006 \001(\r\022\014\n\004size\030\007 \001(\004\022\017\n\007b"
-    "lksize\030\010 \001(\004\022\016\n\006blocks\030\t \001(\004\022\r\n\005atime\030\n "
-    "\001(\004\022\017\n\007atimens\030\013 \001(\r\022\r\n\005mtime\030\014 \001(\004\022\017\n\007m"
-    "timens\030\r \001(\r\022\r\n\005ctime\030\016 \001(\004\022\017\n\007ctimens\030\017"
-    " \001(\r\"A\n\016GetAttrRequest\022\014\n\004name\030\001 \001(\t\022!\n\004"
-    "info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"Q\n\017GetAt"
-    "trResponse\022\033\n\004attr\030\001 \001(\0132\r.dfsFuse.Attr\022"
-    "!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\"M\n\014Mk"
-    "dirRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\022!"
-    "\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"2\n\rMkd"
-    "irResponse\022!\n\006status\030\001 \001(\0132\021.dfsFuse.FSs"
-    "tatus\"A\n\016OpenDirRequest\022\014\n\004name\030\001 \001(\t\022!\n"
-<<<<<<< HEAD
-    "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"&\n\010DirE"
-    "ntry\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\r\"U\n\017Open"
-    "DirResponse\022\037\n\004dirs\030\001 \003(\0132\021.dfsFuse.DirE"
-    "ntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\""
-    "M\n\013OpenRequest\022\014\n\004name\030\001 \001(\t\022\r\n\005flags\030\002 "
-    "\001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse.ClientInfo\"E"
-    "\n\014OpenResponse\022\022\n\nfileHandle\030\001 \001(\r\022!\n\006st"
-    "atus\030\002 \001(\0132\021.dfsFuse.FSstatus\"b\n\013ReadReq"
-    "uest\022\022\n\nfileHandle\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022\016"
-    "\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001(\0132\023.dfsFuse.C"
-    "lientInfo\"Q\n\014ReadResponse\022\020\n\010dataRead\030\001 "
-    "\001(\005\022\014\n\004data\030\002 \001(\014\022!\n\006status\030\003 \001(\0132\021.dfsF"
-    "use.FSstatus\"q\n\014WriteRequest\022\022\n\nfileHand"
-    "le\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\016\n\006"
-    "offset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.dfsFuse.Cli"
-    "entInfo\"G\n\rWriteResponse\022\023\n\013dataWritten\030"
-    "\001 \001(\005\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus"
-    "2\356\002\n\nFileSystem\022>\n\007GetAttr\022\027.dfsFuse.Get"
-    "AttrRequest\032\030.dfsFuse.GetAttrResponse\"\000\022"
-    "8\n\005Mkdir\022\025.dfsFuse.MkdirRequest\032\026.dfsFus"
-    "e.MkdirResponse\"\000\022>\n\007Opendir\022\027.dfsFuse.O"
-    "penDirRequest\032\030.dfsFuse.OpenDirResponse\""
-    "\000\0225\n\004Open\022\024.dfsFuse.OpenRequest\032\025.dfsFus"
-    "e.OpenResponse\"\000\0225\n\004Read\022\024.dfsFuse.ReadR"
-    "equest\032\025.dfsFuse.ReadResponse\"\000\0228\n\005Write"
-    "\022\025.dfsFuse.WriteRequest\032\026.dfsFuse.WriteR"
-    "esponse\"\000b\006proto3", 1777);
-=======
-    "\004info\030\002 \001(\0132\023.dfsFuse.ClientInfo\"3\n\010DirE"
-    "ntry\022\014\n\004name\030\001 \001(\t\022\013\n\003ino\030\002 \001(\r\022\014\n\004mode\030"
-    "\003 \001(\r\"U\n\017OpenDirResponse\022\037\n\004dirs\030\001 \003(\0132\021"
-    ".dfsFuse.DirEntry\022!\n\006status\030\002 \001(\0132\021.dfsF"
-    "use.FSstatus\"M\n\013OpenRequest\022\014\n\004name\030\001 \001("
-    "\t\022\r\n\005flags\030\002 \001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse"
-    ".ClientInfo\"E\n\014OpenResponse\022\022\n\nfileHandl"
-    "e\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstat"
-    "us\"c\n\013ReadRequest\022\023\n\013fileHandler\030\001 \001(\r\022\014"
-    "\n\004size\030\002 \001(\r\022\016\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001"
-    "(\0132\023.dfsFuse.ClientInfo\"Q\n\014ReadResponse\022"
-    "\020\n\010dataRead\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022!\n\006statu"
-    "s\030\003 \001(\0132\021.dfsFuse.FSstatus\"r\n\014WriteReque"
-    "st\022\023\n\013fileHandler\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n"
-    "\004size\030\003 \001(\r\022\016\n\006offset\030\004 \001(\r\022!\n\004info\030\005 \001("
-    "\0132\023.dfsFuse.ClientInfo\"G\n\rWriteResponse\022"
-    "\023\n\013dataWritten\030\001 \001(\r\022!\n\006status\030\002 \001(\0132\021.d"
-    "fsFuse.FSstatus2\356\002\n\nFileSystem\022>\n\007GetAtt"
-    "r\022\027.dfsFuse.GetAttrRequest\032\030.dfsFuse.Get"
-    "AttrResponse\"\000\0228\n\005Mkdir\022\025.dfsFuse.MkdirR"
-    "equest\032\026.dfsFuse.MkdirResponse\"\000\022>\n\007Open"
-    "dir\022\027.dfsFuse.OpenDirRequest\032\030.dfsFuse.O"
-    "penDirResponse\"\000\0225\n\004Open\022\024.dfsFuse.OpenR"
-    "equest\032\025.dfsFuse.OpenResponse\"\000\0225\n\004Read\022"
-    "\024.dfsFuse.ReadRequest\032\025.dfsFuse.ReadResp"
-    "onse\"\000\0228\n\005Write\022\025.dfsFuse.WriteRequest\032\026"
-    ".dfsFuse.WriteResponse\"\000b\006proto3", 1792);
->>>>>>> 5d7f346986b0373bd0e3cf3fb4130702d0c26fd4
+    "2\016.dfsFuse.Owner\022\013\n\003Pid\030\002 \001(\r\"\371\001\n\004Attr\022\013"
+    "\n\003dev\030\001 \001(\004\022\013\n\003ino\030\002 \001(\004\022\014\n\004mode\030\003 \001(\004\022\r"
+    "\n\005nlink\030\004 \001(\004\022\035\n\005owner\030\005 \001(\0132\016.dfsFuse.O"
+    "wner\022\014\n\004rdev\030\006 \001(\004\022\014\n\004size\030\007 \001(\004\022\017\n\007blks"
+    "ize\030\010 \001(\004\022\016\n\006blocks\030\t \001(\004\022\r\n\005atime\030\n \001(\004"
+    "\022\017\n\007atimens\030\013 \001(\004\022\r\n\005mtime\030\014 \001(\004\022\017\n\007mtim"
+    "ens\030\r \001(\004\022\r\n\005ctime\030\016 \001(\004\022\017\n\007ctimens\030\017 \001("
+    "\004\"A\n\016GetAttrRequest\022\014\n\004name\030\001 \001(\t\022!\n\004inf"
+    "o\030\002 \001(\0132\023.dfsFuse.ClientInfo\"Q\n\017GetAttrR"
+    "esponse\022\033\n\004attr\030\001 \001(\0132\r.dfsFuse.Attr\022!\n\006"
+    "status\030\002 \001(\0132\021.dfsFuse.FSstatus\"M\n\014Mkdir"
+    "Request\022\014\n\004name\030\001 \001(\t\022\014\n\004mode\030\002 \001(\004\022!\n\004i"
+    "nfo\030\003 \001(\0132\023.dfsFuse.ClientInfo\"2\n\rMkdirR"
+    "esponse\022!\n\006status\030\001 \001(\0132\021.dfsFuse.FSstat"
+    "us\"A\n\016OpenDirRequest\022\014\n\004name\030\001 \001(\t\022!\n\004in"
+    "fo\030\002 \001(\0132\023.dfsFuse.ClientInfo\"3\n\010DirEntr"
+    "y\022\014\n\004name\030\001 \001(\t\022\013\n\003ino\030\002 \001(\004\022\014\n\004mode\030\003 \001"
+    "(\004\"U\n\017OpenDirResponse\022\037\n\004dirs\030\001 \003(\0132\021.df"
+    "sFuse.DirEntry\022!\n\006status\030\002 \001(\0132\021.dfsFuse"
+    ".FSstatus\"M\n\013OpenRequest\022\014\n\004name\030\001 \001(\t\022\r"
+    "\n\005flags\030\002 \001(\r\022!\n\004info\030\003 \001(\0132\023.dfsFuse.Cl"
+    "ientInfo\"E\n\014OpenResponse\022\022\n\nfileHandle\030\001"
+    " \001(\r\022!\n\006status\030\002 \001(\0132\021.dfsFuse.FSstatus\""
+    "b\n\013ReadRequest\022\022\n\nfileHandle\030\001 \001(\r\022\014\n\004si"
+    "ze\030\002 \001(\r\022\016\n\006offset\030\003 \001(\r\022!\n\004info\030\004 \001(\0132\023"
+    ".dfsFuse.ClientInfo\"Q\n\014ReadResponse\022\020\n\010d"
+    "ataRead\030\001 \001(\005\022\014\n\004data\030\002 \001(\014\022!\n\006status\030\003 "
+    "\001(\0132\021.dfsFuse.FSstatus\"q\n\014WriteRequest\022\022"
+    "\n\nfileHandle\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size"
+    "\030\003 \001(\r\022\016\n\006offset\030\004 \001(\r\022!\n\004info\030\005 \001(\0132\023.d"
+    "fsFuse.ClientInfo\"G\n\rWriteResponse\022\023\n\013da"
+    "taWritten\030\001 \001(\005\022!\n\006status\030\002 \001(\0132\021.dfsFus"
+    "e.FSstatus2\356\002\n\nFileSystem\022>\n\007GetAttr\022\027.d"
+    "fsFuse.GetAttrRequest\032\030.dfsFuse.GetAttrR"
+    "esponse\"\000\0228\n\005Mkdir\022\025.dfsFuse.MkdirReques"
+    "t\032\026.dfsFuse.MkdirResponse\"\000\022>\n\007Opendir\022\027"
+    ".dfsFuse.OpenDirRequest\032\030.dfsFuse.OpenDi"
+    "rResponse\"\000\0225\n\004Open\022\024.dfsFuse.OpenReques"
+    "t\032\025.dfsFuse.OpenResponse\"\000\0225\n\004Read\022\024.dfs"
+    "Fuse.ReadRequest\032\025.dfsFuse.ReadResponse\""
+    "\000\0228\n\005Write\022\025.dfsFuse.WriteRequest\032\026.dfsF"
+    "use.WriteResponse\"\000b\006proto3", 1787);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fileserver.proto", &protobuf_RegisterTypes);
   FSstatus::default_instance_ = new FSstatus();
@@ -1465,7 +1435,7 @@ void ClientInfo::clear_pid() {
 const int Attr::kDevFieldNumber;
 const int Attr::kInoFieldNumber;
 const int Attr::kModeFieldNumber;
-const int Attr::kStNlinkFieldNumber;
+const int Attr::kNlinkFieldNumber;
 const int Attr::kOwnerFieldNumber;
 const int Attr::kRdevFieldNumber;
 const int Attr::kSizeFieldNumber;
@@ -1501,21 +1471,21 @@ Attr::Attr(const Attr& from)
 void Attr::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
-  dev_ = 0u;
-  ino_ = 0u;
-  mode_ = 0u;
-  st_nlink_ = 0u;
+  dev_ = GOOGLE_ULONGLONG(0);
+  ino_ = GOOGLE_ULONGLONG(0);
+  mode_ = GOOGLE_ULONGLONG(0);
+  nlink_ = GOOGLE_ULONGLONG(0);
   owner_ = NULL;
-  rdev_ = 0u;
+  rdev_ = GOOGLE_ULONGLONG(0);
   size_ = GOOGLE_ULONGLONG(0);
   blksize_ = GOOGLE_ULONGLONG(0);
   blocks_ = GOOGLE_ULONGLONG(0);
   atime_ = GOOGLE_ULONGLONG(0);
-  atimens_ = 0u;
+  atimens_ = GOOGLE_ULONGLONG(0);
   mtime_ = GOOGLE_ULONGLONG(0);
-  mtimens_ = 0u;
+  mtimens_ = GOOGLE_ULONGLONG(0);
   ctime_ = GOOGLE_ULONGLONG(0);
-  ctimens_ = 0u;
+  ctimens_ = GOOGLE_ULONGLONG(0);
 }
 
 Attr::~Attr() {
@@ -1572,11 +1542,11 @@ void Attr::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(dev_, st_nlink_);
-  ZR_(size_, rdev_);
+  ZR_(dev_, nlink_);
+  ZR_(rdev_, blksize_);
   if (GetArenaNoVirtual() == NULL && owner_ != NULL) delete owner_;
   owner_ = NULL;
-  ZR_(atimens_, ctimens_);
+  ZR_(blocks_, ctimens_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -1593,11 +1563,11 @@ bool Attr::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 dev = 1;
+      // optional uint64 dev = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &dev_)));
 
         } else {
@@ -1607,12 +1577,12 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 ino = 2;
+      // optional uint64 ino = 2;
       case 2: {
         if (tag == 16) {
          parse_ino:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &ino_)));
 
         } else {
@@ -1622,28 +1592,28 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 mode = 3;
+      // optional uint64 mode = 3;
       case 3: {
         if (tag == 24) {
          parse_mode:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &mode_)));
 
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_st_nlink;
+        if (input->ExpectTag(32)) goto parse_nlink;
         break;
       }
 
-      // optional uint32 st_nlink = 4;
+      // optional uint64 nlink = 4;
       case 4: {
         if (tag == 32) {
-         parse_st_nlink:
+         parse_nlink:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &st_nlink_)));
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &nlink_)));
 
         } else {
           goto handle_unusual;
@@ -1665,12 +1635,12 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 rdev = 6;
+      // optional uint64 rdev = 6;
       case 6: {
         if (tag == 48) {
          parse_rdev:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &rdev_)));
 
         } else {
@@ -1740,12 +1710,12 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 atimens = 11;
+      // optional uint64 atimens = 11;
       case 11: {
         if (tag == 88) {
          parse_atimens:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &atimens_)));
 
         } else {
@@ -1770,12 +1740,12 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 mtimens = 13;
+      // optional uint64 mtimens = 13;
       case 13: {
         if (tag == 104) {
          parse_mtimens:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &mtimens_)));
 
         } else {
@@ -1800,12 +1770,12 @@ bool Attr::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 ctimens = 15;
+      // optional uint64 ctimens = 15;
       case 15: {
         if (tag == 120) {
          parse_ctimens:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &ctimens_)));
 
         } else {
@@ -1839,24 +1809,24 @@ failure:
 void Attr::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:dfsFuse.Attr)
-  // optional uint32 dev = 1;
+  // optional uint64 dev = 1;
   if (this->dev() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->dev(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->dev(), output);
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->ino(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->ino(), output);
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->mode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->mode(), output);
   }
 
-  // optional uint32 st_nlink = 4;
-  if (this->st_nlink() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->st_nlink(), output);
+  // optional uint64 nlink = 4;
+  if (this->nlink() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->nlink(), output);
   }
 
   // optional .dfsFuse.Owner owner = 5;
@@ -1865,9 +1835,9 @@ void Attr::SerializeWithCachedSizes(
       5, *this->owner_, output);
   }
 
-  // optional uint32 rdev = 6;
+  // optional uint64 rdev = 6;
   if (this->rdev() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->rdev(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->rdev(), output);
   }
 
   // optional uint64 size = 7;
@@ -1890,9 +1860,9 @@ void Attr::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(10, this->atime(), output);
   }
 
-  // optional uint32 atimens = 11;
+  // optional uint64 atimens = 11;
   if (this->atimens() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->atimens(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(11, this->atimens(), output);
   }
 
   // optional uint64 mtime = 12;
@@ -1900,9 +1870,9 @@ void Attr::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(12, this->mtime(), output);
   }
 
-  // optional uint32 mtimens = 13;
+  // optional uint64 mtimens = 13;
   if (this->mtimens() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->mtimens(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(13, this->mtimens(), output);
   }
 
   // optional uint64 ctime = 14;
@@ -1910,9 +1880,9 @@ void Attr::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(14, this->ctime(), output);
   }
 
-  // optional uint32 ctimens = 15;
+  // optional uint64 ctimens = 15;
   if (this->ctimens() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(15, this->ctimens(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(15, this->ctimens(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:dfsFuse.Attr)
@@ -1921,24 +1891,24 @@ void Attr::SerializeWithCachedSizes(
 ::google::protobuf::uint8* Attr::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:dfsFuse.Attr)
-  // optional uint32 dev = 1;
+  // optional uint64 dev = 1;
   if (this->dev() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->dev(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->dev(), target);
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->ino(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->ino(), target);
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->mode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->mode(), target);
   }
 
-  // optional uint32 st_nlink = 4;
-  if (this->st_nlink() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->st_nlink(), target);
+  // optional uint64 nlink = 4;
+  if (this->nlink() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->nlink(), target);
   }
 
   // optional .dfsFuse.Owner owner = 5;
@@ -1948,9 +1918,9 @@ void Attr::SerializeWithCachedSizes(
         5, *this->owner_, false, target);
   }
 
-  // optional uint32 rdev = 6;
+  // optional uint64 rdev = 6;
   if (this->rdev() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->rdev(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->rdev(), target);
   }
 
   // optional uint64 size = 7;
@@ -1973,9 +1943,9 @@ void Attr::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(10, this->atime(), target);
   }
 
-  // optional uint32 atimens = 11;
+  // optional uint64 atimens = 11;
   if (this->atimens() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->atimens(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(11, this->atimens(), target);
   }
 
   // optional uint64 mtime = 12;
@@ -1983,9 +1953,9 @@ void Attr::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(12, this->mtime(), target);
   }
 
-  // optional uint32 mtimens = 13;
+  // optional uint64 mtimens = 13;
   if (this->mtimens() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(13, this->mtimens(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(13, this->mtimens(), target);
   }
 
   // optional uint64 ctime = 14;
@@ -1993,9 +1963,9 @@ void Attr::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(14, this->ctime(), target);
   }
 
-  // optional uint32 ctimens = 15;
+  // optional uint64 ctimens = 15;
   if (this->ctimens() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(15, this->ctimens(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(15, this->ctimens(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.Attr)
@@ -2006,32 +1976,32 @@ int Attr::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:dfsFuse.Attr)
   int total_size = 0;
 
-  // optional uint32 dev = 1;
+  // optional uint64 dev = 1;
   if (this->dev() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->dev());
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->ino());
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->mode());
   }
 
-  // optional uint32 st_nlink = 4;
-  if (this->st_nlink() != 0) {
+  // optional uint64 nlink = 4;
+  if (this->nlink() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->st_nlink());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->nlink());
   }
 
   // optional .dfsFuse.Owner owner = 5;
@@ -2041,10 +2011,10 @@ int Attr::ByteSize() const {
         *this->owner_);
   }
 
-  // optional uint32 rdev = 6;
+  // optional uint64 rdev = 6;
   if (this->rdev() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->rdev());
   }
 
@@ -2076,10 +2046,10 @@ int Attr::ByteSize() const {
         this->atime());
   }
 
-  // optional uint32 atimens = 11;
+  // optional uint64 atimens = 11;
   if (this->atimens() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->atimens());
   }
 
@@ -2090,10 +2060,10 @@ int Attr::ByteSize() const {
         this->mtime());
   }
 
-  // optional uint32 mtimens = 13;
+  // optional uint64 mtimens = 13;
   if (this->mtimens() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->mtimens());
   }
 
@@ -2104,10 +2074,10 @@ int Attr::ByteSize() const {
         this->ctime());
   }
 
-  // optional uint32 ctimens = 15;
+  // optional uint64 ctimens = 15;
   if (this->ctimens() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->ctimens());
   }
 
@@ -2148,8 +2118,8 @@ void Attr::MergeFrom(const Attr& from) {
   if (from.mode() != 0) {
     set_mode(from.mode());
   }
-  if (from.st_nlink() != 0) {
-    set_st_nlink(from.st_nlink());
+  if (from.nlink() != 0) {
+    set_nlink(from.nlink());
   }
   if (from.has_owner()) {
     mutable_owner()->::dfsFuse::Owner::MergeFrom(from.owner());
@@ -2213,7 +2183,7 @@ void Attr::InternalSwap(Attr* other) {
   std::swap(dev_, other->dev_);
   std::swap(ino_, other->ino_);
   std::swap(mode_, other->mode_);
-  std::swap(st_nlink_, other->st_nlink_);
+  std::swap(nlink_, other->nlink_);
   std::swap(owner_, other->owner_);
   std::swap(rdev_, other->rdev_);
   std::swap(size_, other->size_);
@@ -2240,60 +2210,60 @@ void Attr::InternalSwap(Attr* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Attr
 
-// optional uint32 dev = 1;
+// optional uint64 dev = 1;
 void Attr::clear_dev() {
-  dev_ = 0u;
+  dev_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::dev() const {
+ ::google::protobuf::uint64 Attr::dev() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.dev)
   return dev_;
 }
- void Attr::set_dev(::google::protobuf::uint32 value) {
+ void Attr::set_dev(::google::protobuf::uint64 value) {
   
   dev_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.dev)
 }
 
-// optional uint32 ino = 2;
+// optional uint64 ino = 2;
 void Attr::clear_ino() {
-  ino_ = 0u;
+  ino_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::ino() const {
+ ::google::protobuf::uint64 Attr::ino() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.ino)
   return ino_;
 }
- void Attr::set_ino(::google::protobuf::uint32 value) {
+ void Attr::set_ino(::google::protobuf::uint64 value) {
   
   ino_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ino)
 }
 
-// optional uint32 mode = 3;
+// optional uint64 mode = 3;
 void Attr::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::mode() const {
+ ::google::protobuf::uint64 Attr::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.mode)
   return mode_;
 }
- void Attr::set_mode(::google::protobuf::uint32 value) {
+ void Attr::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mode)
 }
 
-// optional uint32 st_nlink = 4;
-void Attr::clear_st_nlink() {
-  st_nlink_ = 0u;
+// optional uint64 nlink = 4;
+void Attr::clear_nlink() {
+  nlink_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::st_nlink() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.Attr.st_nlink)
-  return st_nlink_;
+ ::google::protobuf::uint64 Attr::nlink() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.Attr.nlink)
+  return nlink_;
 }
- void Attr::set_st_nlink(::google::protobuf::uint32 value) {
+ void Attr::set_nlink(::google::protobuf::uint64 value) {
   
-  st_nlink_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.Attr.st_nlink)
+  nlink_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.Attr.nlink)
 }
 
 // optional .dfsFuse.Owner owner = 5;
@@ -2334,15 +2304,15 @@ void Attr::set_allocated_owner(::dfsFuse::Owner* owner) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.Attr.owner)
 }
 
-// optional uint32 rdev = 6;
+// optional uint64 rdev = 6;
 void Attr::clear_rdev() {
-  rdev_ = 0u;
+  rdev_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::rdev() const {
+ ::google::protobuf::uint64 Attr::rdev() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.rdev)
   return rdev_;
 }
- void Attr::set_rdev(::google::protobuf::uint32 value) {
+ void Attr::set_rdev(::google::protobuf::uint64 value) {
   
   rdev_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.rdev)
@@ -2404,15 +2374,15 @@ void Attr::clear_atime() {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.atime)
 }
 
-// optional uint32 atimens = 11;
+// optional uint64 atimens = 11;
 void Attr::clear_atimens() {
-  atimens_ = 0u;
+  atimens_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::atimens() const {
+ ::google::protobuf::uint64 Attr::atimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.atimens)
   return atimens_;
 }
- void Attr::set_atimens(::google::protobuf::uint32 value) {
+ void Attr::set_atimens(::google::protobuf::uint64 value) {
   
   atimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.atimens)
@@ -2432,15 +2402,15 @@ void Attr::clear_mtime() {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mtime)
 }
 
-// optional uint32 mtimens = 13;
+// optional uint64 mtimens = 13;
 void Attr::clear_mtimens() {
-  mtimens_ = 0u;
+  mtimens_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::mtimens() const {
+ ::google::protobuf::uint64 Attr::mtimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.mtimens)
   return mtimens_;
 }
- void Attr::set_mtimens(::google::protobuf::uint32 value) {
+ void Attr::set_mtimens(::google::protobuf::uint64 value) {
   
   mtimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mtimens)
@@ -2460,15 +2430,15 @@ void Attr::clear_ctime() {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ctime)
 }
 
-// optional uint32 ctimens = 15;
+// optional uint64 ctimens = 15;
 void Attr::clear_ctimens() {
-  ctimens_ = 0u;
+  ctimens_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Attr::ctimens() const {
+ ::google::protobuf::uint64 Attr::ctimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.ctimens)
   return ctimens_;
 }
- void Attr::set_ctimens(::google::protobuf::uint32 value) {
+ void Attr::set_ctimens(::google::protobuf::uint64 value) {
   
   ctimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ctimens)
@@ -3220,7 +3190,7 @@ void MkdirRequest::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
   info_ = NULL;
 }
 
@@ -3264,7 +3234,7 @@ MkdirRequest* MkdirRequest::New(::google::protobuf::Arena* arena) const {
 void MkdirRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:dfsFuse.MkdirRequest)
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
   if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
   info_ = NULL;
 }
@@ -3295,12 +3265,12 @@ bool MkdirRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 mode = 2;
+      // optional uint64 mode = 2;
       case 2: {
         if (tag == 16) {
          parse_mode:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &mode_)));
 
         } else {
@@ -3357,9 +3327,9 @@ void MkdirRequest::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // optional uint32 mode = 2;
+  // optional uint64 mode = 2;
   if (this->mode() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->mode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->mode(), output);
   }
 
   // optional .dfsFuse.ClientInfo info = 3;
@@ -3385,9 +3355,9 @@ void MkdirRequest::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // optional uint32 mode = 2;
+  // optional uint64 mode = 2;
   if (this->mode() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->mode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->mode(), target);
   }
 
   // optional .dfsFuse.ClientInfo info = 3;
@@ -3412,10 +3382,10 @@ int MkdirRequest::ByteSize() const {
         this->name());
   }
 
-  // optional uint32 mode = 2;
+  // optional uint64 mode = 2;
   if (this->mode() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->mode());
   }
 
@@ -3552,15 +3522,15 @@ void MkdirRequest::clear_name() {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.MkdirRequest.name)
 }
 
-// optional uint32 mode = 2;
+// optional uint64 mode = 2;
 void MkdirRequest::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 MkdirRequest::mode() const {
+ ::google::protobuf::uint64 MkdirRequest::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.MkdirRequest.mode)
   return mode_;
 }
- void MkdirRequest::set_mode(::google::protobuf::uint32 value) {
+ void MkdirRequest::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.MkdirRequest.mode)
@@ -4268,8 +4238,8 @@ void DirEntry::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ino_ = 0u;
-  mode_ = 0u;
+  ino_ = GOOGLE_ULONGLONG(0);
+  mode_ = GOOGLE_ULONGLONG(0);
 }
 
 DirEntry::~DirEntry() {
@@ -4360,12 +4330,12 @@ bool DirEntry::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 ino = 2;
+      // optional uint64 ino = 2;
       case 2: {
         if (tag == 16) {
          parse_ino:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &ino_)));
 
         } else {
@@ -4375,12 +4345,12 @@ bool DirEntry::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 mode = 3;
+      // optional uint64 mode = 3;
       case 3: {
         if (tag == 24) {
          parse_mode:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &mode_)));
 
         } else {
@@ -4424,14 +4394,14 @@ void DirEntry::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->ino(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->ino(), output);
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->mode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->mode(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:dfsFuse.DirEntry)
@@ -4451,14 +4421,14 @@ void DirEntry::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->ino(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->ino(), target);
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->mode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->mode(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:dfsFuse.DirEntry)
@@ -4476,17 +4446,17 @@ int DirEntry::ByteSize() const {
         this->name());
   }
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   if (this->ino() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->ino());
   }
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   if (this->mode() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->mode());
   }
 
@@ -4616,29 +4586,29 @@ void DirEntry::clear_name() {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.DirEntry.name)
 }
 
-// optional uint32 ino = 2;
+// optional uint64 ino = 2;
 void DirEntry::clear_ino() {
-  ino_ = 0u;
+  ino_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 DirEntry::ino() const {
+ ::google::protobuf::uint64 DirEntry::ino() const {
   // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.ino)
   return ino_;
 }
- void DirEntry::set_ino(::google::protobuf::uint32 value) {
+ void DirEntry::set_ino(::google::protobuf::uint64 value) {
   
   ino_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.ino)
 }
 
-// optional uint32 mode = 3;
+// optional uint64 mode = 3;
 void DirEntry::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 DirEntry::mode() const {
+ ::google::protobuf::uint64 DirEntry::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.mode)
   return mode_;
 }
- void DirEntry::set_mode(::google::protobuf::uint32 value) {
+ void DirEntry::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.mode)

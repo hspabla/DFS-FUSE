@@ -44,26 +44,30 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
            response = client.GetAttr(request);
 	   Attr attributes = response.attr();
 	   FSstatus status = response.status();
+           statbuf->st_dev = attributes.dev();
+	   statbuf->st_ino = attributes.ino();
+	   statbuf->st_mode = attributes.mode();
+	   statbuf->st_nlink = attributes.nlink();
+	   Owner owner = attributes.owner();
+	   statbuf->st_uid = owner.uid();
+           statbuf->st_gid = owner.gid();
+           statbuf->st_rdev = attributes.rdev();
+	   statbuf->st_size = attributes.size();
+	   statbuf->st_blksize = attributes.blksize();
+	   statbuf->st_blocks = attributes.blocks();
+	   statbuf->st_atime = attributes.atime();
+	   statbuf->st_mtime = attributes.mtime();
+	   statbuf->st_ctime = attributes.ctime();
+
 	   if (status.retcode() == 0) {
-		statbuf->st_dev = attributes.dev();
-		statbuf->st_ino = attributes.ino();
-		statbuf->st_mode = attributes.mode();
-		statbuf->st_nlink = attributes.st_nlink();
-		Owner owner = attributes.owner();
-		statbuf->st_uid = owner.uid();
-		statbuf->st_gid = owner.gid();
-		statbuf->st_rdev = attributes.rdev();
-		statbuf->st_size = attributes.size();
-		statbuf->st_blksize = attributes.blksize();
-		statbuf->st_blocks = attributes.blocks();
-		statbuf->st_atime = attributes.atime();
-		statbuf->st_mtime = attributes.mtime();
-		statbuf->st_ctime = attributes.ctime();
 		return 0;
-	   } else
-		throw status.retcode();
+	   } else {
+		printf("We threw the error code %d\n", status.retcode());
+		return status.retcode();
+	   }
 	} catch (int errorCode) {
-		return -errno;
+		printf("We arrived here\n");
+		return -1;
 	}
 }
 

@@ -13,13 +13,13 @@ Status FileSystemImpl::GetAttr( ServerContext* context,
 	owner.set_gid(statbuf.st_gid);
 
         FSstatus status;
-	status.set_retcode(retstat);
+	status.set_retcode(retstat == 0 ? 0 : -errno);
 
         Attr attributes;
  	attributes.set_dev(statbuf.st_dev);
 	attributes.set_ino(statbuf.st_ino);
 	attributes.set_mode(statbuf.st_mode);
-	attributes.set_st_nlink(statbuf.st_nlink);
+	attributes.set_nlink(statbuf.st_nlink);
 	attributes.mutable_owner()->CopyFrom(owner);
 	attributes.set_rdev(statbuf.st_rdev);
 	attributes.set_size(statbuf.st_size);
@@ -40,7 +40,9 @@ Status FileSystemImpl::Mkdir( ServerContext* context,
 
 	// Mkdir implementation
 	std::string path = request->name();
-	int retstat = mkdir(path.c_str(), request->mode());
+	int mode = request->mode();
+	int retstat = mkdir(path.c_str(), mode);
+	printf("mkdir(path=%s, mode=%d, restat=%d)\n", path.c_str(), mode, retstat);
 
 	//Populate the response
 	FSstatus status;
@@ -56,7 +58,7 @@ Status FileSystemImpl::Opendir( ServerContext* context,
  	std::string path = request->name();
 	DIR *dp;
         struct dirent *de;
-	int index = 0;
+	int index = 1;
 
         dp = opendir(path.c_str());
 
@@ -65,11 +67,10 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 		status.set_retcode(-1);
 
  	while ((de = readdir(dp)) != NULL) {
-		DirEntry entry;
-		entry.set_name(de->d_name);
-		entry.set_ino(de->d_ino);
-		entry.set_mode(de->d_type << 12);
-	 	reply->mutable_dirs(index++)->CopyFrom(entry);
+	 	DirEntry *entry = reply->add_dirs();
+                entry->set_name(de->d_name);
+                entry->set_ino(de->d_ino);
+                entry->set_mode(de->d_type << 12);
 	}
 	status.set_retcode(0);
         reply->mutable_status()->CopyFrom(status);	

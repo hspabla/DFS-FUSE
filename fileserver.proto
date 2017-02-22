@@ -35,22 +35,21 @@ message ClientInfo {
 
 // Attr
 message Attr {
-    uint32     dev		= 1;    /* ID of device containing file */
-    uint32     ino		= 2;    /* inode number */
-    uint32     mode		= 3;    /* protection */
-    uint32     st_nlink = 4;   	/* number of hard links */
-    Owner	   owner 	= 5;
-	uint32 	   rdev		= 6;    /* device ID (if special file) */
+    uint64     dev		= 1;    /* ID of device containing file */
+    uint64     ino		= 2;    /* inode number */
+    uint64     mode		= 3;    /* protection */
+    uint64     nlink 		= 4;   	/* number of hard links */
+    Owner      owner 		= 5;
+    uint64     rdev		= 6;    /* device ID (if special file) */
     uint64     size		= 7;    /* total size, in bytes */
-    uint64	   blksize	= 8; 	/* blocksize for file system I/O */
-    uint64     blocks	= 9;  	/* number of 512B blocks allocated */
-
-    uint64     atime	= 10;   /* time of last access */
-    uint32	   atimens	= 11;
-	uint64     mtime	= 12;   /* time of last modification */
-    uint32	   mtimens	= 13;
-	uint64     ctime	= 14;   /* time of last status change */
-	uint32	   ctimens	= 15;
+    uint64     blksize 		= 8; 	/* blocksize for file system I/O */
+    uint64     blocks 		= 9;  	/* number of 512B blocks allocated */
+    uint64     atime 		= 10;   /* time of last access */
+    uint64     atimens		= 11;
+    uint64     mtime		= 12;   /* time of last modification */
+    uint64     mtimens		= 13;
+    uint64     ctime		= 14;   /* time of last status change */
+    uint64     ctimens		= 15;
 
 }
 
@@ -68,7 +67,7 @@ message GetAttrResponse {
 
 message MkdirRequest {
     string name = 1;
-    uint32 mode = 2;
+    uint64 mode = 2;
     ClientInfo info = 3;
 }
 
@@ -86,8 +85,8 @@ message OpenDirRequest {
 
 message DirEntry {
     string name = 1;
-    uint32 ino = 2;
-    uint32 mode = 3;
+    uint64 ino = 2;
+    uint64 mode = 3;
 }
 
 message OpenDirResponse {

@@ -7,6 +7,7 @@ GetAttrResponse GetAttrClient::GetAttr(const GetAttrRequest & request ) {
   grpc::Status status = stub_->GetAttr( &context, request, &reply );
 
   if (status.ok()) {
+    printf("status ok\n");
     return reply;
   } else {
     std::cout << status.error_code() << ": " << status.error_message()
@@ -34,14 +35,17 @@ OpenDirResponse OpenDirClient::Opendir( const OpenDirRequest & request ) {
   OpenDirResponse reply;
   ClientContext context;
 
-  grpc::Status status = stub_->Opendir( &context, request, &reply );
+  try {
+     grpc::Status status = stub_->Opendir( &context, request, &reply );
 
-  if (status.ok()) {
-    return reply;
-  } else {
-    std::cout << status.error_code() << ": " << status.error_message()
+     if (status.ok()) {
+        return reply;
+     } else {
+        std::cout << status.error_code() << ": " << status.error_message()
               << std::endl;
-    throw status.error_code();
+        throw status.error_code();
+     }
+  } catch (int errCode) {
   }
 }
 

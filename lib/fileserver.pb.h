@@ -379,29 +379,29 @@ class Attr : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 dev = 1;
+  // optional uint64 dev = 1;
   void clear_dev();
   static const int kDevFieldNumber = 1;
-  ::google::protobuf::uint32 dev() const;
-  void set_dev(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dev() const;
+  void set_dev(::google::protobuf::uint64 value);
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   void clear_ino();
   static const int kInoFieldNumber = 2;
-  ::google::protobuf::uint32 ino() const;
-  void set_ino(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 ino() const;
+  void set_ino(::google::protobuf::uint64 value);
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   void clear_mode();
   static const int kModeFieldNumber = 3;
-  ::google::protobuf::uint32 mode() const;
-  void set_mode(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 mode() const;
+  void set_mode(::google::protobuf::uint64 value);
 
-  // optional uint32 st_nlink = 4;
-  void clear_st_nlink();
-  static const int kStNlinkFieldNumber = 4;
-  ::google::protobuf::uint32 st_nlink() const;
-  void set_st_nlink(::google::protobuf::uint32 value);
+  // optional uint64 nlink = 4;
+  void clear_nlink();
+  static const int kNlinkFieldNumber = 4;
+  ::google::protobuf::uint64 nlink() const;
+  void set_nlink(::google::protobuf::uint64 value);
 
   // optional .dfsFuse.Owner owner = 5;
   bool has_owner() const;
@@ -412,11 +412,11 @@ class Attr : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::dfsFuse::Owner* release_owner();
   void set_allocated_owner(::dfsFuse::Owner* owner);
 
-  // optional uint32 rdev = 6;
+  // optional uint64 rdev = 6;
   void clear_rdev();
   static const int kRdevFieldNumber = 6;
-  ::google::protobuf::uint32 rdev() const;
-  void set_rdev(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 rdev() const;
+  void set_rdev(::google::protobuf::uint64 value);
 
   // optional uint64 size = 7;
   void clear_size();
@@ -442,11 +442,11 @@ class Attr : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::uint64 atime() const;
   void set_atime(::google::protobuf::uint64 value);
 
-  // optional uint32 atimens = 11;
+  // optional uint64 atimens = 11;
   void clear_atimens();
   static const int kAtimensFieldNumber = 11;
-  ::google::protobuf::uint32 atimens() const;
-  void set_atimens(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 atimens() const;
+  void set_atimens(::google::protobuf::uint64 value);
 
   // optional uint64 mtime = 12;
   void clear_mtime();
@@ -454,11 +454,11 @@ class Attr : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::uint64 mtime() const;
   void set_mtime(::google::protobuf::uint64 value);
 
-  // optional uint32 mtimens = 13;
+  // optional uint64 mtimens = 13;
   void clear_mtimens();
   static const int kMtimensFieldNumber = 13;
-  ::google::protobuf::uint32 mtimens() const;
-  void set_mtimens(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 mtimens() const;
+  void set_mtimens(::google::protobuf::uint64 value);
 
   // optional uint64 ctime = 14;
   void clear_ctime();
@@ -466,32 +466,32 @@ class Attr : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::uint64 ctime() const;
   void set_ctime(::google::protobuf::uint64 value);
 
-  // optional uint32 ctimens = 15;
+  // optional uint64 ctimens = 15;
   void clear_ctimens();
   static const int kCtimensFieldNumber = 15;
-  ::google::protobuf::uint32 ctimens() const;
-  void set_ctimens(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 ctimens() const;
+  void set_ctimens(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:dfsFuse.Attr)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::uint32 dev_;
-  ::google::protobuf::uint32 ino_;
-  ::google::protobuf::uint32 mode_;
-  ::google::protobuf::uint32 st_nlink_;
+  ::google::protobuf::uint64 dev_;
+  ::google::protobuf::uint64 ino_;
+  ::google::protobuf::uint64 mode_;
+  ::google::protobuf::uint64 nlink_;
   ::dfsFuse::Owner* owner_;
+  ::google::protobuf::uint64 rdev_;
   ::google::protobuf::uint64 size_;
   ::google::protobuf::uint64 blksize_;
-  ::google::protobuf::uint32 rdev_;
-  ::google::protobuf::uint32 atimens_;
   ::google::protobuf::uint64 blocks_;
   ::google::protobuf::uint64 atime_;
+  ::google::protobuf::uint64 atimens_;
   ::google::protobuf::uint64 mtime_;
+  ::google::protobuf::uint64 mtimens_;
   ::google::protobuf::uint64 ctime_;
-  ::google::protobuf::uint32 mtimens_;
-  ::google::protobuf::uint32 ctimens_;
+  ::google::protobuf::uint64 ctimens_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -765,11 +765,11 @@ class MkdirRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional uint32 mode = 2;
+  // optional uint64 mode = 2;
   void clear_mode();
   static const int kModeFieldNumber = 2;
-  ::google::protobuf::uint32 mode() const;
-  void set_mode(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 mode() const;
+  void set_mode(::google::protobuf::uint64 value);
 
   // optional .dfsFuse.ClientInfo info = 3;
   bool has_info() const;
@@ -786,8 +786,8 @@ class MkdirRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint64 mode_;
   ::dfsFuse::ClientInfo* info_;
-  ::google::protobuf::uint32 mode_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -1051,17 +1051,17 @@ class DirEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional uint32 ino = 2;
+  // optional uint64 ino = 2;
   void clear_ino();
   static const int kInoFieldNumber = 2;
-  ::google::protobuf::uint32 ino() const;
-  void set_ino(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 ino() const;
+  void set_ino(::google::protobuf::uint64 value);
 
-  // optional uint32 mode = 3;
+  // optional uint64 mode = 3;
   void clear_mode();
   static const int kModeFieldNumber = 3;
-  ::google::protobuf::uint32 mode() const;
-  void set_mode(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 mode() const;
+  void set_mode(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:dfsFuse.DirEntry)
  private:
@@ -1069,8 +1069,8 @@ class DirEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::uint32 ino_;
-  ::google::protobuf::uint32 mode_;
+  ::google::protobuf::uint64 ino_;
+  ::google::protobuf::uint64 mode_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_fileserver_2eproto();
   friend void protobuf_AssignDesc_fileserver_2eproto();
@@ -1907,60 +1907,60 @@ inline void ClientInfo::set_pid(::google::protobuf::uint32 value) {
 
 // Attr
 
-// optional uint32 dev = 1;
+// optional uint64 dev = 1;
 inline void Attr::clear_dev() {
-  dev_ = 0u;
+  dev_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::dev() const {
+inline ::google::protobuf::uint64 Attr::dev() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.dev)
   return dev_;
 }
-inline void Attr::set_dev(::google::protobuf::uint32 value) {
+inline void Attr::set_dev(::google::protobuf::uint64 value) {
   
   dev_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.dev)
 }
 
-// optional uint32 ino = 2;
+// optional uint64 ino = 2;
 inline void Attr::clear_ino() {
-  ino_ = 0u;
+  ino_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::ino() const {
+inline ::google::protobuf::uint64 Attr::ino() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.ino)
   return ino_;
 }
-inline void Attr::set_ino(::google::protobuf::uint32 value) {
+inline void Attr::set_ino(::google::protobuf::uint64 value) {
   
   ino_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ino)
 }
 
-// optional uint32 mode = 3;
+// optional uint64 mode = 3;
 inline void Attr::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::mode() const {
+inline ::google::protobuf::uint64 Attr::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.mode)
   return mode_;
 }
-inline void Attr::set_mode(::google::protobuf::uint32 value) {
+inline void Attr::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mode)
 }
 
-// optional uint32 st_nlink = 4;
-inline void Attr::clear_st_nlink() {
-  st_nlink_ = 0u;
+// optional uint64 nlink = 4;
+inline void Attr::clear_nlink() {
+  nlink_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::st_nlink() const {
-  // @@protoc_insertion_point(field_get:dfsFuse.Attr.st_nlink)
-  return st_nlink_;
+inline ::google::protobuf::uint64 Attr::nlink() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.Attr.nlink)
+  return nlink_;
 }
-inline void Attr::set_st_nlink(::google::protobuf::uint32 value) {
+inline void Attr::set_nlink(::google::protobuf::uint64 value) {
   
-  st_nlink_ = value;
-  // @@protoc_insertion_point(field_set:dfsFuse.Attr.st_nlink)
+  nlink_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.Attr.nlink)
 }
 
 // optional .dfsFuse.Owner owner = 5;
@@ -2001,15 +2001,15 @@ inline void Attr::set_allocated_owner(::dfsFuse::Owner* owner) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.Attr.owner)
 }
 
-// optional uint32 rdev = 6;
+// optional uint64 rdev = 6;
 inline void Attr::clear_rdev() {
-  rdev_ = 0u;
+  rdev_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::rdev() const {
+inline ::google::protobuf::uint64 Attr::rdev() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.rdev)
   return rdev_;
 }
-inline void Attr::set_rdev(::google::protobuf::uint32 value) {
+inline void Attr::set_rdev(::google::protobuf::uint64 value) {
   
   rdev_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.rdev)
@@ -2071,15 +2071,15 @@ inline void Attr::set_atime(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.atime)
 }
 
-// optional uint32 atimens = 11;
+// optional uint64 atimens = 11;
 inline void Attr::clear_atimens() {
-  atimens_ = 0u;
+  atimens_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::atimens() const {
+inline ::google::protobuf::uint64 Attr::atimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.atimens)
   return atimens_;
 }
-inline void Attr::set_atimens(::google::protobuf::uint32 value) {
+inline void Attr::set_atimens(::google::protobuf::uint64 value) {
   
   atimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.atimens)
@@ -2099,15 +2099,15 @@ inline void Attr::set_mtime(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mtime)
 }
 
-// optional uint32 mtimens = 13;
+// optional uint64 mtimens = 13;
 inline void Attr::clear_mtimens() {
-  mtimens_ = 0u;
+  mtimens_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::mtimens() const {
+inline ::google::protobuf::uint64 Attr::mtimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.mtimens)
   return mtimens_;
 }
-inline void Attr::set_mtimens(::google::protobuf::uint32 value) {
+inline void Attr::set_mtimens(::google::protobuf::uint64 value) {
   
   mtimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.mtimens)
@@ -2127,15 +2127,15 @@ inline void Attr::set_ctime(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ctime)
 }
 
-// optional uint32 ctimens = 15;
+// optional uint64 ctimens = 15;
 inline void Attr::clear_ctimens() {
-  ctimens_ = 0u;
+  ctimens_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Attr::ctimens() const {
+inline ::google::protobuf::uint64 Attr::ctimens() const {
   // @@protoc_insertion_point(field_get:dfsFuse.Attr.ctimens)
   return ctimens_;
 }
-inline void Attr::set_ctimens(::google::protobuf::uint32 value) {
+inline void Attr::set_ctimens(::google::protobuf::uint64 value) {
   
   ctimens_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.Attr.ctimens)
@@ -2355,15 +2355,15 @@ inline void MkdirRequest::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.MkdirRequest.name)
 }
 
-// optional uint32 mode = 2;
+// optional uint64 mode = 2;
 inline void MkdirRequest::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 MkdirRequest::mode() const {
+inline ::google::protobuf::uint64 MkdirRequest::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.MkdirRequest.mode)
   return mode_;
 }
-inline void MkdirRequest::set_mode(::google::protobuf::uint32 value) {
+inline void MkdirRequest::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.MkdirRequest.mode)
@@ -2583,29 +2583,29 @@ inline void DirEntry::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.DirEntry.name)
 }
 
-// optional uint32 ino = 2;
+// optional uint64 ino = 2;
 inline void DirEntry::clear_ino() {
-  ino_ = 0u;
+  ino_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 DirEntry::ino() const {
+inline ::google::protobuf::uint64 DirEntry::ino() const {
   // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.ino)
   return ino_;
 }
-inline void DirEntry::set_ino(::google::protobuf::uint32 value) {
+inline void DirEntry::set_ino(::google::protobuf::uint64 value) {
   
   ino_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.ino)
 }
 
-// optional uint32 mode = 3;
+// optional uint64 mode = 3;
 inline void DirEntry::clear_mode() {
-  mode_ = 0u;
+  mode_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 DirEntry::mode() const {
+inline ::google::protobuf::uint64 DirEntry::mode() const {
   // @@protoc_insertion_point(field_get:dfsFuse.DirEntry.mode)
   return mode_;
 }
-inline void DirEntry::set_mode(::google::protobuf::uint32 value) {
+inline void DirEntry::set_mode(::google::protobuf::uint64 value) {
   
   mode_ = value;
   // @@protoc_insertion_point(field_set:dfsFuse.DirEntry.mode)
