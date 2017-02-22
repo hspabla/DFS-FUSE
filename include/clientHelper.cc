@@ -228,7 +228,20 @@ ChmodResponse ChmodClient::Chmod( const ChmodRequest & request ) {
   }
 }
 
+ReleasedirResponse ReleasedirClient::Releasedir( const ReleasedirRequest & request ) {
+  ReleasedirResponse reply;
+  ClientContext context;
 
+  try {
+     grpc::Status status = stub_->Releasedir( &context, request, &reply );
 
-
-
+     if (status.ok()) {
+        return reply;
+     } else {
+        std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+        throw status.error_code();
+     }
+  } catch (int errCode) {
+  }
+}

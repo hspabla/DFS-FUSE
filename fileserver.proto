@@ -22,6 +22,7 @@ service FileSystem {
     rpc Release( ReleaseRequest ) returns ( ReleaseResponse ) {} 
     rpc Chmod( ChmodRequest ) returns ( ChmodResponse ) {}
     rpc Chown( ChownRequest ) returns ( ChownResponse ) {}
+    rpc Releasedir( ReleasedirRequest ) returns ( ReleasedirResponse ) {}
 
 }
 
@@ -204,4 +205,12 @@ message ChownRequest {
 
 message ChownResponse {
 	FSstatus status = 1;
+}
+
+message ReleasedirRequest {
+    uint32 fileHandle = 1;
+}
+
+message ReleasedirResponse {
+    FSstatus status = 1;
 }

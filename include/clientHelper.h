@@ -41,6 +41,8 @@ using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
 using dfsFuse::ChownResponse;
+using dfsFuse::ReleasedirRequest;
+using dfsFuse::ReleasedirResponse;
 
 class GetAttrClient {
  public:
@@ -173,6 +175,16 @@ class ChownClient {
   ChownClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
   ChownResponse Chown( const ChownRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+class ReleasedirClient {
+ public:
+  ReleasedirClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  ReleasedirResponse Releasedir( const ReleasedirRequest & request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;

@@ -381,8 +381,20 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
 
 int DSFS::Releasedir(const char *path, struct fuse_file_info *fileInfo) {
         printf("releasedir(path=%s)\n", path);
-        closedir((DIR*)fileInfo->fh);
-        return 0;
+        ReleasedirClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        ReleasedirRequest request;
+        request.set_filehandle(fileInfo->fh);
+        try {
+           ReleasedirResponse response = client.Releasedir(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 }
 
 int DSFS::Init(struct fuse_conn_info *conn) {

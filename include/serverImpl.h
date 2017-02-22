@@ -53,6 +53,8 @@ using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
 using dfsFuse::ChownResponse;
+using dfsFuse::ReleasedirRequest;
+using dfsFuse::ReleasedirResponse;
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -93,5 +95,8 @@ class FileSystemImpl final : public FileSystem::Service {
 
   Status Chown( ServerContext* context, const ChownRequest* request,
                 ChownResponse* reply ) override;
+
+  Status Releasedir( ServerContext* context, const ReleasedirRequest* request,
+                ReleasedirResponse* reply ) override;
 
 };

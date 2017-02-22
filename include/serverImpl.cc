@@ -240,3 +240,17 @@ Status FileSystemImpl::Chown( ServerContext* context, const ChownRequest* reques
        reply->mutable_status()->CopyFrom(status);
        return Status::OK;
 }
+
+Status FileSystemImpl::Releasedir( ServerContext* context,
+                              const ReleasedirRequest* request,
+                                              ReleasedirResponse* reply ) {
+
+        // Release/Close directory implementation
+        int retstat = closedir( (DIR *) (uintptr_t) request->filehandle());
+
+        //Populate the response
+        FSstatus status;
+        status.set_retcode(retstat == 0 ? 0 : -errno);
+        reply->mutable_status()->CopyFrom(status);
+        return Status::OK;
+}
