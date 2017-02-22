@@ -95,7 +95,7 @@ Status FileSystemImpl::Read( ServerContext* context,
     if ( byteRead < 0 ){
         // set error
     } else {
-        reply->data().copy( buf, 0, byteRead );
+        reply->set_data( buf, byteRead );
     }
     reply->set_dataread( byteRead );
 
