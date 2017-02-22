@@ -46,7 +46,7 @@ Status FileSystemImpl::Mkdir( ServerContext* context,
 
 	//Populate the response
 	FSstatus status;
-        status.set_retcode(retstat);
+        status.set_retcode(retstat == 0 ? 0 : -errno);
 	reply->mutable_status()->CopyFrom(status);
 	return Status::OK; 
 }
@@ -150,3 +150,62 @@ Status FileSystemImpl::Write( ServerContext* context,
         return Status::OK;
 }
 
+Status FileSystemImpl::Unlink( ServerContext* context,
+                              const UnlinkRequest* request,
+                                              UnlinkResponse* reply ) {
+
+        // Unlink implementation
+        std::string path = request->name();
+        int retstat = unlink(path.c_str());
+
+        //Populate the response
+        FSstatus status;
+        status.set_retcode(retstat == 0 ? 0 : -errno);
+        reply->mutable_status()->CopyFrom(status);
+        return Status::OK;
+}
+
+Status FileSystemImpl::Rmdir( ServerContext* context,
+                              const RmdirRequest* request,
+                                              RmdirResponse* reply ) {
+
+        // Rmdir implementation
+        std::string path = request->name();
+        int retstat = rmdir(path.c_str());
+
+        //Populate the response
+        FSstatus status;
+        status.set_retcode(retstat == 0 ? 0 : -errno);
+        reply->mutable_status()->CopyFrom(status);
+        return Status::OK;
+}
+
+Status FileSystemImpl::Rename( ServerContext* context,
+                              const RenameRequest* request,
+                                              RenameResponse* reply ) {
+
+        // Rename implementation
+        std::string oldPath = request->oldname();
+	std::string newPath = request->newname();
+        int retstat = rename(oldPath.c_str(), newPath.c_str());
+
+        //Populate the response
+        FSstatus status;
+        status.set_retcode(retstat == 0 ? 0 : -errno);
+        reply->mutable_status()->CopyFrom(status);
+        return Status::OK;
+}
+
+Status FileSystemImpl::Release( ServerContext* context,
+                              const ReleaseRequest* request,
+                                              ReleaseResponse* reply ) {
+
+        // Release/Close implementation
+        int retstat = close(request->filehandle());
+
+        //Populate the response
+        FSstatus status;
+        status.set_retcode(retstat == 0 ? 0 : -errno);
+        reply->mutable_status()->CopyFrom(status);
+        return Status::OK;
+}

@@ -23,6 +23,10 @@ static const char* FileSystem_method_names[] = {
   "/dfsFuse.FileSystem/Open",
   "/dfsFuse.FileSystem/Read",
   "/dfsFuse.FileSystem/Write",
+  "/dfsFuse.FileSystem/Unlink",
+  "/dfsFuse.FileSystem/Rmdir",
+  "/dfsFuse.FileSystem/Rename",
+  "/dfsFuse.FileSystem/Release",
 };
 
 std::unique_ptr< FileSystem::Stub> FileSystem::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -38,6 +42,10 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   , rpcmethod_Open_(FileSystem_method_names[4], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Read_(FileSystem_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Write_(FileSystem_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Unlink_(FileSystem_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Rmdir_(FileSystem_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Rename_(FileSystem_method_names[9], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Release_(FileSystem_method_names[10], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status FileSystem::Stub::GetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::dfsFuse::GetAttrResponse* response) {
@@ -96,6 +104,38 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::WriteResponse>(channel_.get(), cq, rpcmethod_Write_, context, request);
 }
 
+::grpc::Status FileSystem::Stub::Unlink(::grpc::ClientContext* context, const ::dfsFuse::UnlinkRequest& request, ::dfsFuse::UnlinkResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Unlink_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::UnlinkResponse>* FileSystem::Stub::AsyncUnlinkRaw(::grpc::ClientContext* context, const ::dfsFuse::UnlinkRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::UnlinkResponse>(channel_.get(), cq, rpcmethod_Unlink_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Rmdir(::grpc::ClientContext* context, const ::dfsFuse::RmdirRequest& request, ::dfsFuse::RmdirResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Rmdir_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::RmdirResponse>* FileSystem::Stub::AsyncRmdirRaw(::grpc::ClientContext* context, const ::dfsFuse::RmdirRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::RmdirResponse>(channel_.get(), cq, rpcmethod_Rmdir_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Rename(::grpc::ClientContext* context, const ::dfsFuse::RenameRequest& request, ::dfsFuse::RenameResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Rename_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::RenameResponse>* FileSystem::Stub::AsyncRenameRaw(::grpc::ClientContext* context, const ::dfsFuse::RenameRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::RenameResponse>(channel_.get(), cq, rpcmethod_Rename_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Release(::grpc::ClientContext* context, const ::dfsFuse::ReleaseRequest& request, ::dfsFuse::ReleaseResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Release_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::ReleaseResponse>* FileSystem::Stub::AsyncReleaseRaw(::grpc::ClientContext* context, const ::dfsFuse::ReleaseRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::ReleaseResponse>(channel_.get(), cq, rpcmethod_Release_, context, request);
+}
+
 FileSystem::Service::Service() {
   (void)FileSystem_method_names;
   AddMethod(new ::grpc::RpcServiceMethod(
@@ -133,6 +173,26 @@ FileSystem::Service::Service() {
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::WriteRequest, ::dfsFuse::WriteResponse>(
           std::mem_fn(&FileSystem::Service::Write), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[7],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::UnlinkRequest, ::dfsFuse::UnlinkResponse>(
+          std::mem_fn(&FileSystem::Service::Unlink), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[8],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::RmdirRequest, ::dfsFuse::RmdirResponse>(
+          std::mem_fn(&FileSystem::Service::Rmdir), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[9],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::RenameRequest, ::dfsFuse::RenameResponse>(
+          std::mem_fn(&FileSystem::Service::Rename), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[10],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::ReleaseRequest, ::dfsFuse::ReleaseResponse>(
+          std::mem_fn(&FileSystem::Service::Release), this)));
 }
 
 FileSystem::Service::~Service() {
@@ -181,6 +241,34 @@ FileSystem::Service::~Service() {
 }
 
 ::grpc::Status FileSystem::Service::Write(::grpc::ServerContext* context, const ::dfsFuse::WriteRequest* request, ::dfsFuse::WriteResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Unlink(::grpc::ServerContext* context, const ::dfsFuse::UnlinkRequest* request, ::dfsFuse::UnlinkResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Rmdir(::grpc::ServerContext* context, const ::dfsFuse::RmdirRequest* request, ::dfsFuse::RmdirResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Rename(::grpc::ServerContext* context, const ::dfsFuse::RenameRequest* request, ::dfsFuse::RenameResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Release(::grpc::ServerContext* context, const ::dfsFuse::ReleaseRequest* request, ::dfsFuse::ReleaseResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -120,14 +120,42 @@ int DSFS::Unlink(const char *path) {
         printf("unlink(path=%s\n)", path);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(unlink(fullPath));
+
+        UnlinkClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        UnlinkRequest request;
+        request.set_name(fullPath);
+        try {
+           UnlinkResponse response = client.Unlink(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 }
 
 int DSFS::Rmdir(const char *path) {
         printf("rmdir(path=%s\n)", path);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
-        return RETURN_ERRNO(rmdir(fullPath));
+
+        RmdirClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        RmdirRequest request;
+        request.set_name(fullPath);
+        try {
+           RmdirResponse response = client.Rmdir(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 }
 
 int DSFS::Rename(const char *path, const char *newpath) {
@@ -135,7 +163,22 @@ int DSFS::Rename(const char *path, const char *newpath) {
         char fullPath[PATH_MAX], newFullPath[PATH_MAX];
         AbsPath(fullPath, path);
 	AbsPath(newFullPath, newpath);
-        return RETURN_ERRNO(rename(fullPath, newFullPath));
+
+        RenameClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        RenameRequest request;
+        request.set_oldname(fullPath);
+	request.set_newname(newFullPath);
+        try {
+           RenameResponse response = client.Rename(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 }
 
 int DSFS::Chmod(const char *path, mode_t mode) {
@@ -239,7 +282,21 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
 
 int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
         printf("release(path=%s)\n", path);
-        return 0;
+
+        ReleaseClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        ReleaseRequest request;
+        request.set_filehandle(fileInfo->fh);
+        try {
+           ReleaseResponse response = client.Release(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 }
 
 int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
