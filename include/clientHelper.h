@@ -41,16 +41,11 @@ using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
 using dfsFuse::ChownResponse;
-
-<<<<<<< HEAD
 using dfsFuse::AccessRequest;
 using dfsFuse::AccessResponse;
-
 using dfsFuse::TruncateRequest;
 using dfsFuse::TruncateResponse;
 
-=======
->>>>>>> 9e800a4b671985b4d9cf11093446d27c3f368bde
 class GetAttrClient {
  public:
   GetAttrClient( std::shared_ptr<Channel> channel )

@@ -208,8 +208,6 @@ message ChownRequest {
 message ChownResponse {
 	FSstatus status = 1;
 }
-<<<<<<< HEAD
-
 
 message AccessRequest {
 	string name = 1;
@@ -230,6 +228,3 @@ message TruncateRequest {
 message TruncateResponse {
 	FSstatus status = 1;
 }
-
-=======
->>>>>>> 9e800a4b671985b4d9cf11093446d27c3f368bde
