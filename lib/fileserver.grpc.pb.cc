@@ -25,6 +25,8 @@ static const char* FileSystem_method_names[] = {
   "/dfsFuse.FileSystem/Write",
   "/dfsFuse.FileSystem/Chmod",
   "/dfsFuse.FileSystem/Chown",
+  "/dfsFuse.FileSystem/Access",
+  "/dfsFuse.FileSystem/Truncate",
 };
 
 std::unique_ptr< FileSystem::Stub> FileSystem::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -42,6 +44,8 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   , rpcmethod_Write_(FileSystem_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Chmod_(FileSystem_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Chown_(FileSystem_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Access_(FileSystem_method_names[9], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Truncate_(FileSystem_method_names[10], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status FileSystem::Stub::GetAttr(::grpc::ClientContext* context, const ::dfsFuse::GetAttrRequest& request, ::dfsFuse::GetAttrResponse* response) {
@@ -116,6 +120,22 @@ FileSystem::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::ChownResponse>(channel_.get(), cq, rpcmethod_Chown_, context, request);
 }
 
+::grpc::Status FileSystem::Stub::Access(::grpc::ClientContext* context, const ::dfsFuse::AccessRequest& request, ::dfsFuse::AccessResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Access_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::AccessResponse>* FileSystem::Stub::AsyncAccessRaw(::grpc::ClientContext* context, const ::dfsFuse::AccessRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::AccessResponse>(channel_.get(), cq, rpcmethod_Access_, context, request);
+}
+
+::grpc::Status FileSystem::Stub::Truncate(::grpc::ClientContext* context, const ::dfsFuse::TruncateRequest& request, ::dfsFuse::TruncateResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_Truncate_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::dfsFuse::TruncateResponse>* FileSystem::Stub::AsyncTruncateRaw(::grpc::ClientContext* context, const ::dfsFuse::TruncateRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::dfsFuse::TruncateResponse>(channel_.get(), cq, rpcmethod_Truncate_, context, request);
+}
+
 FileSystem::Service::Service() {
   (void)FileSystem_method_names;
   AddMethod(new ::grpc::RpcServiceMethod(
@@ -163,6 +183,16 @@ FileSystem::Service::Service() {
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::ChownRequest, ::dfsFuse::ChownResponse>(
           std::mem_fn(&FileSystem::Service::Chown), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[9],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::AccessRequest, ::dfsFuse::AccessResponse>(
+          std::mem_fn(&FileSystem::Service::Access), this)));
+  AddMethod(new ::grpc::RpcServiceMethod(
+      FileSystem_method_names[10],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< FileSystem::Service, ::dfsFuse::TruncateRequest, ::dfsFuse::TruncateResponse>(
+          std::mem_fn(&FileSystem::Service::Truncate), this)));
 }
 
 FileSystem::Service::~Service() {
@@ -225,6 +255,20 @@ FileSystem::Service::~Service() {
 }
 
 ::grpc::Status FileSystem::Service::Chown(::grpc::ServerContext* context, const ::dfsFuse::ChownRequest* request, ::dfsFuse::ChownResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Access(::grpc::ServerContext* context, const ::dfsFuse::AccessRequest* request, ::dfsFuse::AccessResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status FileSystem::Service::Truncate(::grpc::ServerContext* context, const ::dfsFuse::TruncateRequest* request, ::dfsFuse::TruncateResponse* response) {
   (void) context;
   (void) request;
   (void) response;

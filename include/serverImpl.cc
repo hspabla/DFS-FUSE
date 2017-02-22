@@ -181,3 +181,37 @@ Status FileSystemImpl::Chown( ServerContext* context, const ChownRequest* reques
        reply->mutable_status()->CopyFrom(status);
        return Status::OK;
 }
+
+
+Status FileSystemImpl::Access( ServerContext* context, const AccessRequest* request,
+                               AccessResponse* reply ) {
+
+       // access implementation
+       std::string path = request->name();
+       int mode = request->mode();
+       int retstat = access( path.c_str(), mode );
+
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
+}
+
+
+Status FileSystemImpl::Truncate( ServerContext* context,
+                                 const TruncateRequest* request,
+                                 TruncateResponse* reply ) {
+
+       // Truncate implementation
+       std::string path = request->name();
+       int size = request->size();
+       int retstat = truncate( path.c_str(), size );
+
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
+}
+

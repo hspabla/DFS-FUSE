@@ -20,6 +20,9 @@ service FileSystem {
     rpc Chmod( ChmodRequest ) returns ( ChmodResponse ) {}
     rpc Chown( ChownRequest ) returns ( ChownResponse ) {}
 
+	rpc Access( AccessRequest ) returns ( AccessResponse ) {}
+	rpc Truncate( TruncateRequest ) returns ( TruncateResponse ) {}
+
 }
 
 message FSstatus {
@@ -171,5 +174,23 @@ message ChownResponse {
 }
 
 
+message AccessRequest {
+	string name = 1;
+	uint32 mode = 2;
+	ClientInfo info = 3;
+}
 
+message AccessResponse {
+	FSstatus status = 1;
+}
+
+message TruncateRequest {
+	string name = 1;
+	uint64 size = 2;
+	ClientInfo info = 3;
+}
+
+message TruncateResponse {
+	FSstatus status = 1;
+}
 

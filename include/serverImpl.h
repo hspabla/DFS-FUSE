@@ -45,6 +45,11 @@ using dfsFuse::ChmodRequest;
 using dfsFuse::ChmodResponse;
 using dfsFuse::ChownRequest;
 using dfsFuse::ChownResponse;
+using dfsFuse::AccessRequest;
+using dfsFuse::AccessResponse;
+using dfsFuse::TruncateRequest;
+using dfsFuse::TruncateResponse;
+
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -75,4 +80,9 @@ class FileSystemImpl final : public FileSystem::Service {
   Status Chown( ServerContext* context, const ChownRequest* request,
                 ChownResponse* reply ) override;
 
+  Status Access( ServerContext* context, const AccessRequest* request,
+                 AccessResponse* reply ) override;
+
+  Status Truncate( ServerContext* context, const TruncateRequest* request,
+                   TruncateResponse* reply ) override;
 };

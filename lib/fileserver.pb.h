@@ -36,6 +36,8 @@ void protobuf_AddDesc_fileserver_2eproto();
 void protobuf_AssignDesc_fileserver_2eproto();
 void protobuf_ShutdownFile_fileserver_2eproto();
 
+class AccessRequest;
+class AccessResponse;
 class Attr;
 class ChmodRequest;
 class ChmodResponse;
@@ -57,6 +59,8 @@ class OpenResponse;
 class Owner;
 class ReadRequest;
 class ReadResponse;
+class TruncateRequest;
+class TruncateResponse;
 class WriteRequest;
 class WriteResponse;
 
@@ -2370,6 +2374,384 @@ class ChownResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   void InitAsDefaultInstance();
   static ChownResponse* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class AccessRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.AccessRequest) */ {
+ public:
+  AccessRequest();
+  virtual ~AccessRequest();
+
+  AccessRequest(const AccessRequest& from);
+
+  inline AccessRequest& operator=(const AccessRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AccessRequest& default_instance();
+
+  void Swap(AccessRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline AccessRequest* New() const { return New(NULL); }
+
+  AccessRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AccessRequest& from);
+  void MergeFrom(const AccessRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(AccessRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional uint32 mode = 2;
+  void clear_mode();
+  static const int kModeFieldNumber = 2;
+  ::google::protobuf::uint32 mode() const;
+  void set_mode(::google::protobuf::uint32 value);
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 3;
+  const ::dfsFuse::ClientInfo& info() const;
+  ::dfsFuse::ClientInfo* mutable_info();
+  ::dfsFuse::ClientInfo* release_info();
+  void set_allocated_info(::dfsFuse::ClientInfo* info);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.AccessRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::dfsFuse::ClientInfo* info_;
+  ::google::protobuf::uint32 mode_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static AccessRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AccessResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.AccessResponse) */ {
+ public:
+  AccessResponse();
+  virtual ~AccessResponse();
+
+  AccessResponse(const AccessResponse& from);
+
+  inline AccessResponse& operator=(const AccessResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AccessResponse& default_instance();
+
+  void Swap(AccessResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline AccessResponse* New() const { return New(NULL); }
+
+  AccessResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AccessResponse& from);
+  void MergeFrom(const AccessResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(AccessResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .dfsFuse.FSstatus status = 1;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 1;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.AccessResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::dfsFuse::FSstatus* status_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static AccessResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TruncateRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.TruncateRequest) */ {
+ public:
+  TruncateRequest();
+  virtual ~TruncateRequest();
+
+  TruncateRequest(const TruncateRequest& from);
+
+  inline TruncateRequest& operator=(const TruncateRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TruncateRequest& default_instance();
+
+  void Swap(TruncateRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline TruncateRequest* New() const { return New(NULL); }
+
+  TruncateRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TruncateRequest& from);
+  void MergeFrom(const TruncateRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TruncateRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional uint64 size = 2;
+  void clear_size();
+  static const int kSizeFieldNumber = 2;
+  ::google::protobuf::uint64 size() const;
+  void set_size(::google::protobuf::uint64 value);
+
+  // optional .dfsFuse.ClientInfo info = 3;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 3;
+  const ::dfsFuse::ClientInfo& info() const;
+  ::dfsFuse::ClientInfo* mutable_info();
+  ::dfsFuse::ClientInfo* release_info();
+  void set_allocated_info(::dfsFuse::ClientInfo* info);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.TruncateRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint64 size_;
+  ::dfsFuse::ClientInfo* info_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static TruncateRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TruncateResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.TruncateResponse) */ {
+ public:
+  TruncateResponse();
+  virtual ~TruncateResponse();
+
+  TruncateResponse(const TruncateResponse& from);
+
+  inline TruncateResponse& operator=(const TruncateResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TruncateResponse& default_instance();
+
+  void Swap(TruncateResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline TruncateResponse* New() const { return New(NULL); }
+
+  TruncateResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TruncateResponse& from);
+  void MergeFrom(const TruncateResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TruncateResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .dfsFuse.FSstatus status = 1;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 1;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.TruncateResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::dfsFuse::FSstatus* status_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static TruncateResponse* default_instance_;
+};
 // ===================================================================
 
 
@@ -4200,7 +4582,299 @@ inline void ChownResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
   // @@protoc_insertion_point(field_set_allocated:dfsFuse.ChownResponse.status)
 }
 
+// -------------------------------------------------------------------
+
+// AccessRequest
+
+// optional string name = 1;
+inline void AccessRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AccessRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.AccessRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AccessRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.AccessRequest.name)
+}
+inline void AccessRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.AccessRequest.name)
+}
+inline void AccessRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.AccessRequest.name)
+}
+inline ::std::string* AccessRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.AccessRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AccessRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.AccessRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AccessRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.AccessRequest.name)
+}
+
+// optional uint32 mode = 2;
+inline void AccessRequest::clear_mode() {
+  mode_ = 0u;
+}
+inline ::google::protobuf::uint32 AccessRequest::mode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.AccessRequest.mode)
+  return mode_;
+}
+inline void AccessRequest::set_mode(::google::protobuf::uint32 value) {
+  
+  mode_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.AccessRequest.mode)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+inline bool AccessRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+inline void AccessRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+inline const ::dfsFuse::ClientInfo& AccessRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.AccessRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::dfsFuse::ClientInfo* AccessRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.AccessRequest.info)
+  return info_;
+}
+inline ::dfsFuse::ClientInfo* AccessRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.AccessRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void AccessRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.AccessRequest.info)
+}
+
+// -------------------------------------------------------------------
+
+// AccessResponse
+
+// optional .dfsFuse.FSstatus status = 1;
+inline bool AccessResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void AccessResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& AccessResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.AccessResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* AccessResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.AccessResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* AccessResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.AccessResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void AccessResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.AccessResponse.status)
+}
+
+// -------------------------------------------------------------------
+
+// TruncateRequest
+
+// optional string name = 1;
+inline void TruncateRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TruncateRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.TruncateRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TruncateRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.TruncateRequest.name)
+}
+inline void TruncateRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.TruncateRequest.name)
+}
+inline void TruncateRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.TruncateRequest.name)
+}
+inline ::std::string* TruncateRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.TruncateRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TruncateRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.TruncateRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TruncateRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.TruncateRequest.name)
+}
+
+// optional uint64 size = 2;
+inline void TruncateRequest::clear_size() {
+  size_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 TruncateRequest::size() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.TruncateRequest.size)
+  return size_;
+}
+inline void TruncateRequest::set_size(::google::protobuf::uint64 value) {
+  
+  size_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.TruncateRequest.size)
+}
+
+// optional .dfsFuse.ClientInfo info = 3;
+inline bool TruncateRequest::has_info() const {
+  return !_is_default_instance_ && info_ != NULL;
+}
+inline void TruncateRequest::clear_info() {
+  if (GetArenaNoVirtual() == NULL && info_ != NULL) delete info_;
+  info_ = NULL;
+}
+inline const ::dfsFuse::ClientInfo& TruncateRequest::info() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.TruncateRequest.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::dfsFuse::ClientInfo* TruncateRequest::mutable_info() {
+  
+  if (info_ == NULL) {
+    info_ = new ::dfsFuse::ClientInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.TruncateRequest.info)
+  return info_;
+}
+inline ::dfsFuse::ClientInfo* TruncateRequest::release_info() {
+  // @@protoc_insertion_point(field_release:dfsFuse.TruncateRequest.info)
+  
+  ::dfsFuse::ClientInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void TruncateRequest::set_allocated_info(::dfsFuse::ClientInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.TruncateRequest.info)
+}
+
+// -------------------------------------------------------------------
+
+// TruncateResponse
+
+// optional .dfsFuse.FSstatus status = 1;
+inline bool TruncateResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void TruncateResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& TruncateResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.TruncateResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* TruncateResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.TruncateResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* TruncateResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.TruncateResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void TruncateResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.TruncateResponse.status)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
