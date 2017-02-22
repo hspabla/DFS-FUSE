@@ -49,6 +49,24 @@ OpenDirResponse OpenDirClient::Opendir( const OpenDirRequest & request ) {
   }
 }
 
+MknodResponse MknodClient::Mknod( const MknodRequest & request ) {
+  MknodResponse reply;
+  ClientContext context;
+
+  try {
+     grpc::Status status = stub_->Mknod( &context, request, &reply );
+
+     if (status.ok()) {
+        return reply;
+     } else {
+        std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+        throw status.error_code();
+     }
+  } catch (int errCode) {
+  }
+}
+
 
 OpenResponse OpenClient::Open( const OpenRequest & request ) {
   OpenResponse reply;

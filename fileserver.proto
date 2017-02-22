@@ -12,6 +12,7 @@ service FileSystem {
     rpc Opendir( OpenDirRequest ) returns( OpenDirResponse ) {}
 
     // File handling
+    rpc Mknod( MknodRequest ) returns ( MknodResponse ) {}
     rpc Open( OpenRequest ) returns ( OpenResponse ) {}
     rpc Read( ReadRequest ) returns ( ReadResponse ) {}
     rpc Write( WriteRequest ) returns ( WriteResponse ) {}
@@ -95,6 +96,16 @@ message OpenDirResponse {
 }
 
 // File handling
+
+message MknodRequest {
+    string name = 1;
+    uint64 mode = 2;
+    uint64 dev  = 3;
+}
+
+message MknodResponse {
+    FSstatus status = 1;
+}
 
 message OpenRequest {
     string name = 1;

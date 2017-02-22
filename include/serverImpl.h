@@ -33,6 +33,8 @@ using dfsFuse::MkdirResponse;
 using dfsFuse::OpenDirRequest;
 using dfsFuse::DirEntry;
 using dfsFuse::OpenDirResponse;
+using dfsFuse::MknodRequest;
+using dfsFuse::MknodResponse;
 using dfsFuse::OpenRequest;
 using dfsFuse::OpenResponse;
 using dfsFuse::ReadRequest;
@@ -52,6 +54,9 @@ class FileSystemImpl final : public FileSystem::Service {
 
   Status Opendir( ServerContext* context, const OpenDirRequest* request,
 				  OpenDirResponse* reply ) override;
+
+  Status Mknod( ServerContext* context, const MknodRequest* request,
+				MknodResponse* reply ) override;
 
   Status Open( ServerContext* context, const OpenRequest* request,
                OpenResponse* reply ) override;

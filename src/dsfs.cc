@@ -78,7 +78,7 @@ int DSFS::Readlink(const char *path, char *link, size_t size) {
         return RETURN_ERRNO(readlink(fullPath, link, size));
 }
 
-int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
+/*int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
         char fullPath[PATH_MAX];int retstat;
         AbsPath(fullPath, path);
         printf("mknod(path=%s, mode=%d)\n", fullPath, mode);
@@ -92,19 +92,38 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
    		if (S_ISFIFO(mode))
        			return RETURN_ERRNO(mkfifo(fullPath, mode));
    		else
-       			return RETURN_ERRNO(mknod(fullPath, mode, dev));
-	return 0;
-}
+		int ret = mknod(fullPath, mode, dev);
 
-/*
+	
+        printf("mknod(path=%s, mode=%d, retstat=%d)\n", fullPath, mode, retstat);
+		printf("Return status mknod:%d\n", ret);
+       			return RETURN_ERRNO(ret);
+	return 0;
+}*/
+
+
 int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
         printf("mknod(path=%s, mode=%d)\n", path, mode);
         char fullPath[PATH_MAX];
         AbsPath(fullPath, path);
+	MknodClient client( grpc::CreateChannel(
+                                  "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        MknodRequest request;
+        request.set_name(fullPath);
+        request.set_mode(mode);
+	request.set_dev(dev);
+        try {
+           MknodResponse response = client.Mknod(request);
+           FSstatus status = response.status();
+           if (status.retcode() == 0)
+                return 0;
+           else
+                throw status.retcode();
+        } catch (int errorCode) {
+                return -errno;
+        }
 
-        //handles creating FIFOs, regular files, etc...
-        return RETURN_ERRNO(mknod(fullPath, mode, dev));
-}*/
+}
 
 int DSFS::Mkdir(const char *path, mode_t mode) {
         printf("**mkdir(path=%s, mode=%d)\n", path, (int)mode);
@@ -373,26 +392,6 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
 	} catch (int errno) {
 	   return -errno;
 	}
-
-	/*DIR *dp;
-	struct dirent *de;
-
-   	(void) offset;
-
-   	dp = opendir(fullPath);
-   	if (dp == NULL)
-      		return -errno;
-
-   	while ((de = readdir(dp)) != NULL) {
-      		struct stat st;
-      		memset(&st, 0, sizeof(st));
-      		st.st_ino = de->d_ino;
-      		st.st_mode = de->d_type << 12;
-      		if (filler(buf, de->d_name, &st, 0) != 0)
-         		break;
-   	}*/
-
-   	//closedir(dp);
    	return 0;
 }
 

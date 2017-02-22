@@ -64,7 +64,7 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 
         FSstatus status;
 	if (dp == NULL) 
-		status.set_retcode(-1);
+		status.set_retcode(-errno);
 
  	while ((de = readdir(dp)) != NULL) {
 	 	DirEntry *entry = reply->add_dirs();
@@ -76,6 +76,22 @@ Status FileSystemImpl::Opendir( ServerContext* context,
         reply->mutable_status()->CopyFrom(status);	
 	return Status::OK;
 }
+
+Status FileSystemImpl::Mknod( ServerContext* context, const MknodRequest* request,
+                                MknodResponse* reply ) {
+
+	// Mknod implementation
+	std::string path = request->name();
+	int mode = request->mode();
+	int dev = request->dev();
+	int retstat = mknod(path.c_str(), mode, dev);
+
+	// Populate response
+	FSstatus status;
+	status.set_retcode( retstat == 0 ? 0 : -errno);
+	reply->mutable_status()->CopyFrom(status);
+	return Status::OK;
+} 
 
 Status FileSystemImpl::Open( ServerContext* context,
                              const OpenRequest* request,

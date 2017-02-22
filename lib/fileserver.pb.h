@@ -44,6 +44,8 @@ class GetAttrRequest;
 class GetAttrResponse;
 class MkdirRequest;
 class MkdirResponse;
+class MknodRequest;
+class MknodResponse;
 class OpenDirRequest;
 class OpenDirResponse;
 class OpenRequest;
@@ -1176,6 +1178,192 @@ class OpenDirResponse : public ::google::protobuf::Message /* @@protoc_insertion
 
   void InitAsDefaultInstance();
   static OpenDirResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MknodRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.MknodRequest) */ {
+ public:
+  MknodRequest();
+  virtual ~MknodRequest();
+
+  MknodRequest(const MknodRequest& from);
+
+  inline MknodRequest& operator=(const MknodRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MknodRequest& default_instance();
+
+  void Swap(MknodRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MknodRequest* New() const { return New(NULL); }
+
+  MknodRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MknodRequest& from);
+  void MergeFrom(const MknodRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MknodRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional uint64 mode = 2;
+  void clear_mode();
+  static const int kModeFieldNumber = 2;
+  ::google::protobuf::uint64 mode() const;
+  void set_mode(::google::protobuf::uint64 value);
+
+  // optional uint64 dev = 3;
+  void clear_dev();
+  static const int kDevFieldNumber = 3;
+  ::google::protobuf::uint64 dev() const;
+  void set_dev(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.MknodRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint64 mode_;
+  ::google::protobuf::uint64 dev_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static MknodRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MknodResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dfsFuse.MknodResponse) */ {
+ public:
+  MknodResponse();
+  virtual ~MknodResponse();
+
+  MknodResponse(const MknodResponse& from);
+
+  inline MknodResponse& operator=(const MknodResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MknodResponse& default_instance();
+
+  void Swap(MknodResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MknodResponse* New() const { return New(NULL); }
+
+  MknodResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MknodResponse& from);
+  void MergeFrom(const MknodResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MknodResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .dfsFuse.FSstatus status = 1;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 1;
+  const ::dfsFuse::FSstatus& status() const;
+  ::dfsFuse::FSstatus* mutable_status();
+  ::dfsFuse::FSstatus* release_status();
+  void set_allocated_status(::dfsFuse::FSstatus* status);
+
+  // @@protoc_insertion_point(class_scope:dfsFuse.MknodResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::dfsFuse::FSstatus* status_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_fileserver_2eproto();
+  friend void protobuf_AssignDesc_fileserver_2eproto();
+  friend void protobuf_ShutdownFile_fileserver_2eproto();
+
+  void InitAsDefaultInstance();
+  static MknodResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -2685,6 +2873,124 @@ inline void OpenDirResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 
 // -------------------------------------------------------------------
 
+// MknodRequest
+
+// optional string name = 1;
+inline void MknodRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MknodRequest::name() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.MknodRequest.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MknodRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dfsFuse.MknodRequest.name)
+}
+inline void MknodRequest::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dfsFuse.MknodRequest.name)
+}
+inline void MknodRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dfsFuse.MknodRequest.name)
+}
+inline ::std::string* MknodRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dfsFuse.MknodRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MknodRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dfsFuse.MknodRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MknodRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.MknodRequest.name)
+}
+
+// optional uint64 mode = 2;
+inline void MknodRequest::clear_mode() {
+  mode_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 MknodRequest::mode() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.MknodRequest.mode)
+  return mode_;
+}
+inline void MknodRequest::set_mode(::google::protobuf::uint64 value) {
+  
+  mode_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.MknodRequest.mode)
+}
+
+// optional uint64 dev = 3;
+inline void MknodRequest::clear_dev() {
+  dev_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 MknodRequest::dev() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.MknodRequest.dev)
+  return dev_;
+}
+inline void MknodRequest::set_dev(::google::protobuf::uint64 value) {
+  
+  dev_ = value;
+  // @@protoc_insertion_point(field_set:dfsFuse.MknodRequest.dev)
+}
+
+// -------------------------------------------------------------------
+
+// MknodResponse
+
+// optional .dfsFuse.FSstatus status = 1;
+inline bool MknodResponse::has_status() const {
+  return !_is_default_instance_ && status_ != NULL;
+}
+inline void MknodResponse::clear_status() {
+  if (GetArenaNoVirtual() == NULL && status_ != NULL) delete status_;
+  status_ = NULL;
+}
+inline const ::dfsFuse::FSstatus& MknodResponse::status() const {
+  // @@protoc_insertion_point(field_get:dfsFuse.MknodResponse.status)
+  return status_ != NULL ? *status_ : *default_instance_->status_;
+}
+inline ::dfsFuse::FSstatus* MknodResponse::mutable_status() {
+  
+  if (status_ == NULL) {
+    status_ = new ::dfsFuse::FSstatus;
+  }
+  // @@protoc_insertion_point(field_mutable:dfsFuse.MknodResponse.status)
+  return status_;
+}
+inline ::dfsFuse::FSstatus* MknodResponse::release_status() {
+  // @@protoc_insertion_point(field_release:dfsFuse.MknodResponse.status)
+  
+  ::dfsFuse::FSstatus* temp = status_;
+  status_ = NULL;
+  return temp;
+}
+inline void MknodResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
+  delete status_;
+  status_ = status;
+  if (status) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:dfsFuse.MknodResponse.status)
+}
+
+// -------------------------------------------------------------------
+
 // OpenRequest
 
 // optional string name = 1;
@@ -3208,6 +3514,10 @@ inline void WriteResponse::set_allocated_status(::dfsFuse::FSstatus* status) {
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

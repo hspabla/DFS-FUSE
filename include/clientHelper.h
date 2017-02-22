@@ -21,6 +21,8 @@ using dfsFuse::MkdirResponse;
 using dfsFuse::OpenDirRequest;
 using dfsFuse::DirEntry;
 using dfsFuse::OpenDirResponse;
+using dfsFuse::MknodRequest;
+using dfsFuse::MknodResponse;
 using dfsFuse::OpenRequest;
 using dfsFuse::OpenResponse;
 using dfsFuse::ReadRequest;
@@ -53,7 +55,17 @@ class OpenDirClient {
  public:
   OpenDirClient( std::shared_ptr<Channel> channel )
       								: stub_( FileSystem::NewStub( channel ) ) { }
-  OpenDirResponse Opendir( const OpenDirRequest & request );
+  OpenDirResponse Opendir( const OpenDirRequest& request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+class MknodClient{
+ public:
+  MknodClient( std::shared_ptr<Channel> channel )
+                                                                : stub_( FileSystem::NewStub( channel ) ) { }
+  MknodResponse Mknod( const MknodRequest & request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;
