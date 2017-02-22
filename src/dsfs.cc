@@ -41,17 +41,17 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 	GetAttrResponse response;
 	request.set_name(fullPath);
 	try {
-       response = client.GetAttr(request);
+       	   response = client.GetAttr(request);
 	   Attr attributes = response.attr();
 	   FSstatus status = response.status();
-       statbuf->st_dev = attributes.dev();
+           statbuf->st_dev = attributes.dev();
 	   statbuf->st_ino = attributes.ino();
 	   statbuf->st_mode = attributes.mode();
 	   statbuf->st_nlink = attributes.nlink();
 	   Owner owner = attributes.owner();
 	   statbuf->st_uid = owner.uid();
-       statbuf->st_gid = owner.gid();
-       statbuf->st_rdev = attributes.rdev();
+           statbuf->st_gid = owner.gid();
+           statbuf->st_rdev = attributes.rdev();
 	   statbuf->st_size = attributes.size();
 	   statbuf->st_blksize = attributes.blksize();
 	   statbuf->st_blocks = attributes.blocks();
@@ -69,13 +69,6 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 		printf("We arrived here\n");
 		return -1;
 	}
-}
-
-int DSFS::Readlink(const char *path, char *link, size_t size) {
-        printf("readlink(path=%s, link=%s, size=%d)\n", path, link, (int)size);
-        char fullPath[PATH_MAX];
-        AbsPath(fullPath, path);
-        return RETURN_ERRNO(readlink(fullPath, link, size));
 }
 
 int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
