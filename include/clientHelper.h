@@ -133,6 +133,10 @@ class RmdirClient {
                                                                 : stub_( FileSystem::NewStub( channel ) ) { }
   RmdirResponse Rmdir( const RmdirRequest & request );
 
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
 
 class ChmodClient {
  public:
@@ -159,6 +163,10 @@ class ReleaseClient {
   ReleaseClient( std::shared_ptr<Channel> channel )
                                                                 : stub_( FileSystem::NewStub( channel ) ) { }
   ReleaseResponse Release( const ReleaseRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
 
 class ChownClient {
  public:

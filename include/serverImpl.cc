@@ -208,6 +208,7 @@ Status FileSystemImpl::Release( ServerContext* context,
         status.set_retcode(retstat == 0 ? 0 : -errno);
         reply->mutable_status()->CopyFrom(status);
         return Status::OK;
+}
 
 Status FileSystemImpl::Chmod( ServerContext* context, const ChmodRequest* request,
                               ChmodResponse* reply ) {
