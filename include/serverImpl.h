@@ -49,7 +49,10 @@ using dfsFuse::RenameRequest;
 using dfsFuse::RenameResponse;
 using dfsFuse::ReleaseRequest;
 using dfsFuse::ReleaseResponse;
-
+using dfsFuse::ChmodRequest;
+using dfsFuse::ChmodResponse;
+using dfsFuse::ChownRequest;
+using dfsFuse::ChownResponse;
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -85,5 +88,10 @@ class FileSystemImpl final : public FileSystem::Service {
 
   Status Release( ServerContext* context, const ReleaseRequest* request,
                 ReleaseResponse* reply ) override;
+  Status Chmod( ServerContext* context, const ChmodRequest* request,
+                ChmodResponse* reply ) override;
+
+  Status Chown( ServerContext* context, const ChownRequest* request,
+                ChownResponse* reply ) override;
 
 };

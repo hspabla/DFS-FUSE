@@ -37,6 +37,10 @@ using dfsFuse::RenameRequest;
 using dfsFuse::RenameResponse;
 using dfsFuse::ReleaseRequest;
 using dfsFuse::ReleaseResponse;
+using dfsFuse::ChmodRequest;
+using dfsFuse::ChmodResponse;
+using dfsFuse::ChownRequest;
+using dfsFuse::ChownResponse;
 
 class GetAttrClient {
  public:
@@ -129,6 +133,13 @@ class RmdirClient {
                                                                 : stub_( FileSystem::NewStub( channel ) ) { }
   RmdirResponse Rmdir( const RmdirRequest & request );
 
+
+class ChmodClient {
+ public:
+  ChmodClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  ChmodResponse Chmod( const ChmodRequest & request );
+
  private:
   std::unique_ptr<FileSystem::Stub> stub_;
 };
@@ -148,6 +159,12 @@ class ReleaseClient {
   ReleaseClient( std::shared_ptr<Channel> channel )
                                                                 : stub_( FileSystem::NewStub( channel ) ) { }
   ReleaseResponse Release( const ReleaseRequest & request );
+
+class ChownClient {
+ public:
+  ChownClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  ChownResponse Chown( const ChownRequest & request );
 
  private:
   std::unique_ptr<FileSystem::Stub> stub_;

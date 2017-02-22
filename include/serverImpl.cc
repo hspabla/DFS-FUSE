@@ -80,18 +80,18 @@ Status FileSystemImpl::Opendir( ServerContext* context,
 Status FileSystemImpl::Mknod( ServerContext* context, const MknodRequest* request,
                                 MknodResponse* reply ) {
 
-	// Mknod implementation
-	std::string path = request->name();
-	int mode = request->mode();
-	int dev = request->dev();
-	int retstat = mknod(path.c_str(), mode, dev);
+       // Mknod implementation
+       std::string path = request->name();
+       int mode = request->mode();
+       int dev = request->dev();
+       int retstat = mknod(path.c_str(), mode, dev);
 
-	// Populate response
-	FSstatus status;
-	status.set_retcode( retstat == 0 ? 0 : -errno);
-	reply->mutable_status()->CopyFrom(status);
-	return Status::OK;
-} 
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
+}
 
 Status FileSystemImpl::Open( ServerContext* context,
                              const OpenRequest* request,
@@ -100,8 +100,8 @@ Status FileSystemImpl::Open( ServerContext* context,
         FSstatus status;
         status.set_retcode( fileHandle > 0 ? 0 : -errno);
         reply->set_filehandle( fileHandle );
-	reply->mutable_status()->CopyFrom(status);
-	return Status::OK;
+	    reply->mutable_status()->CopyFrom(status);
+	    return Status::OK;
 }
 
 Status FileSystemImpl::Read( ServerContext* context,
@@ -110,20 +110,20 @@ Status FileSystemImpl::Read( ServerContext* context,
 
     	char* buf = new char [ request->size() ];
     	int byteRead = pread( request->filehandle(), buf,
-                          request->size(), request->offset() );
+                              request->size(), request->offset() );
 
-	FSstatus status;
+	    FSstatus status;
     	if ( byteRead < 0 ){
-		status.set_retcode(-errno);
+		    status.set_retcode(-errno);
     	} else {
-		status.set_retcode(0);
+		    status.set_retcode(0);
         	reply->set_data( buf, byteRead );
-		reply->set_dataread( byteRead );
+		    reply->set_dataread( byteRead );
     	}
-	reply->mutable_status()->CopyFrom(status);
+	    reply->mutable_status()->CopyFrom(status);
 
     	delete buf;
-	return Status::OK;
+	    return Status::OK;
 }
 
 Status FileSystemImpl::Write( ServerContext* context,
@@ -134,17 +134,17 @@ Status FileSystemImpl::Write( ServerContext* context,
     	memcpy( buf, request->data().c_str(), request->size() );
 
     	int bytesWritten = pwrite( request->filehandle(), buf,
-                               request->size(),
-                               request->offset() );
+                                   request->size(),
+                                   request->offset() );
 
         FSstatus status;
-	if ( bytesWritten < 0 ) {
-		status.set_retcode(-errno);
-	} else {
-		status.set_retcode(0);
-		reply->set_datawritten( bytesWritten );
-	}
-	reply->mutable_status()->CopyFrom(status);
+        if ( bytesWritten < 0 ) {
+            status.set_retcode(-errno);
+        } else {
+            status.set_retcode(0);
+            reply->set_datawritten( bytesWritten );
+        }
+        reply->mutable_status()->CopyFrom(status);
 
         delete buf;
         return Status::OK;
@@ -208,4 +208,34 @@ Status FileSystemImpl::Release( ServerContext* context,
         status.set_retcode(retstat == 0 ? 0 : -errno);
         reply->mutable_status()->CopyFrom(status);
         return Status::OK;
+
+Status FileSystemImpl::Chmod( ServerContext* context, const ChmodRequest* request,
+                              ChmodResponse* reply ) {
+
+       // Chmod implementation
+       std::string path = request->name();
+       int mode = request->mode();
+       int retstat = chmod( path.c_str(), mode );
+
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
+}
+
+Status FileSystemImpl::Chown( ServerContext* context, const ChownRequest* request,
+                              ChownResponse* reply ) {
+
+       // Chown implementation
+       std::string path = request->name();
+       int uid = request->uid();
+       int gid = request->gid();
+       int retstat = chown( path.c_str(), uid, gid );
+
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
 }
