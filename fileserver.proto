@@ -25,7 +25,7 @@ service FileSystem {
     rpc Releasedir( ReleasedirRequest ) returns ( ReleasedirResponse ) {}
     rpc Access( AccessRequest ) returns ( AccessResponse ) {}
     rpc Truncate( TruncateRequest ) returns ( TruncateResponse ) {}
-
+    rpc Fsync( FsyncRequest ) returns ( FsyncResponse ) {}
 }
 
 message FSstatus {
@@ -236,3 +236,13 @@ message TruncateRequest {
 message TruncateResponse {
 	FSstatus status = 1;
 }
+
+message FsyncRequest {
+	uint32 fileHandle = 1;
+	ClientInfo info = 2;
+}
+
+message FsyncResponse {
+	FSstatus status = 1;
+}
+

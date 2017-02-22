@@ -59,7 +59,8 @@ using dfsFuse::AccessRequest;
 using dfsFuse::AccessResponse;
 using dfsFuse::TruncateRequest;
 using dfsFuse::TruncateResponse;
-
+using dfsFuse::FsyncRequest;
+using dfsFuse::FsyncResponse;
 
 class FileSystemImpl final : public FileSystem::Service {
  public:
@@ -109,4 +110,7 @@ class FileSystemImpl final : public FileSystem::Service {
 
   Status Truncate( ServerContext* context, const TruncateRequest* request,
                    TruncateResponse* reply ) override;
+
+  Status Fsync( ServerContext* context, const FsyncRequest* request,
+                   FsyncResponse* reply ) override;
 };

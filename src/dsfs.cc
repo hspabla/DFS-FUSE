@@ -342,8 +342,15 @@ int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
 
 int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         printf("fsync(path=%s, datasync=%d\n", path, datasync);
-        //sync data + file metadata
-        return RETURN_ERRNO(fsync(fi->fh));
+        FsyncClient client( grpc::CreateChannel(
+                           "localhost:50051", grpc::InsecureChannelCredentials() ) );
+        FsyncRequest request;
+        request.set_filehandle( fi->fh );
+
+        FsyncResponse response = client.Fsync( request );
+
+        FSstatus status = response.status();
+        return status.retcode();
 }
 
 //Extended attributes not implemented for RPC calls.

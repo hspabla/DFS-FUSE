@@ -276,3 +276,18 @@ TruncateResponse TruncateClient::Truncate( const TruncateRequest & request ) {
     throw status.error_code();
   }
 }
+
+FsyncResponse FsyncClient::Fsync( const FsyncRequest & request ) {
+  FsyncResponse reply;
+  ClientContext context;
+
+  grpc::Status status = stub_->Fsync( &context, request, &reply );
+
+  if (status.ok()) {
+    return reply;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    throw status.error_code();
+  }
+}

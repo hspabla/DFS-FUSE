@@ -47,6 +47,10 @@ using dfsFuse::AccessRequest;
 using dfsFuse::AccessResponse;
 using dfsFuse::TruncateRequest;
 using dfsFuse::TruncateResponse;
+using dfsFuse::FsyncRequest;
+using dfsFuse::FsyncResponse;
+
+
 
 class GetAttrClient {
  public:
@@ -213,3 +217,15 @@ class AccessClient {
  private:
   std::unique_ptr<FileSystem::Stub> stub_;
 };
+
+class FsyncClient {
+ public:
+  FsyncClient( std::shared_ptr<Channel> channel )
+      								: stub_( FileSystem::NewStub( channel ) ) { }
+  FsyncResponse Fsync( const FsyncRequest & request );
+
+ private:
+  std::unique_ptr<FileSystem::Stub> stub_;
+};
+
+

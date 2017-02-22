@@ -286,3 +286,18 @@ Status FileSystemImpl::Truncate( ServerContext* context,
        reply->mutable_status()->CopyFrom(status);
        return Status::OK;
 }
+
+Status FileSystemImpl::Fsync( ServerContext* context,
+                                 const FsyncRequest* request,
+                                 FsyncResponse* reply ) {
+
+       // Fsync implementation
+       int filehandle = request->filehandle();
+       int retstat = fsync( filehandle );
+
+       // Populate response
+       FSstatus status;
+       status.set_retcode( retstat == 0 ? 0 : -errno);
+       reply->mutable_status()->CopyFrom(status);
+       return Status::OK;
+}
