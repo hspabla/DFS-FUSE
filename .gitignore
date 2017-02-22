@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+obj/*
 
 # Precompiled Headers
 *.gch
@@ -24,6 +25,10 @@
 *.lib
 
 # Executables
+bin/*
 *.exe
 *.out
 *.app
+
+# gRPC generated files
+lib/*
