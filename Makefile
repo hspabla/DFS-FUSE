@@ -6,11 +6,8 @@ LDFLAGS += -L/usr/local/lib `pkg-config --libs grpc++ grpc`       \
            -lprotobuf -lpthread -ldl
 CFLAGS = -Wall -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
 LINKFLAGS = -Wall `pkg-config fuse --libs`
-//LINKFLAGS += -L/usr/local/lib `pkg-config --libs grpc++ grpc`       \
-//           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed \
-//           -lprotobuf -lpthread -ldl -Wall `pkg-config fuse`
 
-all: log proto client server 
+all: log proto client server
 
 client: bin/client
 
@@ -25,13 +22,13 @@ bin:
 log:
 	mkdir -p log
 
-lib: 
+lib:
 	mkdir -p lib
 
 obj:
 	mkdir -p obj
 
-proto: lib 
+proto: lib
 	protoc fileserver.proto --grpc_out=lib/ --plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin ; protoc fileserver.proto --cpp_out=lib/
 
 bin/client: bin obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/dsfs.o obj/wrap.o obj/client.o obj/log.o obj/client_helper.o
@@ -49,20 +46,23 @@ obj/client.o: obj src/client.c include/wrap.hh
 obj/wrap.o: obj src/wrap.cc include/wrap.hh include/dsfs.hh
 	$(CXX) -g -std=c++11 $(CFLAGS) -c src/wrap.cc -o obj/wrap.o
 
-obj/client_helper.o: obj include/clientHelper.cc include/clientHelper.h lib/fileserver.grpc.pb.h 
+obj/client_helper.o: obj include/clientHelper.cc include/clientHelper.h lib/fileserver.grpc.pb.h
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c include/clientHelper.cc -o obj/client_helper.o
 
 bin/server: bin obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/server.o obj/serverImpl.o
 	$(CXX) -o bin/server obj/fileserver.grpc.pb.o obj/fileserver.pb.o obj/server.o obj/serverImpl.o -g $(LDFLAGS)
 
 obj/server.o: obj src/server.cc include/serverImpl.h
-	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c src/server.cc -o obj/server.o 
+	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c src/server.cc -o obj/server.o
 
 obj/serverImpl.o: obj include/serverImpl.cc include/serverImpl.h lib/fileserver.grpc.pb.h
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c include/serverImpl.cc -o obj/serverImpl.o
 
 obj/fileserver.grpc.pb.o: obj lib/fileserver.grpc.pb.cc lib/fileserver.grpc.pb.h lib/fileserver.pb.h
-	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c lib/fileserver.grpc.pb.cc -o obj/fileserver.grpc.pb.o 
+	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -c lib/fileserver.grpc.pb.cc -o obj/fileserver.grpc.pb.o
 
 obj/fileserver.pb.o: obj lib/fileserver.pb.cc lib/fileserver.pb.h
 	$(CXX) -g $(CXXFLAGS) $(CPPFLAGS) -c lib/fileserver.pb.cc -o obj/fileserver.pb.o
+
+
+
