@@ -444,6 +444,8 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         FsyncResponse response = client.Fsync( request );
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            // Data successfully on disk, we can remove stuff from local buffer
+            dataBuffer.erase( fi->fh );
             return 0;
         } else {
             errno = status.retcode();
