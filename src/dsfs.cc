@@ -19,20 +19,20 @@ DSFS::~DSFS() {
 }
 
 void DSFS::AbsPath(char dest[PATH_MAX], const char *path) {
+	log_msg("dsfs_AbsPath:  rootdir = \"%s\", path = \"%s\", destination = \"%s\"\n", _root, path, dest);
         strcpy(dest, _root);
         strncat(dest, path, PATH_MAX);
-        printf("translated path: %s to %s\n", path, dest);
 }
 
-void DSFS::setRootDir(const char *mountPath, const char *path) {
-        printf("setting FS root for %s to: %s\n", mountPath, path);
+void DSFS::setRootDir(const char *path) {
         _root = path;
 }
 
 int DSFS::Getattr(const char *path, struct stat *statbuf) {
     char fullPath[ PATH_MAX ];
     AbsPath( fullPath, path );
-    printf( "getattr(%s)\n", fullPath );
+    log_msg("\ndsfs_Getattr(path=\"%s\", statbuf=%s)\n", path, *statbuf);
+
  	GetAttrClient client( grpc::CreateChannel(
                   		  "localhost:50051", grpc::InsecureChannelCredentials() ) );
 	GetAttrRequest request;
@@ -177,6 +177,7 @@ int DSFS::Rename(const char *path, const char *newpath) {
     char fullPath[PATH_MAX], newFullPath[PATH_MAX];
     AbsPath(fullPath, path);
 	AbsPath(newFullPath, newpath);
+	log_msg("dsfs_Rename(fullPath=\"%s\", newpath=\"%s\")\n", fullPath, newFullPath);
 
     RenameClient client( grpc::CreateChannel(
                               "localhost:50051", grpc::InsecureChannelCredentials() ) );
