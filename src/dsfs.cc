@@ -3,8 +3,6 @@
 
 DSFS* DSFS::_instance = NULL;
 
-#define RETURN_ERRNO(x) (x) == 0 ? 0 : -errno
-
 DSFS* DSFS::Instance() {
 	if(_instance == NULL) {
 		_instance = new DSFS();
@@ -64,7 +62,7 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 	    } else {
 		    printf("We threw the error code %d\n", status.retcode());
 		    errno = status.retcode();
-            return -1;
+            return errno;
 	   }
 	} catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -90,7 +88,7 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
 	   } else {
 	       printf("error : %d\n", status.retcode());
 	       errno = status.retcode();
-           return -1;
+           return errno;
 	   }
     } catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -116,7 +114,7 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
 	    } else {
 	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
-            return -1;
+            return errno;
 	    }
     } catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -141,7 +139,7 @@ int DSFS::Unlink(const char *path) {
 	    } else {
 	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
-            return -1;
+            return errno;
 	    }
     } catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -166,7 +164,7 @@ int DSFS::Rmdir(const char *path) {
 	    } else {
 	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
-            return -1;
+            return errno;
 	    }
     } catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -194,7 +192,7 @@ int DSFS::Rename(const char *path, const char *newpath) {
 	    } else {
 	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
-            return -1;
+            return errno;
 	    }
     } catch ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -220,7 +218,7 @@ int DSFS::Chmod(const char *path, mode_t mode) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -247,7 +245,7 @@ int DSFS::Chown(const char *path, uid_t uid, gid_t gid) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -273,7 +271,7 @@ int DSFS::Truncate(const char *path, off_t newSize) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -301,7 +299,7 @@ int DSFS::Access(const char *path, int mask)
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -332,7 +330,7 @@ int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -368,7 +366,7 @@ int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fu
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -404,7 +402,7 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -427,7 +425,7 @@ int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -449,7 +447,7 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -510,7 +508,7 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;
@@ -532,7 +530,7 @@ int DSFS::Releasedir(const char *path, struct fuse_file_info *fileInfo) {
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
-            return -1;
+            return errno;
         }
     } catch  ( std::string errorMsg ) {
         std::cout << errorMsg << std::endl;

@@ -1,0 +1,22 @@
+
+dsfs_init()
+    conn:
+    proto_major = 7
+    proto_minor = 23
+    async_read = 1
+    max_write = 131072
+    max_readahead = 131072
+    capable = 00000ffb
+    want = 00000010
+    max_background = 0
+    congestion_threshold = 0
+    context:
+    fuse = 0092ab90
+    uid = 0
+    gid = 0
+    pid = 0
+    private_data = 009214e0
+    logfile = 00929ef0
+    rootdir = /home/pabla/test
+    mountdir = /tmp/example
+    umask = 00000
