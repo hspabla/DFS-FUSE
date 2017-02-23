@@ -397,8 +397,9 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
         FSstatus status = response.status();
 
         if ( status.retcode() == 0 ) {
-	        int bytesWritten = response.datawritten();
-            return bytesWritten;
+            // update local buffer, if fh is not in map, it will be added this way
+            dataBuffer[ fileInfo->fh ].append( buf, size );
+            return size;
         } else {
             errno = status.retcode();
             printf("error : %d\n", status.retcode());
