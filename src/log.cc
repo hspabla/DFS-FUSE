@@ -8,6 +8,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 
 #include "../include/log.hh"
 
@@ -42,7 +43,14 @@ void log_msg(const char *format, ...)
     tm = localtime (&tv.tv_sec);
     strftime (fmt, sizeof (fmt), "%H:%M:%S:%%06u", tm);
     snprintf (buf, sizeof (buf), fmt, tv.tv_usec);
-    vfprintf (LOGFILE, "Timestamp: %s\n", buf);
+    fprintf (LOGFILE, "Timestamp: %s\n", buf);
+}
+
+void log_msg_init(const char *format, ...)
+{
+    va_list ap;
+    va_start(ap, format);
+    vfprintf(LOGFILE, format, ap);
 }
 
 // Report errors to logfile and give -errno to caller

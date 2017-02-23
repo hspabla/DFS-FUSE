@@ -9,10 +9,11 @@ extern "C" {
 
 //  macro to log fields in structs.
 #define log_struct(st, field, format, typecast) \
-  log_msg("    " #field " = " #format "\n", typecast st->field)
+  log_msg_init("    " #field " = " #format "\n", typecast st->field)
 
 FILE *log_open();
 void log_msg(const char *format, ...);
+void log_msg_init(const char *format, ...);
 void log_conn(struct fuse_conn_info *conn);
 int log_error(char *func);
 void log_fi(struct fuse_file_info *fi);

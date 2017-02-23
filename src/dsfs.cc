@@ -58,9 +58,10 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 	    statbuf->st_ctime = attributes.ctime();
 
 	    if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
 	    } else {
-		    printf("We threw the error code %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
 		    errno = status.retcode();
             return errno;
 	   }
@@ -71,9 +72,9 @@ int DSFS::Getattr(const char *path, struct stat *statbuf) {
 }
 
 int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
-    printf("mknod(path=%s, mode=%d)\n", path, mode);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Mknod(path=%s, mode=%d, dev=%d)\n", path, mode, dev);
 	MknodClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
     MknodRequest request;
@@ -84,10 +85,11 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
        MknodResponse response = client.Mknod(request);
        FSstatus status = response.status();
        if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
 	   } else {
-	       printf("error : %d\n", status.retcode());
 	       errno = status.retcode();
+           log_msg("Return Code: %d\n", status.retcode());
            return errno;
 	   }
     } catch ( std::string errorMsg ) {
@@ -97,9 +99,10 @@ int DSFS::Mknod(const char *path, mode_t mode, dev_t dev) {
 }
 
 int DSFS::Mkdir(const char *path, mode_t mode) {
-    printf("**mkdir(path=%s, mode=%d)\n", path, (int)mode);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Mkdir(path=%s, mode=%d)\n", path, mode);
+
     MkdirClient client( grpc::CreateChannel(
                         "localhost:50051", grpc::InsecureChannelCredentials() ) );
     MkdirRequest request;
@@ -110,10 +113,11 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
         response = client.Mkdir(request);
 	    FSstatus status = response.status();
 	    if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
 	        return 0;
 	    } else {
-	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
 	    }
     } catch ( std::string errorMsg ) {
@@ -123,9 +127,9 @@ int DSFS::Mkdir(const char *path, mode_t mode) {
 }
 
 int DSFS::Unlink(const char *path) {
-    printf("unlink(path=%s\n)", path);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Unlink(path=%s)\n", path);
 
     UnlinkClient client( grpc::CreateChannel(
                               "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -135,10 +139,11 @@ int DSFS::Unlink(const char *path) {
         UnlinkResponse response = client.Unlink(request);
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
 	    } else {
-	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
 	    }
     } catch ( std::string errorMsg ) {
@@ -148,9 +153,9 @@ int DSFS::Unlink(const char *path) {
 }
 
 int DSFS::Rmdir(const char *path) {
-    printf("rmdir(path=%s\n)", path);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Rmdir(path=%s)\n", path);
 
     RmdirClient client( grpc::CreateChannel(
                               "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -160,10 +165,11 @@ int DSFS::Rmdir(const char *path) {
         RmdirResponse response = client.Rmdir(request);
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
 	    } else {
-	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
 	    }
     } catch ( std::string errorMsg ) {
@@ -173,11 +179,10 @@ int DSFS::Rmdir(const char *path) {
 }
 
 int DSFS::Rename(const char *path, const char *newpath) {
-    printf("rename(path=%s, newPath=%s)\n", path, newpath);
     char fullPath[PATH_MAX], newFullPath[PATH_MAX];
     AbsPath(fullPath, path);
 	AbsPath(newFullPath, newpath);
-	log_msg("dsfs_Rename(fullPath=\"%s\", newpath=\"%s\")\n", fullPath, newFullPath);
+	log_msg("dsfs_Rename(path=\"%s\", newpath=\"%s\")\n", path, newpath);
 
     RenameClient client( grpc::CreateChannel(
                               "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -188,10 +193,11 @@ int DSFS::Rename(const char *path, const char *newpath) {
         RenameResponse response = client.Rename(request);
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
 	    } else {
-	        printf("error : %d\n", status.retcode());
 	        errno = status.retcode();
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
 	    }
     } catch ( std::string errorMsg ) {
@@ -201,9 +207,9 @@ int DSFS::Rename(const char *path, const char *newpath) {
 }
 
 int DSFS::Chmod(const char *path, mode_t mode) {
-    printf("chmod(path=%s, mode=%d)\n", path, mode);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Chmod(path=%s, mode=%d)\n", path, mode);
 
 	ChmodClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -214,10 +220,11 @@ int DSFS::Chmod(const char *path, mode_t mode) {
         ChmodResponse response = client.Chmod( request );
         FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
+           log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -227,9 +234,9 @@ int DSFS::Chmod(const char *path, mode_t mode) {
 }
 
 int DSFS::Chown(const char *path, uid_t uid, gid_t gid) {
-    printf("chown(path=%s, uid=%d, gid=%d)\n", path, (int)uid, (int)gid);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Chown(path=%s, uid=%d, gid=%d)\n", path, (int)uid, (int)gid);
 
 	ChownClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -241,10 +248,11 @@ int DSFS::Chown(const char *path, uid_t uid, gid_t gid) {
         ChownResponse response = client.Chown( request );
         FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -254,9 +262,9 @@ int DSFS::Chown(const char *path, uid_t uid, gid_t gid) {
 }
 
 int DSFS::Truncate(const char *path, off_t newSize) {
-    printf("truncate(path=%s, newSize=%d\n", path, (int)newSize);
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
+    log_msg("dsfs_Truncate(path=%s, newSize=%d)\n", path, (int)newSize);
 
     TruncateClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -267,10 +275,11 @@ int DSFS::Truncate(const char *path, off_t newSize) {
         TruncateResponse response = client.Truncate( request );
         FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -283,8 +292,7 @@ int DSFS::Access(const char *path, int mask)
 {
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
-
-    printf("access(path=%s)\n", fullPath);
+    log_msg("dsfs_Access(path=%s, mask=%d)\n", path, mask);
 
     AccessClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -295,10 +303,11 @@ int DSFS::Access(const char *path, int mask)
         AccessResponse response = client.Access( request );
         FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -310,6 +319,7 @@ int DSFS::Access(const char *path, int mask)
 int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
 	char fullPath[ PATH_MAX ];
 	AbsPath( fullPath, path );
+    log_msg("dsfs_Open(path=%s, fileHandle=%d, flags=%d)\n", path, (int)fileInfo->fh, (int)fileInfo->flags);
 
 	// RPC request prep
 	OpenClient client( grpc::CreateChannel(
@@ -324,12 +334,11 @@ int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
 
         FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
-	        printf( "open (path=%s, fileHandle=%d, flags=%d)\n",
-	                fullPath, (int)fileInfo->fh, (int)fileInfo->flags);
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -340,8 +349,8 @@ int DSFS::Open(const char *path, struct fuse_file_info *fileInfo) {
 
 int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
 
-	printf( "read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
-	    path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
+    log_msg("dsfs_Read(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+        path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
 
 	// RPC request prep
@@ -362,10 +371,11 @@ int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fu
 	        int byteRead = response.dataread();
 	        if ( byteRead > 0 )
 		        memcpy( buf, response.data().c_str(), byteRead );
+            log_msg("Return Code: %d\n", status.retcode());
             return byteRead;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -376,8 +386,8 @@ int DSFS::Read(const char *path, char *buf, size_t size, off_t offset, struct fu
 
 int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, struct fuse_file_info *fileInfo) {
 
-	printf( "write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
-	    path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
+    log_msg("dsfs_Write(path=%s, size=%d, offset=%d, fileHandle=%d, flags=%d)\n",
+        path, (int)size, (int)offset, (int)fileInfo->fh, (int)fileInfo->flags);
 
 	std::string data( buf, size );
 
@@ -398,10 +408,11 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
 
         if ( status.retcode() == 0 ) {
 	        int bytesWritten = response.datawritten();
+            log_msg("Return Code: %d\n", status.retcode());
             return bytesWritten;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -411,7 +422,7 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
 }
 
 int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
-    printf("release(path=%s)\n", path);
+    log_msg("dsfs_Release(path=%s)\n", path);
 
     ReleaseClient client( grpc::CreateChannel(
                               "localhost:50051", grpc::InsecureChannelCredentials() ) );
@@ -421,10 +432,11 @@ int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
         ReleaseResponse response = client.Release(request);
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -434,7 +446,8 @@ int DSFS::Release(const char *path, struct fuse_file_info *fileInfo) {
 }
 
 int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
-    printf("fsync(path=%s, datasync=%d\n", path, datasync);
+    log_msg("dsfs_Fsync(path=%s, fileHandle=%d, datasync=%d\n", path, (int) fi->fh, datasync);
+
     FsyncClient client( grpc::CreateChannel(
                        "localhost:50051", grpc::InsecureChannelCredentials() ) );
     FsyncRequest request;
@@ -443,10 +456,11 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         FsyncResponse response = client.Fsync( request );
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -458,23 +472,23 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
 //Extended attributes not implemented for RPC calls.
 
 int DSFS::Setxattr(const char *path, const char *name, const char *value, size_t size, int flags) {
-        printf("setxattr(path=%s, name=%s, value=%s, size=%d, flags=%d\n",
-                path, name, value, (int)size, flags);
+    log_msg("dsfs_Setxattr(path=%s, name=%s, value=%s, size=%d, flags=%d\n",
+        path, name, value, (int)size, flags);
 	return 0;
 }
 
 int DSFS::Getxattr(const char *path, const char *name, char *value, size_t size) {
-        printf("getxattr(path=%s, name=%s, size=%d\n", path, name, (int)size);
+    log_msg("dsfs_Getxattr(path=%s, name=%s, size=%d)\n", path, name, (int)size);
 	return 0;
 }
 
 int DSFS::Listxattr(const char *path, char *list, size_t size) {
-        printf("listxattr(path=%s, size=%d)\n", path, (int)size);
+    log_msg("dsfs_Listxattr(path=%s, list=%s, size=%d)\n", path, list, (int)size);
 	return 0;
 }
 
 int DSFS::Removexattr(const char *path, const char *name) {
-        printf("removexattry(path=%s, name=%s)\n", path, name);
+    log_msg("dsfs_Removexattr(path=%s, name=%s)\n", path, name);
 	return 0;
 }
 
@@ -482,7 +496,7 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
 {
     char fullPath[PATH_MAX];
     AbsPath(fullPath, path);
-	printf("readdir(path=%s, offset=%d)\n", fullPath, (int)offset);
+    log_msg("dsfs_Readdir(path=%s, offset=%d)\n", path, (int)offset);
 
 	std::shared_ptr<Channel> channel = grpc::CreateChannel(
                                   "localhost:50051", grpc::InsecureChannelCredentials() );
@@ -494,7 +508,6 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
         response = client.Opendir(request);
 	    FSstatus status = response.status();
         if ( status.retcode() == 0 ) {
-            //DirEntry dirs = response.dirs();
             for(int i=0; i< response.dirs_size(); i++) {
                 struct stat st;
                 memset(&st, 0, sizeof(st));
@@ -504,10 +517,11 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
                 if (filler(buf, (dir.name()).c_str(), &st, 0) != 0)
                     break;
             }
+            log_msg("Return Code: %d\n", status.retcode());
             return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
@@ -517,7 +531,8 @@ int DSFS::Readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t off
 }
 
 int DSFS::Releasedir(const char *path, struct fuse_file_info *fileInfo) {
-    printf("releasedir(path=%s)\n", path);
+    log_msg("dsfs_Releasedir(path=%s)\n", path);
+
     ReleasedirClient client( grpc::CreateChannel(
                                "localhost:50051", grpc::InsecureChannelCredentials() ) );
     ReleasedirRequest request;
@@ -526,10 +541,11 @@ int DSFS::Releasedir(const char *path, struct fuse_file_info *fileInfo) {
         ReleasedirResponse response = client.Releasedir(request);
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            log_msg("Return Code: %d\n", status.retcode());
              return 0;
         } else {
             errno = status.retcode();
-            printf("error : %d\n", status.retcode());
+            log_msg("Return Code: %d\n", status.retcode());
             return errno;
         }
     } catch  ( std::string errorMsg ) {
