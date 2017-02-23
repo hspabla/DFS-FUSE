@@ -133,23 +133,71 @@ Status FileSystemImpl::Write( ServerContext* context,
                               const WriteRequest* request,
 				              WriteResponse* reply ) {
 
-    char *buf = new char[ request->size() ];
-    memcpy( buf, request->data().c_str(), request->size() );
+    int filehandle = request->filehandle();
+    // update data buffer of this file, this is not fsync'd to disk
+    serverDataBuf[ filehandle ].append( request->data() );
 
-    int bytesWritten = pwrite( request->filehandle(), buf,
-                               request->size(),
-                               request->offset() );
+    //int bytesWritten = pwrite( request->filehandle(), buf,
+    //                           request->size(),
+    //                           request->offset() );
 
     FSstatus status;
-    if ( bytesWritten < 0 ) {
-        status.set_retcode(-errno);
-    } else {
-        status.set_retcode(0);
-        reply->set_datawritten( bytesWritten );
-    }
+    status.set_retcode(0);
     reply->mutable_status()->CopyFrom(status);
 
-    delete buf;
+    return Status::OK;
+}
+
+Status FileSystemImpl::Fsync( ServerContext* context,
+                                 const FsyncRequest* request,
+                                 FsyncResponse* reply ) {
+
+    // Fsync implementation
+    // we  get all the data from serverDataBuffer mapped to
+    // that file
+    // 1. write,fsync to disk
+    // 2. clear that data from our map
+    // 3. reply ack
+
+    int filehandle = request->filehandle();
+    FSstatus status;
+    const char* data = serverDataBuf[ filehandle ].c_str();
+    size_t dataLen = serverDataBuf[ filehandle ].size();
+    int totalDataWritten = 0;
+
+    // No data in our buffer associated with that file handle
+    if ( serverDataBuf.find( filehandle ) == serverDataBuf.end() ) {
+        status.set_retcode( 666 );
+    }
+    else {
+        // Write to disk
+        while( totalDataWritten < dataLen ) {
+            int dataWritten = write( filehandle, data + totalDataWritten,
+                                                 dataLen - totalDataWritten );
+            if ( dataWritten < 0 ) {
+                // write failed for some reason, abort, let caller reinitiate
+                status.set_retcode( 666 );
+                break;
+            }
+            totalDataWritten += dataWritten;
+        }
+
+        // Fsync to disk
+        if ( totalDataWritten == dataLen ) {
+            int fsyncStatus = fsync( filehandle );
+            status.set_retcode( fsyncStatus == 0 ? 0 : -errno);
+        } else {
+            // something went wrong, its better for client to resend
+            // data and write. We will remove our local buffer regardless. As we
+            // do not know what was written and wat was missed
+            status.set_retcode( 666 );
+        }
+
+        // Clean the map
+        serverDataBuf.erase( filehandle );
+    }
+
+    reply->mutable_status()->CopyFrom(status);
     return Status::OK;
 }
 
@@ -290,17 +338,3 @@ Status FileSystemImpl::Truncate( ServerContext* context,
     return Status::OK;
 }
 
-Status FileSystemImpl::Fsync( ServerContext* context,
-                                 const FsyncRequest* request,
-                                 FsyncResponse* reply ) {
-
-    // Fsync implementation
-    int filehandle = request->filehandle();
-    int retstat = fsync( filehandle );
-
-    // Populate response
-    FSstatus status;
-    status.set_retcode( retstat == 0 ? 0 : -errno);
-    reply->mutable_status()->CopyFrom(status);
-    return Status::OK;
-}

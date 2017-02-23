@@ -17,18 +17,21 @@
 #include <vector>
 #include <unordered_map>
 #include "log.hh"
+#include <map>
 
 //using namespace std;
 
 class DSFS {
-private: 
+private:
 	const char *_root;
-
 	static DSFS *_instance;
 
 	std::unordered_map<std::string, std::string> mount_map;
+    void AbsPath(char dest[PATH_MAX], const char *path);
 
-        void AbsPath(char dest[PATH_MAX], const char *path);
+    // temp buffer we keep for files which are written but not yet fsync'ed
+    // Incase we have to retransmit the data
+    std::map<int, std::string> dataBuffer;
 
 public:
 	static DSFS *Instance();

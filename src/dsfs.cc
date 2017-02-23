@@ -407,9 +407,10 @@ int DSFS::Write(const char *path, const char *buf, size_t size, off_t offset, st
         FSstatus status = response.status();
 
         if ( status.retcode() == 0 ) {
-	        int bytesWritten = response.datawritten();
+            // update local buffer, if fh is not in map, it will be added this way
+            dataBuffer[ fileInfo->fh ].append( buf, size );
             log_msg("Return Code: %d\n", status.retcode());
-            return bytesWritten;
+            return size;
         } else {
             errno = status.retcode();
             log_msg("Return Code: %d\n", status.retcode());
@@ -456,7 +457,9 @@ int DSFS::Fsync(const char *path, int datasync, struct fuse_file_info *fi) {
         FsyncResponse response = client.Fsync( request );
         FSstatus status = response.status();
         if (status.retcode() == 0) {
+            // Data successfully on disk, we can remove stuff from local buffer
             log_msg("Return Code: %d\n", status.retcode());
+            dataBuffer.erase( fi->fh );
             return 0;
         } else {
             errno = status.retcode();
