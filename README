@@ -1,0 +1,29 @@
+Introduction
+
+In this project we present simple distributed file system based on FUSE and gRPC. FUSE provide a convenient abstraction at user level that look like a filesystem, but internally executes remote procedure calls on the server to do things like create directory, write to a file, etc. Mostly documented drawbacks of FUSE style file system is the performance, however, in our case since the bottleneck will be network and not local FUSE system, it makes perfect sense to implement distributed file system using FUSE at the client side.
+Communication layer between client and file server is implemented using gRPC. There are various advantages of using RPC instead of custom UDP or TCP as transport layer. Writing custom TCP for various higher level primitives seems to be overly complicated task. gRPC provides nice abstraction for programmability and performance hit is not going to be because of the overhead involved in the protocol but instead would be because of network latency and disk read/writes at the server. We will address those concerns separately.
+In the next section, we describe overall architecture of the system and various design decisions taken at each stage. Design
+High level overview is shown in the image below.
+
+File System
+Mounting : When the fuse client is started, it is provided with the mount directory and the root directory. The root directory is the server path/directory which needs to be mounted on the client. The mount directory is where the root directory is mounted on. We performed path resolution by mapping the mount directory to the root directory, and then passing the resolved path to server to invoke necessary system calls.
+
+Communication
+In our implementation we have used gRPC for client server communication. There were several reasons for this :
+- RPC mechanism provides good enough performance for file system operations. Connection overhead compared to TCP or UDP is not significantly high as opposed to complexity which would be involved in getting structured data using TCP/UDP.
+- RPC provides ease of programmability. We were able to focus on file system operations and not spent too much time in working out communication aspect of things. This was the primary reason for us to use RPC.
+
+Server Design :
+We decided to go head with multi-threaded server. Number of concurrent requests would be bottlenecked by number of files which can be opened at a time by the server. This would be operating system limitation, regardless we would not expect this number to exceed ~1000. Each RPC call would be serviced by a new thread.
+However, due to lack to time and some complexity we were not able to implement multi-threading. Instead we generate a service on a single thread. This would be implemented in next version :)
+
+Batch writes
+In our implementation, server and client maintains a buffer which has mapping of file handle and data which is currently not on disk.
+When client has to do any write operation on the file, it updates its local buffer and send that data across to the server. Server only appends received data to existing data mapped to by file handle and replies with an acknowledgment. Any subsequent writes are only written in the buffers.
+
+We have combined the FSYNC and COMMIT operation, i.e. when client issues fsync on the file handle, server does the following :
+- Write all the data present in buffer pointed to by filehandle.
+- Call fsync on that filehandle
+- Remove the data from our local buffer - Send Ack to the client
+
+On receiving fsync ack from server, client will clean up its own buffer allocated for that filehandle.
